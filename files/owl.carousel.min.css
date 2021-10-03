@@ -14,9 +14,9 @@
 /*** Навигация точками ***/
 .owl-dots {text-align: center;}
 .owl-dots.disabled {display: none;}
-.owl-dots .owl-dot {margin: 0 .5rem;width: 1.25rem;height: 1.25rem;background-color: transparent;border-radius: 100%;border: 2px solid #9facb3;padding: 0;line-height: 1;display: inline-block;vertical-align: middle;transition: all 0.3s ease;}
-.owl-dots .owl-dot.active, .owl-dots .owl-dot:hover {border-color: #00acc5;}
-.owl-dots .owl-dot.active:before, .owl-dots .owl-dot:hover:before {content: '';width: 1rem;height: 1rem;background-color: #00acc5;border: .2rem solid #ffffff;border-radius: 100%;display: inline-block;transition: all 0.3s ease;}
+.owl-dots .owl-dot {margin: 0 .5rem;width: 2.5rem;height: 0.25rem;background-color: transparent;background-color: #70787D;padding: 0;line-height: 1;display: inline-block;vertical-align: middle;transition: all 0.3s ease;}
+.owl-dots .owl-dot.active, .owl-dots .owl-dot:hover {height: 0.5rem;}
+
 
 /*** Изображения в слайдере ***/
 .owl-carousel {overflow: hidden;}

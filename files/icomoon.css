@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?737574');
-  src:  url('fonts/icomoon.eot?737574#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?737574') format('truetype'),
-    url('fonts/icomoon.woff?737574') format('woff'),
-    url('fonts/icomoon.svg?737574#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?61ikk3');
+  src:  url('fonts/icomoon.eot?61ikk3#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?61ikk3') format('truetype'),
+    url('fonts/icomoon.woff?61ikk3') format('woff'),
+    url('fonts/icomoon.svg?61ikk3#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -58,13 +58,13 @@
 .icon-checkbox:before {
   content: "\e90a";
 }
-.icon-comparison:before {
+.icon-compare:before {
   content: "\e90b";
 }
-.icon-cross:before {
+.icon-close:before {
   content: "\e90c";
 }
-.icon-favourite:before {
+.icon-favorites:before {
   content: "\e90d";
 }
 .icon-filter:before {
@@ -85,13 +85,13 @@
 .icon-minus:before {
   content: "\e913";
 }
-.icon-notification:before {
+.icon-notify:before {
   content: "\e914";
 }
 .icon-plus:before {
   content: "\e915";
 }
-.icon-profile:before {
+.icon-user:before {
   content: "\e916";
 }
 .icon-quick_buy:before {
@@ -100,7 +100,7 @@
 .icon-search:before {
   content: "\e918";
 }
-.icon-shopping_bag:before {
+.icon-cart:before {
   content: "\e919";
 }
 .icon-star:before {
@@ -109,7 +109,7 @@
 .icon-grid:before {
   content: "\e91b";
 }
-.icon-telephone:before {
+.icon-phone:before {
   content: "\e91c";
 }
 .icon-tick_down:before {

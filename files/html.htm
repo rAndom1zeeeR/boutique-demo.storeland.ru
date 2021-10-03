@@ -24,7 +24,8 @@
 	<!-- Подключаемые шрифты -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;1,400;1,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/design/icomoon.css?design=THEMENAME" />
 	<!-- Основные Стили магазина для всех страниц -->
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}min.css?design=THEMENAME" />
@@ -53,9 +54,228 @@
 	{% IF MOD_LNAME = goods %}page-goods{% ENDIF %}
 	{% IF MOD_LNAME = discount %}page-discount{% ENDIF %}"
 >
+	<!-- Сообщение для инвалидов. Если не работает JS -->
+	<noscript>
+		<div class="noscript">
+			<div class="noscript-inner">
+				<h4><strong>Мы заметили, что у Вас выключен JavaScript.</strong></h4>
+				<h5>Необходимо включить его для корректной работы сайта.</h5>
+			</div>
+		</div>
+
+		<style>
+			.nojs .preloader {
+				display: none;
+			}
+		</style>
+
+		<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}fix-nojs.css?design=THEMENAME">
+	</noscript>
+
 	<!--  -->
 	<div class="wrapper">
-		
+
+		<!-- Шапка -->
+		<header id="header">
+			<!-- Верхняя часть шапки -->
+			<div class="header__top">
+				<div class="container">
+					<div class="flex justify-between">
+						<!-- Меню -->
+						<div class="header__block menu">
+							<div class="header__block-icon">
+								<i class="icon-plus"></i>
+							</div>
+						</div>
+
+						<!-- Телефон 1 -->
+						{% IF SETTINGS_STORE_PHONE_NUMBER1 %}
+						<div class="header__block contacts phone flex">
+							<a class="header__block-icon" href="javascript:;" data-fancybox data-src="#fancybox__callback">
+								<i class="icon-phone"></i>
+							</a>
+							<div class="header__block-content">
+								<a class="header__block-link phone" href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}" title="{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}">
+									<span>{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}</span>
+								</a>
+								<a class="header__block-click" href="javascript:;" data-fancybox data-src="#fancybox__callback">
+									<span>заказать звонок</span>
+								</a>
+							</div>
+						</div>
+						{% ENDIF SETTINGS_STORE_PHONE_NUMBER1 %}
+
+						<!-- Логотип -->
+						<div class="header__block logo" itemscope itemtype="http://schema.org/Organization">
+							<a href="{INDEX_PAGE_URL}" title="{SETTINGS_STORE_NAME}" itemprop="url">
+								<!-- <img src="{ASSETS_IMAGES_PATH}logo.png?design=THEMENAME" alt="{SETTINGS_STORE_NAME}" itemprop="logo"> -->
+								<h2>мания бутик</h2>
+								<meta itemprop="name" content="{SETTINGS_STORE_NAME}">
+								<span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+									<meta itemprop="addressLocality" content="{SETTINGS_STORE_REGION}" />
+								</span>
+							</a>
+						</div>
+
+						<!-- Поиск -->
+						<div class="header__block search flex">
+							<a class="header__block-icon" href="javascript:;">
+								<i class="icon-search"></i>
+							</a>
+							<div class="header__block-content">
+								<div class="header__block-label">Поиск</div>
+							</div>
+						</div>
+
+						<!-- Почта -->
+						{% IF SETTINGS_STORE_EMAIL_MAIN %}
+						<div class="header__block contacts email flex">
+							<a class="header__block-icon" href="javascript:;" data-fancybox data-src="#fancybox__feedback">
+								<i class="icon-mail"></i>
+							</a>
+							<div class="header__block-content">
+								<a class="header__block-link email" href="mailto:{SETTINGS_STORE_EMAIL_MAIN}" title="{SETTINGS_STORE_EMAIL_MAIN}">
+									<span>{SETTINGS_STORE_EMAIL_MAIN}</span>
+								</a>
+								<a class="header__block-click" href="javascript:;" data-fancybox data-src="#fancybox__feedback">
+									<span>написать нам</span>
+								</a>
+							</div>
+						</div>
+						{% ENDIF SETTINGS_STORE_EMAIL_MAIN %}
+					</div>
+				</div>
+			</div>
+			
+			<!-- Средняя часть шапки -->
+			<div class="header__middle">
+				<div class="container">
+					<div class="addto flex">
+						<!-- ЛК, Войти -->
+						<div class="addto__block users">
+							<a class="header__block-icon" href="{USER_LOGIN_URL}" title="Личный кабинет">
+								<i class="icon-user"></i>
+							</a>
+						</div>
+
+						<!-- Сравнение -->
+						{% IFNOT MOD_LNAME = compare && SETTINGS_COMPARE_DISABLE=0 %}
+						<div class="addto__block compare {% IF COMPARE_GOODS_COUNT > 0 %}has-items{% ENDIF %}">
+							<a class="header__block-icon" href="{COMPARE_URL}" title="Сравнение">
+								<i class="icon-compare"></i>
+								<span class="count-compare" data-count="{COMPARE_GOODS_COUNT}">{COMPARE_GOODS_COUNT}</span>
+							</a>
+						</div>
+						{% ENDIF %}
+
+						<!-- Избранное -->
+						<div class="addto__block favorites {% IF FAVORITES_GOODS_COUNT > 0 %}has-items{% ENDIF %}">
+							<a class="header__block-icon" href="{FAVORITES_URL}" title="Избранное">
+								<i class="icon-favorites"></i>
+								<span class="count-favorites" data-count="{FAVORITES_GOODS_COUNT}">{FAVORITES_GOODS_COUNT}</span>
+							</a>
+						</div>
+
+						<!-- Корзина -->
+						<div class="addto__block header__block cart flex {% IF CART_COUNT_TOTAL > 0 %}has-items{% ENDIF %}">
+							<a class="header__block-icon" href="{CART_URL}" title="Корзина">
+								<i class="icon-cart"></i>
+							</a>
+							<div class="header__block-content">
+								<span class="cart__block-empty">Корзина</span>
+								<span class="cart__block-price cartSumNow {CURRENCY_CHAR_CODE}">{CART_SUM_NOW | money_format}</span>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- Слайдшоу -->
+		<div id="slideshow">
+			<!-- Слайды -->
+			<div class="slider owl-carousel">
+				<!-- Слайд 1 -->
+				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_1.jpg?design=THEMENAME">
+					<div class="slider__bg flex lozad" data-background-image="{ASSETS_IMAGES_PATH}background.png?design=THEMENAME">
+						<div class="container">
+							<div class="slider__content">
+								<h3><a href="{CATALOG_URL}" class="slider__title">Почувствуй себя желанной</a></h3>
+								<div class="slider__buttons">
+									<a class="slider__button" href="{CATALOG_URL}" title="Смотреть каталог">
+										<i class="icon-button_catalog"></i>
+										<span>Смотреть каталог</span>
+									</a>								
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Слайд 2 -->
+				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_2.jpg?design=THEMENAME">
+					<div class="slider__bg flex lozad" data-background-image="{ASSETS_IMAGES_PATH}background.png?design=THEMENAME">
+						<div class="container">
+							<div class="slider__content">
+								<h3><a href="{CATALOG_URL}" class="slider__title">Почувствуй себя желанной</a></h3>
+								<div class="slider__buttons">
+									<a class="slider__button" href="{CATALOG_URL}" title="Смотреть каталог">
+										<i class="icon-button_catalog"></i>
+										<span>Смотреть каталог</span>
+									</a>								
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Слайд 3 -->
+				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_3.jpg?design=THEMENAME">
+					<div class="slider__bg flex lozad" data-background-image="{ASSETS_IMAGES_PATH}background.png?design=THEMENAME">
+						<div class="container">
+							<div class="slider__content">
+								<h3><a href="{CATALOG_URL}" class="slider__title">Почувствуй себя желанной</a></h3>
+								<div class="slider__buttons">
+									<a class="slider__button" href="{CATALOG_URL}" title="Смотреть каталог">
+										<i class="icon-button_catalog"></i>
+										<span>Смотреть каталог</span>
+									</a>								
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Слайдшоу -->
+		<section id="catalog">
+			<div class="container">
+				<div class="catalog__items flex">
+					{% FOR catalog_full %}
+						{% IF catalog_full.FIRST && catalog_full.LEVEL > 0 %}
+						<div data-level="{catalog_full.LEVEL}" class="sub">
+						{% ENDIF %}
+							<div {% IF catalog_full.HIDE %}style="display:none;" {% ENDIF %} data-level="{catalog_full.LEVEL}" class="catalog__item {% IF catalog_full.ISSET_VISIBLE_SUB %}parent{% ENDIF %} {% IF catalog_full.CURRENT_PARENT %}opened{% ENDIF %}">
+								<a href="{catalog_full.URL}" data-level="{catalog_full.LEVEL}" class="catalog__link flex {% IF catalog_full.CURRENT %}opened{% ENDIF %}">
+									<span>{catalog_full.NAME}</span>
+								</a>
+							{% IF catalog_full.ISSET_SUB=0 %}
+							</div>
+							{% ENDIF %}
+					{% IF catalog_full.LAST %}
+						{% FOR out %}
+						</div>
+						{% IFNOT catalog_full.out.LAST %}</div>{% ENDIF %}
+						{% ENDFOR %}
+					{% ENDIF %}
+				{% ENDFOR catalog_full %}
+			</div>
+		</section>
+
+
 	</div>
 
 <!-- Фиксы для IE -->

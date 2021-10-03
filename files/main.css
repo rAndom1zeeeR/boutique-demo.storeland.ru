@@ -2,7 +2,7 @@
 /*** Основные стили шаблона ***/
 /**************************************/
 html {font-size: 100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;-webkit-font-smoothing: antialiased;}
-body {background-color: #ffffff;color: #656d72;font-family: 'Ubuntu', sans-serif;font-size: .875rem;line-height: 1.3;font-weight: 400;position: relative;overflow-x: hidden;margin: 0;padding: 0;}
+body {background-color: #ffffff;color: #212121;font-family: 'Montserrat', sans-serif;font-size: .875rem;line-height: 1.3;font-weight: 400;position: relative;overflow-x: hidden;margin: 0;padding: 0;}
 section {margin: 3rem 0;position: relative;}
 .mainBlock-left {width: 100%;flex-grow: 1;}
 .mainBlock-left.has-sidebar {width: 75%;padding-right: 1rem;flex-grow: 1;}
@@ -25,15 +25,15 @@ section {margin: 3rem 0;position: relative;}
 
 /*** Скрол всего сайта ***/
 ::-webkit-scrollbar {width: 1rem;height: 0;}
-::-webkit-scrollbar-thumb {border-radius: 0;background-color: #00acc5;}
-::-webkit-scrollbar-track {border-radius: 0;background-color: #dae6ec;}
+::-webkit-scrollbar-thumb {border-radius: 0;background-color: #70787D;}
+::-webkit-scrollbar-track {border-radius: 0;background-color: #A9BDCE;}
 
 
 /**************************************/
 /*** Вспомогательные элементы ***/
 /**************************************/
-a {color: #656d72;text-decoration: none;outline: 0;cursor: pointer;transition: all 0.3s ease;}
-a:hover, a.active, a.opened {color: #00acc5;text-decoration: none;outline: 0;}
+a {color: #212121;text-decoration: none;outline: 0;cursor: pointer;transition: all 0.3s ease;}
+a:hover, a.active, a.opened {color: #B69355;text-decoration: none;outline: 0;}
 img {max-width: 100%;max-height: 100%;width: auto;}
 p {margin-bottom: 1rem;line-height: 1.5;}
 ol.unstyled, ul.unstyled {margin: 0;padding: 0;list-style: none;}
@@ -41,15 +41,15 @@ ol.unstyled, ul.unstyled {margin: 0;padding: 0;list-style: none;}
 .unselectable {-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}
 .fadeout, .out {opacity: 0;filter: alpha(opacity=0);}
 .fadein, .in {opacity: 1;filter: alpha(opacity=100);}
-.tc {color: #00acc5 !important;}
+.tc {color: #B69355 !important;}
 .text-center {text-align: center;}
 .flex {display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-align: center;-webkit-align-items: center;-webkit-box-align: center;align-items: center;}
 .flex-start {display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-align: flex-start;-webkit-align-items: flex-start;-webkit-box-align: flex-start;align-items: flex-start;}
 .flex-center {display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-align: center;-webkit-align-items: center;-webkit-box-align: center;align-items: center;-webkit-justify-content: center;justify-content: center;}
 .justify-between {justify-content: space-between;}
 .mask {overflow: hidden;mask-image: linear-gradient(to bottom, black 50%, transparent 90%);}
-.noscript {position: relative;text-align: center;background-color: #00acc5;color: #ffffff;padding: 1rem;}
-.blockquote {padding: 0 0 0 1rem;margin: 0 0 1.5rem;border-left: .25rem solid #00acc5;}
+.noscript {position: relative;text-align: center;background-color: #B69355;color: #ffffff;padding: 1rem;}
+.blockquote {padding: 0 0 0 1rem;margin: 0 0 1.5rem;border-left: .25rem solid #B69355;}
 .DescriptionBlock {margin: 2rem 0 0 0;}
 .htmlDataBlock {overflow: hidden;}
 
@@ -65,7 +65,7 @@ ol.unstyled, ul.unstyled {margin: 0;padding: 0;list-style: none;}
 /**************************************/
 /*** Инпут поля ***/
 /**************************************/
-input, select, textarea {width: 100%;height: 3rem;padding: 0 1.5rem;color: #656d72;background-color: #ffffff;border-color: #dae6ec;border-width: 1px;border-style: solid;border-radius: 0;outline: 0;font-size: 1rem;font-weight: 400;font-family: 'Ubuntu', sans-serif;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
+input, select, textarea {width: 100%;height: 3rem;padding: 0 1.5rem;color: #656d72;background-color: #ffffff;border-color: #dae6ec;border-width: 1px;border-style: solid;border-radius: 0;outline: 0;font-size: 1rem;font-weight: 400;font-family: 'Montserrat', sans-serif;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
 input:focus, select:focus, textarea:focus {border-color: #00acc5;}
 textarea {height: auto;padding-top: 1rem;}
 select {cursor: pointer;}
@@ -113,7 +113,7 @@ textarea.error:-ms-input-placeholder {color: red;}
 /**************************************/
 /*** Кнопки ***/
 /**************************************/
-.button, button, .paymentFormSubmitLink, .paymentFormTbodySubmitButton {color: #ffffff;background: #00acc5;padding: 0 2rem;line-height: 3rem;border: 0;border-radius: 2rem;text-align: center;font-family: 'Ubuntu', sans-serif;cursor: pointer;display: inline-block;position: relative;transition: all 0.3s ease;}
+.button, button, .paymentFormSubmitLink, .paymentFormTbodySubmitButton {color: #ffffff;background: #00acc5;padding: 0 2rem;line-height: 3rem;border: 0;border-radius: 2rem;text-align: center;font-family: 'Montserrat', sans-serif;cursor: pointer;display: inline-block;position: relative;transition: all 0.3s ease;}
 .button:hover, button:hover, .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover, .button.active, .button.opened {color: #ffffff;background-color: #0066a0;}
 .button2 {color: #ffffff;background-color: #0066a0;}
 .button2:hover, .button2.active, .button2.opened {color: #ffffff;background-color: #00acc5;}
@@ -144,16 +144,16 @@ textarea.error:-ms-input-placeholder {color: red;}
 .add-compare:after {content: '\e907';}
 
 /*** Иконки Новинка, Хит, Скидка ***/
-.product__ico {color: #ffffff;position: absolute;top: 1.25rem;left: 1.25rem;display: flex;align-items: center;justify-content: flex-start;z-index: 2;}
+.product__ico {color: #ffffff;z-index: 2;}
 .product__ico label {display: none;}
-.product__ico span {font-size: .75rem;margin: 0;padding: .25rem 1rem;border-radius: 1.5rem;text-transform: lowercase;display: flex;align-items: center;justify-content: center;}
-.ico__sales {background: #eef2f4;color: #656d72;}
-.ico__sale {background: #0066a0;z-index: 2;}
-.ico__sale:before {content: 'sale';}
-.ico__best {background: #f44d69;}
-.ico__best:before {content: 'hit';}
-.ico__new {background: #00acc5;}
-.ico__new:before {content: 'new';}
+.product__ico span {font-size: .75rem;padding: .25rem 1rem;}
+.ico__sales {background: #CFA191;}
+.ico__sale {background: #CFA191;}
+.ico__sale:before {content: 'скидка';}
+.ico__best {background: #B69355;}
+.ico__best:before {content: 'Хит';}
+.ico__new {background: #70787D}
+.ico__new:before {content: 'Новинка';}
 .ico__sale + .ico__sales {margin-left: -1.5rem;padding-left: 2rem;}
 
 
@@ -197,7 +197,7 @@ textarea.error:-ms-input-placeholder {color: red;}
 /**************************************/
 /*** Заголовки ***/
 /**************************************/
-h1, h2, h3, h4, h5, h6 {text-rendering: optimizelegibility;text-transform: none;line-height: 1.5;margin: 0;padding: 0;font-weight: bold;}
+h1, h2, h3, h4, h5, h6 {text-rendering: optimizelegibility;text-transform: none;line-height: 1.5;margin: 0;padding: 0;font-weight: bold;font-family: 'Playfair Display', serif;}
 h1 {font-size: 2rem;}
 h2 {font-size: 1.75rem;}
 h3 {font-size: 1.5rem;}
@@ -551,18 +551,67 @@ h6 {font-size: 0.875rem;}
 
 /**************************************/
 /*** Шапка ***/
+/* Иконка Меню не работает, проблема с файлом
+/* 
 /**************************************/
+#header {position: absolute;background-color: transparent;z-index: 3;width: 100%;}
+.header__top {padding: 2rem 0;}
+.header__middle {padding: 2rem 0;}
+/* Шапка. Общие элементы. Иконки */
+.header__block-icon {width: 2.5rem;transition: all 0.3s ease;}
+.header__block-icon i {font-size: 1.5rem;}
+.header__block-icon i.icon-search {font-size: 1.25rem;}
+.header__block-content {width: calc(100% - 2.5rem);transition: all 0.3s ease;}
+.header__block-link {font-size: 1.125rem;max-width: 10rem;display: block;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+.header__block-click {margin-top: .25rem;font-size: .75rem;text-decoration: underline !important;text-align: center;display: block;}
+.header__block:hover .header__block-icon,
+.header__block:hover .header__block-content,
+.header__block:hover .header__block-link,
+.has-items .header__block-icon {color: #B69355;cursor: pointer;}
 
+/* Шапка. Логотип */
+.logo h2 {text-transform: uppercase;font-weight: normal;}
 
-/**************************************/
-/*** Подвал ***/
-/**************************************/
-
+/* Шапка. Добавление в Избр, Срав, Корзина, ЛК */
+.addto {justify-content: flex-end;}
+.addto__block {margin-left: 4rem;position: relative;}
 
 
 /**************************************/
 /*** Слайдшоу ***/
+/* Фоновая картинка должна быть прозрачной
 /**************************************/
+.slider__item {height: 53rem;background-position: center;background-size: cover;}
+.slider__content {max-width: 40%;margin: 0 0 0 auto;text-align: center;}
+.slider__title {font-size: 3rem;font-weight: bold;}
+.slider__buttons {margin-top: 3rem;}
+.slider__button span {display: none;}
+.slider__button i {font-size: 7.5rem;}
+.slider__bg {height: 100%;background-position: 40% 0;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -594,6 +643,10 @@ h6 {font-size: 0.875rem;}
 /*** Новости ***/
 /**************************************/
 
+
+/**************************************/
+/*** Подвал ***/
+/**************************************/
 
 
 /**************************************/

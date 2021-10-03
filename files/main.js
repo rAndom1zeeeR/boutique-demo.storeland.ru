@@ -301,14 +301,14 @@ function removeFromFavorites(e){
   if(confirm('Вы точно хотите удалить товар из Избранного?')){
     e.parent().parent().parent().fadeOut().remove();
     var href = e.attr('href');
-    var oldCount = $('.favorites__count').attr('data-count');
+    var oldCount = $('.count-favorites').attr('data-count');
     var goodsModId = e.attr('data-id');
     $.ajax({
       cache : false,
       url		: href,
       success: function(d){
         var newCount = oldCount - 1;
-        $('.favorites__count').attr('data-count', newCount).text(newCount);
+        $('.count-favorites').attr('data-count', newCount).text(newCount);
         var flag = 0;
         if(newCount != 0){
           $('.addto__favorites .addto__item').each(function(){
@@ -321,7 +321,7 @@ function removeFromFavorites(e){
           });
         }else{
           $('.favorites').removeClass("has-items");
-          $('.favorites__count').attr('data-count', '0').text('0');
+          $('.count-favorites').attr('data-count', '0').text('0');
         }
         var obj = $('.add-favorites[data-mod-id="' + goodsModId + '"]');
         if(obj.length) {
@@ -348,7 +348,7 @@ function removeFromFavoritesAll(e){
       url		 : href,
       success: function(d){
         $('.favorites').removeClass("has-items");
-        $('.favorites__count').attr('data-count', '0').text("0");
+        $('.count-favorites').attr('data-count', '0').text("0");
         $('.addto__favorites .addto__item').remove();
         $('.addto__favorites .preloader').hide();
         $('.add-favorites').removeAttr("title").removeClass("added");
@@ -363,14 +363,14 @@ function removeFromCompare(e){
   if(confirm('Вы точно хотите удалить товар из сравнения?')){
     e.parent().parent().parent().fadeOut().remove();
     var href = e.attr('href');
-    var oldCount = $('.compare__count').attr('data-count');
+    var oldCount = $('.count-compare').attr('data-count');
     var goodsModId = e.attr('data-id');
     $.ajax({
       cache : false,
       url		: href,
       success: function(d){
         var newCount = oldCount - 1;
-        $('.compare__count').attr('data-count', newCount).text(newCount);
+        $('.count-compare').attr('data-count', newCount).text(newCount);
         var flag = 0;
         if(newCount != 0){
           $('.addto__compare .addto__item').each(function(){
@@ -383,7 +383,7 @@ function removeFromCompare(e){
           });
         }else{
           $('.compare').removeClass("has-items");
-          $('.compare__count').attr('data-count', '0').text('0');
+          $('.count-compare').attr('data-count', '0').text('0');
         }
         var obj = $('.add-compare[data-mod-id="' + goodsModId + '"]');
         if(obj.length) {
@@ -409,7 +409,7 @@ function removeFromCompareAll(e){
       url		 : href,
       success: function(d){
         $('.compare').removeClass("has-items");
-        $('.compare__count').attr('data-count', '0').text("0");
+        $('.count-compare').attr('data-count', '0').text("0");
         $('.addto__compare .addto__item').remove();
         $('.addto__compare .preloader').hide();
         $('.add-compare').removeAttr("title").removeClass("added");
@@ -1443,18 +1443,18 @@ function addTo() {
 						// Если указано, что изменилось число товаров на сравнении
 						if(typeof(data.compare_goods_count) != 'undefined') {
 							// Блок информации о том, что есть товары на сравнении
-							var sidecount = $('.compare__count');
+							var sidecount = $('.count-compare');
 							// Если на сравнении больше нет товаров
 							// Указываем информацию о новом количестве товаров на сравнении
 							// Блок обновления списка сравнения в каталога
 							sidecount.animate({opacity: 0,display: "none"},500,function(){
 								sidecount.text(data.compare_goods_count);
-								$('.compare__count').attr('data-count', data.compare_goods_count);
+								$('.count-compare').attr('data-count', data.compare_goods_count);
 								if(data.compare_goods_count > 0){
 									$('.compare').addClass("has-items");
 								}else{
 									$('.compare').removeClass("has-items");
-									$('.compare__count').attr('data-count', '0').text("0");
+									$('.count-compare').attr('data-count', '0').text("0");
 									$('.add-compare').removeAttr("title").removeClass("added");
 								}
 							}).animate({display: "inline",opacity: 1} , 500 );
@@ -1629,18 +1629,18 @@ function addTo() {
 						// Если указано, что изменилось число товаров на сравнении
 						if(typeof(data.favorites_goods_count) != 'undefined') {
 							// Блок информации о том, что есть товары на сравнении
-							var sidecount = $('.favorites__count');
+							var sidecount = $('.count-favorites');
 							// Если на сравнении больше нет товаров
 							// Указываем информацию о новом количестве товаров на сравнении
 							// Блок обновления списка сравнения в каталога
 							sidecount.animate({opacity: 0,display: "none"},500,function(){
 								sidecount.text(data.favorites_goods_count);
-								$('.favorites__count').attr('data-count', data.favorites_goods_count);
+								$('.count-favorites').attr('data-count', data.favorites_goods_count);
 								if(data.favorites_goods_count > 0){
 									$('.favorites').addClass("has-items");
 								}else{
 									$('.favorites').removeClass("has-items");
-									$('.favorites__count').attr('data-count', '0').text("0");
+									$('.count-favorites').attr('data-count', '0').text("0");
 									$('.add-favorites').removeAttr("title").removeClass("added");
 								}
 							}).animate({display: "inline",opacity: 1} , 500 );
