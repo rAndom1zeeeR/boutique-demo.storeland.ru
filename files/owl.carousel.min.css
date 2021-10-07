@@ -3,7 +3,7 @@
 
 /*** Навигация ***/
 .owl-prev, .owl-next {width: 4rem;height: 4rem;font-size: 2rem;padding: 0;color: #eef2f5;background-color: #ffffff;border: 1px solid #eef2f5;border-radius: 0;line-height: 1;font-family: 'icomoon';font-weight: normal;cursor: pointer;z-index: 2;transition: all 0.3s ease;}
-.owl-prev:hover, .owl-next:hover {color: #00acc5;background-color: #ffffff;border-color: #00acc5;}
+.owl-prev:hover, .owl-next:hover {color: #B69355;background-color: #ffffff;border-color: #00acc5;}
 .owl-prev {float: left;left: 0;}
 .owl-next {float: right;right: 0;}
 .owl-prev:before {content: '\e91f';}
@@ -14,8 +14,8 @@
 /*** Навигация точками ***/
 .owl-dots {text-align: center;}
 .owl-dots.disabled {display: none;}
-.owl-dots .owl-dot {margin: 0 .5rem;width: 2.5rem;height: 0.25rem;background-color: transparent;background-color: #70787D;padding: 0;line-height: 1;display: inline-block;vertical-align: middle;transition: all 0.3s ease;}
-.owl-dots .owl-dot.active, .owl-dots .owl-dot:hover {height: 0.5rem;}
+.owl-dots .owl-dot {margin: 0 1rem;width: 2.5rem;height: 0.25rem;background-color: transparent;background-color: #70787D;padding: 0;line-height: 1;display: inline-block;vertical-align: middle;transition: all 0.3s ease;}
+.owl-dots .owl-dot.active, .owl-dots .owl-dot:hover {background-color: #B69355;}
 
 
 /*** Изображения в слайдере ***/

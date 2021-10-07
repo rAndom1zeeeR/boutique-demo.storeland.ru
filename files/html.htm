@@ -84,7 +84,7 @@
 						<!-- Меню -->
 						<div class="header__block menu">
 							<div class="header__block-icon">
-								<i class="icon-plus"></i>
+								<i class="icon-menu"></i>
 							</div>
 						</div>
 
@@ -257,23 +257,102 @@
 					{% FOR catalog_full %}
 						{% IF catalog_full.FIRST && catalog_full.LEVEL > 0 %}
 						<div data-level="{catalog_full.LEVEL}" class="sub">
-						{% ENDIF %}
+						{% ENDIF catalog_full.FIRST && catalog_full.LEVEL > 0 %}
 							<div {% IF catalog_full.HIDE %}style="display:none;" {% ENDIF %} data-level="{catalog_full.LEVEL}" class="catalog__item {% IF catalog_full.ISSET_VISIBLE_SUB %}parent{% ENDIF %} {% IF catalog_full.CURRENT_PARENT %}opened{% ENDIF %}">
 								<a href="{catalog_full.URL}" data-level="{catalog_full.LEVEL}" class="catalog__link flex {% IF catalog_full.CURRENT %}opened{% ENDIF %}">
 									<span>{catalog_full.NAME}</span>
 								</a>
 							{% IF catalog_full.ISSET_SUB=0 %}
 							</div>
-							{% ENDIF %}
-					{% IF catalog_full.LAST %}
+							{% ENDIF catalog_full.ISSET_SUB=0 %}
+						{% IF catalog_full.LAST %}
 						{% FOR out %}
 						</div>
 						{% IFNOT catalog_full.out.LAST %}</div>{% ENDIF %}
-						{% ENDFOR %}
-					{% ENDIF %}
-				{% ENDFOR catalog_full %}
+						{% ENDFOR out %}
+						{% ENDIF catalog_full.LAST %}
+					{% ENDFOR catalog_full %}
 			</div>
 		</section>
+
+		<!-- Популярные категории -->
+		<section id="banners">
+			<div class="container">
+				<div class="block__title">
+					<h2 class="title"><span>Популярные категории</span></h2>
+				</div>
+				<div class="row">
+					<div class="banners__items flex">
+						<div class="banners__left">
+							<div class="banners__item flex-center lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_popular_1.jpg?design=THEMENAME" data-item="1">
+								<a class="button-secondary" href="{CATALOG_URL}" title="Перейти в каталог">
+									<span>Комплекты белья с кружевами</span>
+								</a>
+							</div>
+						</div>
+
+						<div class="banners__right">
+							<div class="banners__top flex">
+								<div class="banners__item flex-center lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_popular_2.jpg?design=THEMENAME" data-item="2">
+									<a class="button-secondary" href="{CATALOG_URL}" title="Перейти в каталог">
+										<span>Трусики</span>
+									</a>
+								</div>
+
+								<div class="banners__item flex-center lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_popular_3.jpg?design=THEMENAME" data-item="3">
+									<a class="button-secondary" href="{CATALOG_URL}" title="Перейти в каталог">
+										<span>Кружевные</span>
+									</a>
+								</div>
+							</div>
+
+							<div class="banners__bottom">
+								<div class="banners__item flex-center lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_popular_4.jpg?design=THEMENAME" data-item="4">
+									<a class="button-secondary" href="{CATALOG_URL}" title="Перейти в каталог">
+										<span>Боди</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="promo__new">
+			<div class="promo__container flex">
+				<div class="promo__lines promo__lines_start flex">
+					<marquee class="promo__line" scrolldelay="0" behavior="alternate">
+						<span class="promo__text">Новая коллекция</span>
+					</marquee>
+					<marquee class="promo__line" scrolldelay="100" behavior="alternate">
+						<span class="promo__text">Новая коллекция</span>
+					</marquee>
+				</div>
+
+				<div class="promo__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_new.jpg?design=THEMENAME"></div>
+
+				<div class="promo__lines promo__lines_end flex">
+					<marquee class="promo__line" scrolldelay="0" direction="right" behavior="alternate">
+						<span class="promo__text">Новейшая коллекция</span>
+					</marquee>
+					<marquee class="promo__line" scrolldelay="100" direction="right" behavior="alternate">
+						<span class="promo__text">Новая коллекция</span>
+					</marquee>
+				</div>
+			</div>
+		</section>
+
+
+
+
+
+
+
+
+
+
+
 
 
 	</div>

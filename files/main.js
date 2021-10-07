@@ -293,7 +293,7 @@ ajaxForms('.page-сallback','pageCallbackFlag','Спасибо за обраще
 
 
 ///////////////////////////////////////
-/* Действия */
+/* Действия удаления из ... */
 ///////////////////////////////////////
 // Удаление товара из Избранного без обновлении страницы
 function removeFromFavorites(e){
@@ -477,7 +477,7 @@ function removeFromCartAll(e){
 
 
 ///////////////////////////////////////
-// Закрытие элементов
+// Закрытие, Открытие элементов
 ///////////////////////////////////////
 // Функция удаления классов всех активных элементов
 function closeAll() {
@@ -663,67 +663,6 @@ function notyStart(text, type) {
     killer: false
   }).show();
 }
-
-///////////////////////////////////////
-// Загрузка основных функций шаблона
-///////////////////////////////////////
-$(document).ready(function(){
-  userAgent();
-  openMenu();
-  showPass();
-  mainnav('header .mainnav', '1');
-  mainnav('footer .mainnav', '1');
-  toTop();
-
-  // Ленивая загрузка
-  $(function(){
-    var observer = lozad(); // lazy loads elements with default selector as '.lozad'
-    observer.observe();
-  });
-  
-  // Отправка формы по Ctrl+Enter
-  $('form').bind('keypress', function(e){
-    if((e.ctrlKey) && ((e.which==10)||(e.which==13))) {$(this).submit();}
-    // Отправка данных формы по нажатию на Enter в случае если курсор находится в input полях (В некоторых браузерах при нажатии по enter срабатывает клик по первому submit полю, которое является кнопкой назад. Для этого написан этот фикс)
-  }).find('input').bind('keypress', function(e){
-    if(((e.which==10)||(e.which==13))) { try{$(this.form).submit();} catch(e){} return false; }
-  });
-
-  // Маска ввода телефона
-  $(".form__phone").mask("+7 (999) 999-9999");
-
-  // Возврашаем пользователя на страницу с которой был сделан обратный звонок
-  $('.callbackredirect').val(document.location.href);
-});
-
-// Запуск основных функций для разных разрешений экрана
-$(document).ready(function(){
-  if(getClientWidth() > 481 && window.outerHeight < 630){
-    $('body').addClass('landscape');
-  }else{
-    $('body').removeClass('landscape');
-  }
-});
-
-// Запуск функций при изменении экрана
-$(window).resize(function(){
-  if(getClientWidth() > 481 && window.outerHeight < 630){
-    $('body').addClass('landscape');
-  }else{
-    $('body').removeClass('landscape');
-  }
-});
-
-
-/*
-//Функции для удобства
-function addActive(obj){obj.addClass('active');}
-function removeActive(obj){obj.removeClass('active')}
-//if (addOpened(t));
-function addOpened(obj){obj.hasClass('opened') ? obj.removeClass('opened') : obj.addClass('opened')}*/
-
-function addActive(obj){obj.hasClass('active') ? obj.removeClass('active') : obj.addClass('active')}
-
 
 
 ///////////////////////////////////////
@@ -1724,7 +1663,6 @@ $(document).ready(function(){
 	priceDiff();
 	addCart();
 	addTo();
-
 	// Добавление товара в корзину
 	$('.add-cart').on('click', function() {
 		var form = $(this).closest('form');
@@ -2140,7 +2078,6 @@ function coupons() {
 }
 
 
-
 ///////////////////////////////////////
 /* Скрипты для Товары, Категории */
 ///////////////////////////////////////
@@ -2452,7 +2389,6 @@ function pageGoods() {
 		}
 	});
 }
-
 
 // Инициализация табов на странице товара
 function initTabs() {
@@ -2798,7 +2734,9 @@ function goodsModification() {
 }
 
 
+///////////////////////////////////////
 // Сравнение товаров
+///////////////////////////////////////
 function compare() {
 	var owlCompare = $('.CompareGoodsTableTbody .owl-carousel');
 	owlCompare.owlCarousel({
@@ -2861,7 +2799,9 @@ function compare() {
 }
 
 
+///////////////////////////////////////
 // Корзина
+///////////////////////////////////////
 function cartQuantity(){
 	$('.cartqty').change($.debounce(300, function(){
 		var quantity = $(this);
@@ -3005,3 +2945,92 @@ function startOrder(){
 	});
 	return false;
 }
+
+
+
+///////////////////////////////////////
+// Загрузка основных функций шаблона
+///////////////////////////////////////
+$(document).ready(function(){
+  userAgent();
+  openMenu();
+  showPass();
+  mainnav('header .mainnav', '1');
+  mainnav('footer .mainnav', '1');
+  toTop();
+
+  // Ленивая загрузка
+  $(function(){
+    var observer = lozad(); // lazy loads elements with default selector as '.lozad'
+    observer.observe();
+  });
+  
+  // Отправка формы по Ctrl+Enter
+  $('form').bind('keypress', function(e){
+    if((e.ctrlKey) && ((e.which==10)||(e.which==13))) {$(this).submit();}
+    // Отправка данных формы по нажатию на Enter в случае если курсор находится в input полях (В некоторых браузерах при нажатии по enter срабатывает клик по первому submit полю, которое является кнопкой назад. Для этого написан этот фикс)
+  }).find('input').bind('keypress', function(e){
+    if(((e.which==10)||(e.which==13))) { try{$(this.form).submit();} catch(e){} return false; }
+  });
+
+  // Маска ввода телефона
+  $(".form__phone").mask("+7 (999) 999-9999");
+
+  // Возврашаем пользователя на страницу с которой был сделан обратный звонок
+  $('.callbackredirect').val(document.location.href);
+});
+
+// Запуск основных функций для разных разрешений экрана
+$(document).ready(function(){
+  if(getClientWidth() > 481 && window.outerHeight < 630){
+    $('body').addClass('landscape');
+  }else{
+    $('body').removeClass('landscape');
+  }
+});
+
+// Запуск функций при изменении экрана
+$(window).resize(function(){
+  if(getClientWidth() > 481 && window.outerHeight < 630){
+    $('body').addClass('landscape');
+  }else{
+    $('body').removeClass('landscape');
+  }
+});
+
+
+/*
+//Функции для удобства
+function addActive(obj){obj.addClass('active');}
+function removeActive(obj){obj.removeClass('active')}
+//if (addOpened(t));
+function addOpened(obj){obj.hasClass('opened') ? obj.removeClass('opened') : obj.addClass('opened')}*/
+
+function addActive(obj){obj.hasClass('active') ? obj.removeClass('active') : obj.addClass('active')}
+
+
+$(document).ready(function(){
+	var block = $('#promo__new');
+	var line = block.find('.promo__line');
+	var content = line.find('.promo__text');
+	//var text = block.find('.promo__text').eq('0').text()
+	//content.clone().appendTo(content.parent());
+
+	line.each(function(){
+		var t = $(this);
+		var text = t.find('.promo__text');
+		var count = parseInt(Math.ceil(t.width() / (text.width() + 64)));
+
+		for (var i = 0; i < count; i++) {
+			text.clone().appendTo(t)
+		}
+
+		// console.log('t', t)
+		// console.log('text', text)
+		// console.log('tWidth', thisWidth)
+		// console.log('textWidth', textWidth)
+		// console.log('count', count)
+	});
+	
+	console.log(content)
+});

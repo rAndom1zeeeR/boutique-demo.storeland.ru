@@ -3,7 +3,7 @@
 /**************************************/
 html {font-size: 100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;-webkit-font-smoothing: antialiased;}
 body {background-color: #ffffff;color: #212121;font-family: 'Montserrat', sans-serif;font-size: .875rem;line-height: 1.3;font-weight: 400;position: relative;overflow-x: hidden;margin: 0;padding: 0;}
-section {margin: 3rem 0;position: relative;}
+section {margin: 4rem 0;position: relative;}
 .mainBlock-left {width: 100%;flex-grow: 1;}
 .mainBlock-left.has-sidebar {width: 75%;padding-right: 1rem;flex-grow: 1;}
 .mainBlock-right {width: 25%;padding-left: 1rem;flex-grow: 1;}
@@ -42,6 +42,7 @@ ol.unstyled, ul.unstyled {margin: 0;padding: 0;list-style: none;}
 .fadeout, .out {opacity: 0;filter: alpha(opacity=0);}
 .fadein, .in {opacity: 1;filter: alpha(opacity=100);}
 .tc {color: #B69355 !important;}
+.text-bold {font-weight: bold;}
 .text-center {text-align: center;}
 .flex {display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-align: center;-webkit-align-items: center;-webkit-box-align: center;align-items: center;}
 .flex-start {display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-align: flex-start;-webkit-align-items: flex-start;-webkit-box-align: flex-start;align-items: flex-start;}
@@ -66,15 +67,14 @@ ol.unstyled, ul.unstyled {margin: 0;padding: 0;list-style: none;}
 /*** Инпут поля ***/
 /**************************************/
 input, select, textarea {width: 100%;height: 3rem;padding: 0 1.5rem;color: #656d72;background-color: #ffffff;border-color: #dae6ec;border-width: 1px;border-style: solid;border-radius: 0;outline: 0;font-size: 1rem;font-weight: 400;font-family: 'Montserrat', sans-serif;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
-input:focus, select:focus, textarea:focus {border-color: #00acc5;}
+input:focus, select:focus, textarea:focus {border-color: #B69355;}
 textarea {height: auto;padding-top: 1rem;}
 select {cursor: pointer;}
 input.error {border-color: red;}
 input[type="file"] {margin-top: 0.25rem;height: auto;line-height: 1;border: 0;padding: 0;border-radius: 0;background: transparent;}
-.square {width: 1.5rem;height: 1.5rem;line-height: 1.5rem;border-radius: 0;margin: 0;padding: 0;text-align: center;}
-.square:checked, .square:hover {background-color: #0066a0;}
-.square:checked:after, .square:hover:after {content: '\e904';font-family: 'icomoon';color: #ffffff;}
-.square:disabled {background-color: #dae6ec;cursor: default}
+.square {width: 1.5rem;height: 1.5rem;line-height: 1.5rem;border-radius: 0 0 .25rem 0;margin: 0;padding: 0;text-align: center;}
+.square:checked:after, .square:hover:after {content: '\e904';font-family: 'icomoon';color: #B69355;}
+.square:disabled {border-color: #70787D;cursor: default}
 .square:disabled:after {display: none;}
 input + label {cursor: pointer;}
 .disabled label {cursor: default;}
@@ -113,10 +113,13 @@ textarea.error:-ms-input-placeholder {color: red;}
 /**************************************/
 /*** Кнопки ***/
 /**************************************/
-.button, button, .paymentFormSubmitLink, .paymentFormTbodySubmitButton {color: #ffffff;background: #00acc5;padding: 0 2rem;line-height: 3rem;border: 0;border-radius: 2rem;text-align: center;font-family: 'Montserrat', sans-serif;cursor: pointer;display: inline-block;position: relative;transition: all 0.3s ease;}
-.button:hover, button:hover, .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover, .button.active, .button.opened {color: #ffffff;background-color: #0066a0;}
-.button2 {color: #ffffff;background-color: #0066a0;}
-.button2:hover, .button2.active, .button2.opened {color: #ffffff;background-color: #00acc5;}
+.button, button, [class^="button-"], .paymentFormSubmitLink, .paymentFormTbodySubmitButton {color: #212121;background: #A9BDCE;padding: 0 3rem;line-height: 3rem;border: 0;border-radius: 3rem 0;text-align: center;font-family: 'Montserrat', sans-serif;cursor: pointer;display: inline-block;position: relative;transition: all 0.3s ease;}
+.button:hover, button:hover, [class^="button-"]:hover, .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover, .button.active, .button.opened, [class^="button-"].active, [class^="button-"].opened {color: #212121;background-color: #CFA191;}
+.button:before, [class^="button-"]:before {content: '';opacity: 0;border: 1px solid #70787D;border-radius: 3rem 0;left: .5rem;top: .5rem;position: absolute;width: 100%;height: 100%;transition: all 0.3s ease;}
+.button:hover:before, [class^="button-"]:hover:before {opacity: 1;}
+.button-secondary {background-color: #EFEFEF;}
+.button-secondary:hover, .button-secondary.active, .button-secondary.opened {background-color: #CFA191;}
+
 .button3 {color: #656d72;background-color: #ffffff;border: 1px solid #eef2f4;}
 .button3:hover, .button3.active, .button3.opened {color: #ffffff;background-color: #00acc5;border-color: #00acc5;}
 .button4 {color: #656d72;background-color: #eef2f4;}
@@ -197,7 +200,7 @@ textarea.error:-ms-input-placeholder {color: red;}
 /**************************************/
 /*** Заголовки ***/
 /**************************************/
-h1, h2, h3, h4, h5, h6 {text-rendering: optimizelegibility;text-transform: none;line-height: 1.5;margin: 0;padding: 0;font-weight: bold;font-family: 'Playfair Display', serif;}
+h1, h2, h3, h4, h5, h6 {text-rendering: optimizelegibility;text-transform: none;line-height: 1.5;margin: 0;padding: 0;font-weight: normal;font-family: 'Playfair Display', serif;}
 h1 {font-size: 2rem;}
 h2 {font-size: 1.75rem;}
 h3 {font-size: 1.5rem;}
@@ -209,15 +212,12 @@ h6 {font-size: 0.875rem;}
 /**************************************/
 /*** Блок Заголовков ***/
 /**************************************/
-.block__title {margin-bottom: 2rem;text-align: center;position: relative;}
-.nav__tabs {margin-bottom: 2rem;border: 1px solid #dae6ec;flex-wrap: nowrap;}
-.nav__tab {padding: 1rem;text-align: center;flex-grow: 1;border-left: 1px solid #dae6ec;}
-.nav__tab:first-child {border-left: 0;}
-.nav__tab.active, .nav__tab:hover {background-color: #dae6ec;color: #656d72;}
+.block__title {margin-bottom: 3rem;text-align: center;position: relative;}
+.block__title .title {display: flex;align-items: center;justify-content: center;}
+.block__title .title:before, .block__title .title:after {content: '';width: 2rem;height: 1px;background-color: #212121;display: inline-block;}
+.block__title .title span {margin: 0 1rem;}
 /* Блок Заголовков. Адаптивность */
 @media (max-width: 479.98px) {
-	.nav__tabs {flex-wrap: wrap;}
-	.nav__tab:nth-child(3) {border-left: 0;border-top: 1px solid #dae6ec;width: 100%;}
 }
 
 
@@ -562,7 +562,7 @@ h6 {font-size: 0.875rem;}
 .header__block-icon i {font-size: 1.5rem;}
 .header__block-icon i.icon-search {font-size: 1.25rem;}
 .header__block-content {width: calc(100% - 2.5rem);transition: all 0.3s ease;}
-.header__block-link {font-size: 1.125rem;max-width: 10rem;display: block;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+.header__block-link {font-size: 1.125rem;max-width: 12rem;display: block;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
 .header__block-click {margin-top: .25rem;font-size: .75rem;text-decoration: underline !important;text-align: center;display: block;}
 .header__block:hover .header__block-icon,
 .header__block:hover .header__block-content,
@@ -581,39 +581,74 @@ h6 {font-size: 0.875rem;}
 /*** Слайдшоу ***/
 /* Фоновая картинка должна быть прозрачной
 /**************************************/
-.slider__item {height: 53rem;background-position: center;background-size: cover;}
-.slider__content {max-width: 40%;margin: 0 0 0 auto;text-align: center;}
+.slider__item {height: 54rem;background-position: center;background-size: cover;}
+.slider__content {width: 40%;margin: 0 0 0 auto;padding-top: 10rem;text-align: center;}
 .slider__title {font-size: 3rem;font-weight: bold;}
 .slider__buttons {margin-top: 3rem;}
 .slider__button span {display: none;}
 .slider__button i {font-size: 7.5rem;}
 .slider__bg {height: 100%;background-position: 40% 0;}
+#slideshow {position: relative;}
+#slideshow .owl-dots {width: 40%;right: 0;bottom: 3rem;position: absolute;text-align: left;}
+
+
+/**************************************/
+/*** Каталог ***/
+/**************************************/
+.catalog__item .sub {display: none;}
+.catalog__link {font-size: 1rem;} 
+.catalog__item[data-level="0"] {margin-right: 4rem;}
+
+
+/**************************************/
+/*** Баннеры ***/
+/**************************************/
+.banners__items {height: 40rem;align-items: stretch;}
+.banners__item {margin: 0 1rem;height: 100%;background-position: center;background-size: cover;}
+.banners__left {width: 23rem;}
+.banners__right {width: calc(100% - 23rem);}
+.banners__top {height: calc(50% - 1rem);}
+.banners__bottom {height: calc(50% - 1rem);margin-top: 2rem;}
+.banners__top .banners__item {width: calc(50% - 2rem);}
+.banners__item[data-item="1"] {border-radius: 14rem 0 0 0;}
+.banners__item[data-item="4"] {border-radius: 0 0 14rem 0;}
+
+#banners [class^="button-"] {opacity: 0;}
+#banners .banners__item:hover [class^="button-"] {opacity: 1;}
+#banners [class^="button-"]:before {opacity: 1;}
+
+.promo__new {overflow: hidden;}
+.promo__container {align-items: stretch;}
+.promo__text {font-size: 1.125rem;text-transform: uppercase;font-family: 'Playfair Display', serif;}
+.promo__text + .promo__text {margin-left: 4rem;}
+.promo__text:nth-child(2n) {font-weight: bold;}
+.promo__image {width: 42rem;height: 30rem;border-radius: 0 14rem 14rem 0;background-size: cover;z-index: 2;}
+.promo__lines {width: calc(50% - 21rem);flex-direction: column;overflow: hidden;}
+.promo__line {margin-top: 4rem;white-space: nowrap;width: 100%;}
+.promo__lines_start {justify-content: flex-start;}
+.promo__lines_end {justify-content: flex-end;margin-left: -10rem;width: calc(50% - 11rem);}
+.promo__lines_end .promo__line {margin: 0 0 4rem 0;}
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	 
+.promo__text22 {
+	display: inline-block;
+	-webkit-animation: scroll 5s infinite linear;
+	animation: scroll 5s infinite linear;
+}
+	
+@-webkit-keyframes scroll {
+0%{-webkit-transform: translate(0, 0);}
+50%{-webkit-transform: translate(-50%, 0);}
+100%{-webkit-transform: translate(-100%, 0);}
+}
+@keyframes scroll{
+0%{transform: translate(0, 0);}
+50%{transform: translate(-50%, 0)}
+100%{transform: translate(-100%, 0)}
+}
 
 /**************************************/
 /*** Открытие Каталога ***/
