@@ -279,7 +279,7 @@
 		<section id="banners">
 			<div class="container">
 				<div class="block__title">
-					<h2 class="title"><span>Популярные категории</span></h2>
+					<h2 class="title title-separator"><span>Популярные категории</span></h2>
 				</div>
 				<div class="row">
 					<div class="banners__items flex">
@@ -319,6 +319,7 @@
 			</div>
 		</section>
 
+		<!-- Промо Новинок -->
 		<section id="promo__new">
 			<div class="promo__container flex">
 				<div class="promo__lines promo__lines_start flex">
@@ -334,11 +335,26 @@
 
 				<div class="promo__lines promo__lines_end flex">
 					<marquee class="promo__line" scrolldelay="0" direction="right" behavior="alternate">
-						<span class="promo__text">Новейшая коллекция</span>
+						<span class="promo__text">Новая коллекция</span>
 					</marquee>
 					<marquee class="promo__line" scrolldelay="100" direction="right" behavior="alternate">
 						<span class="promo__text">Новая коллекция</span>
 					</marquee>
+				</div>
+			</div>
+		</section>
+
+		<!-- Описание главной страницы -->
+		<section id="index">
+			<div class="container">
+				<div class="flex">
+					<div class="index__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_description.jpg?design=THEMENAME"></div>
+					<div class="index__body">
+						<div class="block__title">
+							<h3 class="title">{PAGE_TITLE}</h3>
+						</div>
+						<div class="body">{BODY}</div>
+					</div>
 				</div>
 			</div>
 		</section>

@@ -213,9 +213,9 @@ h6 {font-size: 0.875rem;}
 /*** Блок Заголовков ***/
 /**************************************/
 .block__title {margin-bottom: 3rem;text-align: center;position: relative;}
-.block__title .title {display: flex;align-items: center;justify-content: center;}
-.block__title .title:before, .block__title .title:after {content: '';width: 2rem;height: 1px;background-color: #212121;display: inline-block;}
-.block__title .title span {margin: 0 1rem;}
+.block__title .title-separator {display: flex;align-items: center;justify-content: center;}
+.block__title .title-separator:before, .block__title .title-separator:after {content: '';width: 2rem;height: 1px;background-color: #212121;display: inline-block;}
+.block__title .title-separator span {margin: 0 1rem;}
 /* Блок Заголовков. Адаптивность */
 @media (max-width: 479.98px) {
 }
@@ -612,11 +612,14 @@ h6 {font-size: 0.875rem;}
 .banners__top .banners__item {width: calc(50% - 2rem);}
 .banners__item[data-item="1"] {border-radius: 14rem 0 0 0;}
 .banners__item[data-item="4"] {border-radius: 0 0 14rem 0;}
-
 #banners [class^="button-"] {opacity: 0;}
 #banners .banners__item:hover [class^="button-"] {opacity: 1;}
 #banners [class^="button-"]:before {opacity: 1;}
 
+
+/**************************************/
+/*** Промо Новинок ***/
+/**************************************/
 .promo__new {overflow: hidden;}
 .promo__container {align-items: stretch;}
 .promo__text {font-size: 1.125rem;text-transform: uppercase;font-family: 'Playfair Display', serif;}
@@ -630,25 +633,29 @@ h6 {font-size: 0.875rem;}
 .promo__lines_end .promo__line {margin: 0 0 4rem 0;}
 
 
+/**************************************/
+/*** Описание главной страницы ***/
+/* Сделать круговой текст в углу Мания Бутик
+/**************************************/
+.index__image {width: 24rem;height: 30rem;border-radius: 11rem 0 0 0;background-size: cover;background-position: center;position: relative;}
+.index__image:after {content: '';border: 1px solid #70787D;border-radius: 11rem 0 0 0;width: 100%;height: 100%;top: 1rem;left: 1rem;display: block;position: absolute;}
+.index__body {width: calc(100% - 24rem);padding-left: 6rem;}
+.index__body .block__title {margin-bottom: 2rem;}
 
 
-	 
-.promo__text22 {
-	display: inline-block;
-	-webkit-animation: scroll 5s infinite linear;
-	animation: scroll 5s infinite linear;
-}
-	
-@-webkit-keyframes scroll {
-0%{-webkit-transform: translate(0, 0);}
-50%{-webkit-transform: translate(-50%, 0);}
-100%{-webkit-transform: translate(-100%, 0);}
-}
-@keyframes scroll{
-0%{transform: translate(0, 0);}
-50%{transform: translate(-50%, 0)}
-100%{transform: translate(-100%, 0)}
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**************************************/
 /*** Открытие Каталога ***/
