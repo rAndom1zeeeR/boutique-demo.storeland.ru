@@ -282,7 +282,7 @@
 					<h2 class="title title_separator"><span>Популярные категории</span></h2>
 				</div>
 				<div class="row">
-					<div class="banners__items flex">
+					<div class="banners__items flex-stretch">
 						<div class="banners__left">
 							<div class="banners__item flex-center lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_popular_1.jpg?design=THEMENAME" data-item="1">
 								<a class="button-secondary" href="{CATALOG_URL}" title="Перейти в каталог">
@@ -321,7 +321,8 @@
 
 		<!-- Промо Новинок -->
 		<section id="promo__new">
-			<div class="promo__container flex">
+			<div class="promo__container flex-stretch">
+				<!-- Бегущие строки -->
 				<div class="promo__lines promo__lines_start flex">
 					<marquee class="promo__line" scrolldelay="0" behavior="alternate">
 						<span class="promo__text">Новая коллекция</span>
@@ -330,9 +331,9 @@
 						<span class="promo__text">Новая коллекция</span>
 					</marquee>
 				</div>
-
-				<div class="promo__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_new.jpg?design=THEMENAME"></div>
-
+				<!-- Промо Изображение -->
+				<div class="promo__images lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_new.jpg?design=THEMENAME"></div>
+				<!-- Бегущие строки -->
 				<div class="promo__lines promo__lines_end flex">
 					<marquee class="promo__line" scrolldelay="0" direction="right" behavior="alternate">
 						<span class="promo__text">Новая коллекция</span>
@@ -348,6 +349,7 @@
 		<section id="index">
 			<div class="container">
 				<div class="flex">
+					<!-- Изображение на главной странице -->
 					<div class="index__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_description.jpg?design=THEMENAME"></div>
 					<div class="index__body">
 						<div class="block__title">
@@ -366,7 +368,8 @@
 					<h2 class="title title_separator"><span>Выгодное предложение</span></h2>
 				</div>
 				<div class="row">
-					<div class="offer__items flex-start">
+					<div class="offer__items flex-stretch">
+						<!-- предложение 1 -->
 						<div class="offer__item">
 							<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_1.jpg?design=THEMENAME"></div>
 							<div class="offer__content">
@@ -374,7 +377,7 @@
 								<a class="offer__button button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
 							</div>
 						</div>
-
+						<!-- предложение 2 -->
 						<div class="offer__item">
 							<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_2.jpg?design=THEMENAME"></div>
 							<div class="offer__content">
@@ -382,7 +385,7 @@
 								<a class="offer__button button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
 							</div>
 						</div>
-
+						<!-- предложение 3 -->
 						<div class="offer__item">
 							<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_3.jpg?design=THEMENAME"></div>
 							<div class="offer__content">
@@ -395,6 +398,121 @@
 			</div>
 		</section>
 
+		<!-- Вы смотрели, Мы на связи -->
+		<section id="viewed-callback">
+			<div class="container">
+				<div class="row">
+					<div class="flex">
+						<div class="viewed col-fx-6">
+							<div class="block__title">
+								<h2 class="title title_separator"><span>Вы смотрели</span></h2>
+							</div>
+						</div>
+						<div class="callback col-fx-6">
+							<div class="block__title">
+								<h2 class="title title_separator"><span>Мы всегда на связи</span></h2>
+							</div>
+							<form method="post" action="{CALLBACK_URL}" class="form__callback" enctype="multipart/form-data">
+								<input type="hidden" name="hash" value="{HASH}" />
+								<input class="callbackredirect" type="hidden" name="return_to" value="{CALLBACK_URL}" />
+								<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
+								{ANTISPAM_CODE}
+		
+								<div class="form__fields">
+									<input id="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" class="form__input form__person" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="{FORM_CALLBACK_PERSON}" placeholder="Ваше имя" autocomplete="off" required />
+								</div>		
+								<div class="form__fields">
+									<input id="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" class="form__input form__phone" type="tel" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}" placeholder="Номер телефона" autocomplete="off" required />
+								</div>		
+								<div class="form__buttons">
+									<button type="submit" title="Заказать звонок" class="form__button button">Заказать звонок</button>
+								</div>		
+								<div class="form__pp">
+									<span>Нажимая на кнопку &laquo;Заказать звонок&raquo;, Вы соглашаетесь с</span>
+									<a data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</a>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Промо Новостей -->
+		<section id="promo__news">
+			<div class="promo__container flex-stretch">
+				<div class="promo__lines promo__lines_start flex">
+					<marquee class="promo__line" scrolldelay="0" behavior="alternate">
+						<span class="promo__text">Наши новости</span>
+					</marquee>
+					<marquee class="promo__line" scrolldelay="100" behavior="alternate">
+						<span class="promo__text">Наши новости</span>
+					</marquee>
+				</div>
+
+				<div class="promo__images lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_news.jpg?design=THEMENAME"></div>
+
+				<div class="promo__lines promo__lines_end flex">
+					<marquee class="promo__line" scrolldelay="0" direction="right" behavior="alternate">
+						<span class="promo__text">Наши новости</span>
+					</marquee>
+					<marquee class="promo__line" scrolldelay="100" direction="right" behavior="alternate">
+						<span class="promo__text">Наши новости</span>
+					</marquee>
+				</div>
+			</div>
+		</section>
+
+		<!-- Новости -->
+		<section id="news">
+			<div class="container">
+				<div class="block__title">
+					<h2 class="title title_separator"><span>Наш блог</span></h2>
+				</div>
+				<div class="row">
+					<div class="flex-stretch">
+						<div class="news__images lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_blog.jpg?design=THEMENAME"></div>
+						<div class="news__items">							
+							<!-- Список Новости -->
+							{% IFNOT news_list_shop_empty %}
+							<div class="news_list_shop flex-stretch" data-content="news_list_shop">
+								{% FOR news_list_shop %}
+								{% IF news_list_shop.index > 2 %}{continue}{% ENDIF %}
+								<div class="news__item {news_list_shop.index | is_divided('2','second','first')}">
+									<a class="news__image flex-center" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
+										<noscript>
+										<img src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_shop.TITLE}" />
+										</noscript>
+										<img class="lozad script__on" data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_shop.TITLE}" />
+									</a>
+									<div class="news__content">
+										{% IF news_list_shop.SHOW_TIME %}
+										<div class="news__date">
+											<span>{news_list_shop.TIME | date("d.m.Y")}</span>
+										</div>
+										{% ENDIF %}
+										<a class="news__title flex" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
+											<span>{news_list_shop.TITLE}</span>
+										</a>
+										{% IF news_list_shop.TEXT_SHORT %}
+										<div class="news__desciprion flex">
+											<span>{news_list_shop.TEXT_SHORT}</span>
+										</div>
+										{% ENDIF %}
+										<a class="news__button flex" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
+											<span>Подробнее</span>
+											<i class="icon-arrow_right"></i>
+										</a>
+									</div>
+								</div>
+								{% ENDFOR %}
+							</div>
+							{% ENDIF %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
 
 
@@ -443,8 +561,9 @@
 $(document).ready(function(){
 	//counterDate();
 	slideShow();
-	newsCarousel();
+	//newsCarousel();
 	pdtSlider();
+	clonePromoText();
 });
 </script>
 {% ENDIF %}

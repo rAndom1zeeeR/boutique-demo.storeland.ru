@@ -3010,27 +3010,24 @@ function addActive(obj){obj.hasClass('active') ? obj.removeClass('active') : obj
 
 
 $(document).ready(function(){
-	var block = $('#promo__new');
-	var line = block.find('.promo__line');
-	var content = line.find('.promo__text');
-	//var text = block.find('.promo__text').eq('0').text()
-	//content.clone().appendTo(content.parent());
 
-	line.each(function(){
+
+	// console.log('t', t)
+	// console.log('text', text)
+	// console.log('tWidth', thisWidth)
+	// console.log('textWidth', textWidth)
+	// console.log('count', count)
+	// console.log(content)
+});
+
+function clonePromoText() {
+	$('.promo__line').each(function(){
 		var t = $(this);
 		var text = t.find('.promo__text');
 		var count = parseInt(Math.ceil(t.width() / (text.width() + 64)));
-
+		// Дублируем текст на всю строку
 		for (var i = 0; i < count; i++) {
-			text.clone().appendTo(t)
+			text.clone().appendTo(t);
 		}
-
-		// console.log('t', t)
-		// console.log('text', text)
-		// console.log('tWidth', thisWidth)
-		// console.log('textWidth', textWidth)
-		// console.log('count', count)
 	});
-	
-	console.log(content)
-});
+}
