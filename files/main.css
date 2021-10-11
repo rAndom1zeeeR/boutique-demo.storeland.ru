@@ -114,9 +114,10 @@ textarea.error:-ms-input-placeholder {color: red;}
 /**************************************/
 /*** Кнопки ***/
 /**************************************/
-.button, button, [class^="button-"], .paymentFormSubmitLink, .paymentFormTbodySubmitButton {color: #212121;background: #A9BDCE;padding: 0 3rem;line-height: 3rem;border: 0;border-radius: 3rem 0;text-align: center;font-family: 'Montserrat', sans-serif;cursor: pointer;display: inline-block;position: relative;transition: all 0.3s ease;}
+.button, button, [class^="button-"], .paymentFormSubmitLink, .paymentFormTbodySubmitButton {color: #212121;background: #A9BDCE;padding: 0 4rem;line-height: 3rem;border: 0;border-radius: 3rem 0;text-align: center;font-size: 1rem;font-family: 'Montserrat', sans-serif;cursor: pointer;display: inline-block;position: relative;transition: all 0.3s ease;}
 .button:hover, button:hover, [class^="button-"]:hover, .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover, .button.active, .button.opened, [class^="button-"].active, [class^="button-"].opened {color: #212121;background-color: #CFA191;}
-[class^="button-"]:before {content: '';border: 1px solid #70787D;border-radius: 3rem 0;left: .5rem;top: .5rem;position: absolute;width: 100%;height: 100%;transition: all 0.3s ease;}
+[class^="button-"]:before {content: '';border: 1px solid #70787D;border-radius: 3rem 0;left: 0rem;top: 0rem;position: absolute;width: 100%;height: 100%;transition: all 0.3s ease;}
+[class^="button-"]:hover:before {left: .5rem;top: .5rem;}
 .button-secondary {background-color: #EFEFEF;}
 .button-secondary:hover, .button-secondary.active, .button-secondary.opened {background-color: #CFA191;}
 
@@ -570,6 +571,7 @@ h6 {font-size: 0.875rem;}
 .has-items .header__block-icon {color: #B69355;cursor: pointer;}
 
 /* Шапка. Логотип */
+.logo a {max-width: 12rem;display: inline-block;}
 .logo h2 {text-transform: uppercase;font-weight: normal;}
 
 /* Шапка. Добавление в Избр, Срав, Корзина, ЛК */
@@ -612,8 +614,10 @@ h6 {font-size: 0.875rem;}
 .banners__top .banners__item {width: calc(50% - 2rem);}
 .banners__item[data-item="1"] {border-radius: 14rem 0 0 0;}
 .banners__item[data-item="4"] {border-radius: 0 0 14rem 0;}
-#banners [class^="button-"] {opacity: 0;}
+#banners [class^="button-"] {opacity: 0;line-height: 1.5;padding: 1rem 3rem .5rem;}
 #banners .banners__item:hover [class^="button-"] {opacity: 1;}
+#banners [class^="button-"]:before {left: .5rem;top: .5rem;}
+#banners [class^="button-"] span + span {display: block;}
 
 
 /**************************************/
@@ -661,7 +665,6 @@ h6 {font-size: 0.875rem;}
 .callback .form__buttons {text-align: center;}
 
 
-
 /**************************************/
 /*** Новости ***/
 /**************************************/
@@ -677,11 +680,42 @@ h6 {font-size: 0.875rem;}
 #news .news__content {padding: 1rem;}
 #news .news__button {font-size: .75rem;}
 #news .news__button i {font-size: 1.5rem;margin-left: .5rem;}
-
-
 #news .news__item:nth-child(2n) {border-radius: 0 0 11rem 0;}
 #news .news__item:nth-child(2n) .news__image {position: absolute;bottom: 0;right: 0;}
 #news .news__item:nth-child(2n) .news__image img {border-radius: 0 0 11rem 0;}
+
+
+/**************************************/
+/*** Наша миссия, Подписка ***/
+/**************************************/
+.mission {width: 50%;padding: 0 1rem;text-align: center;}
+.mission .logo {margin-top: 2rem;}
+.subscribe {width: 50%;padding: 0 1rem;}
+.subscribe .form__buttons {text-align: center;}
+
+
+/**************************************/
+/*** Подвал ***/
+/**************************************/
+#footer {color: #ffffff;background-color: #70787D;padding: 4rem 0;}
+.footer__block {width: 25%;padding: 0 1rem;}
+.footer__title {margin-bottom: 2rem;font-size: 1rem;}
+.footer__links a {color: #ffffff;display: block;margin-top: 1.5rem;}
+.footer__links a:hover {color: #212121;}
+.footer__content + .footer__title {margin-top: 2rem;}
+.footer__bottom {margin-top: 3rem;}
+/* Соцсети */
+.social a {color: #ffffff;margin: 0 1rem 1rem 0;display: inline-block;}
+.social a:hover {color: #212121;}
+.social span {display: none;}
+.social i {font-size: 2rem;}
+/* Оплата */
+.payments a {color: #ffffff;}
+.payments i:hover {color: #212121;}
+.payments i {font-size: 2rem;margin: 0 1rem 1rem 0;display: inline-block;}
+
+
+
 
 
 
