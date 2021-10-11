@@ -195,7 +195,7 @@
 		<!-- Слайдшоу -->
 		<div id="slideshow">
 			<!-- Слайды -->
-			<div class="slider owl-carousel">
+			<div class="slider owl-carousel">				
 				<!-- Слайд 1 -->
 				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_1.jpg?design=THEMENAME">
 					<div class="slider__bg flex lozad" data-background-image="{ASSETS_IMAGES_PATH}background.png?design=THEMENAME">
@@ -212,7 +212,6 @@
 						</div>
 					</div>
 				</div>
-
 				<!-- Слайд 2 -->
 				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_2.jpg?design=THEMENAME">
 					<div class="slider__bg flex lozad" data-background-image="{ASSETS_IMAGES_PATH}background.png?design=THEMENAME">
@@ -229,7 +228,6 @@
 						</div>
 					</div>
 				</div>
-
 				<!-- Слайд 3 -->
 				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_3.jpg?design=THEMENAME">
 					<div class="slider__bg flex lozad" data-background-image="{ASSETS_IMAGES_PATH}background.png?design=THEMENAME">
@@ -246,7 +244,6 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 
@@ -283,6 +280,7 @@
 				</div>
 				<div class="row">
 					<div class="banners__items flex-stretch">
+						<!-- Баннер 1 -->
 						<div class="banners__left">
 							<div class="banners__item flex-center lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_popular_1.jpg?design=THEMENAME" data-item="1">
 								<a class="button-secondary" href="{CATALOG_URL}" title="Перейти в каталог">
@@ -290,22 +288,23 @@
 								</a>
 							</div>
 						</div>
-
+						<!-- Баннер 2,3 -->
 						<div class="banners__right">
 							<div class="banners__top flex">
+								<!-- Баннер 2 -->
 								<div class="banners__item flex-center lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_popular_2.jpg?design=THEMENAME" data-item="2">
 									<a class="button-secondary" href="{CATALOG_URL}" title="Перейти в каталог">
 										<span>Трусики</span>
 									</a>
 								</div>
-
+								<!-- Баннер 3 -->
 								<div class="banners__item flex-center lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_popular_3.jpg?design=THEMENAME" data-item="3">
 									<a class="button-secondary" href="{CATALOG_URL}" title="Перейти в каталог">
 										<span>Кружевные</span>
 									</a>
 								</div>
 							</div>
-
+							<!-- Баннер 4 -->
 							<div class="banners__bottom">
 								<div class="banners__item flex-center lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_popular_4.jpg?design=THEMENAME" data-item="4">
 									<a class="button-secondary" href="{CATALOG_URL}" title="Перейти в каталог">
@@ -416,8 +415,7 @@
 								<input type="hidden" name="hash" value="{HASH}" />
 								<input class="callbackredirect" type="hidden" name="return_to" value="{CALLBACK_URL}" />
 								<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
-								{ANTISPAM_CODE}
-		
+								{ANTISPAM_CODE}		
 								<div class="form__fields">
 									<input id="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" class="form__input form__person" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="{FORM_CALLBACK_PERSON}" placeholder="Ваше имя" autocomplete="off" required />
 								</div>		
@@ -441,6 +439,7 @@
 		<!-- Промо Новостей -->
 		<section id="promo__news">
 			<div class="promo__container flex-stretch">
+				<!-- Бегущие строки -->
 				<div class="promo__lines promo__lines_start flex">
 					<marquee class="promo__line" scrolldelay="0" behavior="alternate">
 						<span class="promo__text">Наши новости</span>
@@ -449,9 +448,9 @@
 						<span class="promo__text">Наши новости</span>
 					</marquee>
 				</div>
-
+				<!-- Промо Изображение -->
 				<div class="promo__images lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_news.jpg?design=THEMENAME"></div>
-
+				<!-- Бегущие строки -->
 				<div class="promo__lines promo__lines_end flex">
 					<marquee class="promo__line" scrolldelay="0" direction="right" behavior="alternate">
 						<span class="promo__text">Наши новости</span>
@@ -519,7 +518,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="flex-start">
-
+						<!-- Наша миссия -->
 						<div class="mission">
 							<div class="block__title">
 								<h2 class="title title_separator"><span>Наша миссия</span></h2>
@@ -531,7 +530,7 @@
 								</a>
 							</div>
 						</div>
-
+						<!-- Подписка -->
 						<div class="subscribe">
 							<div class="block__title">
 								<h2 class="title title_separator"><span>Подписка на новости и акции</span></h2>
@@ -543,26 +542,21 @@
 								<input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="Подписаться" placeholder="Ваше имя" />
 								<input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="Подписаться" placeholder="Ваш телефон" />
 								<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
-								{ANTISPAM_CODE}
-	
+								{ANTISPAM_CODE}	
 								<div class="form__fields">
 									<input class="form__input form__email required" type="email" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_EMAIL}]" value="{FORM_CALLBACK_EMAIL}" placeholder="email@email.ru *" autocomplete="off" required />
 								</div>
-
 								<div class="form__buttons">
 									<button type="submit" title="Заказать звонок" class="form__button button">
 										<span>Подписаться</span>
 									</button>
-								</div>
-	
+								</div>	
 								<div class="form__pp">
 									<span>Нажимая на кнопку &laquo;Подписаться&raquo;, Вы соглашаетесь с</span>
 									<a data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</a>
-								</div>
-	
+								</div>	
 							</form>
 						</div>
-
 					</div>
 				</div>
 			</div>
@@ -572,6 +566,7 @@
 		<footer id="footer">
 			<div class="container">
 				<div class="row">
+					<!-- Подвал. Основные блоки -->
 					<div class="fotoer__top flex-start">
 
 						<div class="footer__block">
