@@ -698,7 +698,7 @@ function counterDate() {
 function pdtSlider() {
 	// Функция слайдер для "Акции" на главной странице
 	$('#pdt__sales .owl-carousel').owlCarousel({
-		items: 4,
+		items: 2,
 		margin: 32,
 		loop: false,
 		rewind: true,
@@ -722,7 +722,7 @@ function pdtSlider() {
 			0:{items:1, autoHeight: true},
 			480:{items:2},
 			768:{items:3},
-			1200:{items:4}
+			1200:{items:2}
 		}
 	});
 
@@ -758,7 +758,7 @@ function pdtSlider() {
 
 	// Функция слайдера для Новинок на главной странице
 	$('#pdt__new .owl-carousel').owlCarousel({
-		items: 4,
+		items: 5,
 		margin: 32,
 		loop: false,
 		rewind: true,
@@ -781,7 +781,8 @@ function pdtSlider() {
 			0:{items:1, autoHeight: true},
 			480:{items:2},
 			768:{items:3},
-			1200:{items:4}
+			992:{items:4},
+			1200:{items:5}
 		}
 	});
 
@@ -1015,6 +1016,32 @@ function newsCarousel() {
 		$('#news [data-content]').removeClass('active');
 		$(this).addClass('active');
 		$('#news [data-content="'+ content +'"').addClass('active');
+	});
+}
+
+function viewed() {
+	// Функция слайдер для "Акции" на главной странице
+	$('.viewed .owl-carousel').owlCarousel({
+		items: 1,
+		margin: 0,
+		loop: false,
+		rewind: true,
+		lazyLoad: true,
+		nav: true,
+		navContainer: '',
+		navText: [ , ],
+		dots: false,
+		dotsContainer: '',
+		autoHeight: false,
+		autoHeightClass: 'owl-height',
+		autoplay: false,
+		autoplayHoverPause: true,
+		smartSpeed: 500,
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: true,
+		responsiveClass: true,
+		responsiveRefreshRate: 100
 	});
 }
 
@@ -2958,7 +2985,7 @@ $(document).ready(function(){
   mainnav('header .mainnav', '1');
   mainnav('footer .mainnav', '1');
   toTop();
-
+	viewed();
   // Ленивая загрузка
   $(function(){
     var observer = lozad(); // lazy loads elements with default selector as '.lozad'
