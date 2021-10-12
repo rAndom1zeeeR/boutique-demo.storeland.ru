@@ -3,7 +3,7 @@
 /**************************************/
 html {font-size: 100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;-webkit-font-smoothing: antialiased;}
 body {background-color: #ffffff;color: #212121;font-family: 'Montserrat', sans-serif;font-size: .875rem;line-height: 1.3;font-weight: 400;position: relative;overflow-x: hidden;margin: 0;padding: 0;}
-section {margin: 4rem 0;position: relative;}
+section {margin: 3rem 0;position: relative;}
 .mainBlock-right {width: 100%;flex-grow: 1;}
 .mainBlock-right.has-sidebar {width: 75%;padding-left: 1rem;flex-grow: 1;}
 .mainBlock-left {width: 25%;padding-right: 1rem;flex-grow: 1;}
@@ -574,7 +574,7 @@ h6 {font-size: 0.875rem;}
 /*** Слайдшоу ***/
 /* Фоновая картинка должна быть прозрачной
 /**************************************/
-.slider__item {height: 54rem;background-position: center;background-size: cover;}
+.slider__item {height: 53rem;background-position: center;background-size: cover;}
 .slider__content {width: 40%;margin: 0 0 0 auto;padding-top: 10rem;text-align: center;}
 .slider__title {font-size: 3rem;font-weight: bold;}
 .slider__buttons {margin-top: 3rem;}
@@ -596,10 +596,11 @@ h6 {font-size: 0.875rem;}
 /**************************************/
 /*** Баннеры ***/
 /**************************************/
-.banners__items {height: 40rem;}
+#banners {margin: 6rem 0;}
+.banners__items {height: 41rem;}
 .banners__item {margin: 0 1rem;height: 100%;background-position: center;background-size: cover;}
-.banners__left {width: 23rem;}
-.banners__right {width: calc(100% - 23rem);}
+.banners__left {width: 24rem;}
+.banners__right {width: calc(100% - 24rem);}
 .banners__top {height: calc(50% - 1rem);}
 .banners__bottom {height: calc(50% - 1rem);margin-top: 2rem;}
 .banners__top .banners__item {width: calc(50% - 2rem);}
@@ -614,11 +615,13 @@ h6 {font-size: 0.875rem;}
 /**************************************/
 /*** Промо Новинок ***/
 /**************************************/
+#promo__new {margin: 6rem 0;}
+#promo__news {margin: 6rem 0;}
 .promo__new {overflow: hidden;}
 .promo__text {font-size: 1.125rem;text-transform: uppercase;font-family: 'Playfair Display', serif;}
 .promo__text + .promo__text {margin-left: 4rem;}
 .promo__text:nth-child(2n) {font-weight: bold;}
-.promo__images {width: 42rem;height: 30rem;border-radius: 0 14rem 14rem 0;background-size: cover;z-index: 2;}
+.promo__images {width: 42rem;height: 29rem;border-radius: 0 14rem 14rem 0;background-size: cover;z-index: 2;}
 .promo__lines {width: calc(50% - 21rem);flex-direction: column;overflow: hidden;}
 .promo__line {margin-top: 4rem;white-space: nowrap;width: 100%;}
 .promo__lines_start {justify-content: flex-start;}
@@ -639,6 +642,7 @@ h6 {font-size: 0.875rem;}
 /**************************************/
 /*** Выгодное предложение ***/
 /**************************************/
+#offer {margin: 6rem 0;}
 .offer__item {width: calc(33.33333333% - 2rem);margin: 0 1rem;overflow: hidden;position: relative;}
 .offer__image {height: 27rem;background-size: cover;background-position: center;transition: all 0.3s ease;}
 .offer__item:hover .offer__image {height: 17rem;}
@@ -660,14 +664,14 @@ h6 {font-size: 0.875rem;}
 /**************************************/
 /*** Новости ***/
 /**************************************/
-#news .news__images {margin: 0 1rem;width: calc(50% - 2rem);height: 30rem;border-radius: 14rem 0 0 0;background-size: cover;z-index: 2;}
+#news .news__images {margin: 0 1rem;width: calc(50% - 2rem);height: 32rem;border-radius: 14rem 0 0 0;background-size: cover;z-index: 2;}
 #news .news__items {width: 50%;}
 #news .news__item {margin: 0 1rem;width: calc(50% - 2rem);background-color: #E5E5E5;position: relative;}
 #news .news__image {height: 16.25rem;}
 #news .news__date {margin: 0 0 .75rem 0;color: #70787D;font-size: .75rem;line-height: 1;}
 #news .news__title {margin: 0 0 .75rem 0;height: 3.5rem;overflow: hidden;}
 #news .news__title span {max-height: 3.5rem;overflow: hidden;display: block;}
-#news .news__desciprion {margin: 0 0 .75rem 0;color: #70787D;font-size: .75rem;line-height: 1;height: 3.75rem;overflow: hidden;}
+#news .news__desciprion {margin: 0 0 .75rem 0;color: #70787D;font-size: .75rem;line-height: 1;height: 5.75rem;overflow: hidden;}
 #news .news__desciprion span {max-height: 3.75rem;overflow: hidden;display: block;}
 #news .news__content {padding: 1rem;}
 #news .news__button {font-size: .75rem;}
@@ -680,6 +684,7 @@ h6 {font-size: 0.875rem;}
 /**************************************/
 /*** Наша миссия, Подписка ***/
 /**************************************/
+#subscribe {margin: 6rem 0;}
 .mission {width: 50%;padding: 0 1rem;text-align: center;}
 .mission .logo {margin-top: 2rem;}
 .subscribe {width: 50%;padding: 0 1rem;}
@@ -720,9 +725,13 @@ h6 {font-size: 0.875rem;}
 #pdt__best .product__addCart span {margin-left: 1rem;}
 
 /* Новинки */
+#pdt__new .product__name {height: 6rem;}
+#pdt__new .product__name span {max-height: 6rem;}
 #pdt__new .product__img {height: 12.625rem;}
-#pdt__new .product__price {height: 2.5rem;}
-#pdt__new .price__old {display: block;margin-top: .25rem;}
+#pdt__new .product__price {height: 2.5rem;margin-bottom: .75rem;}
+#pdt__new .price__old {display: block;margin-top: .125rem;}
+#pdt__new .product__ico span {padding: .25rem .5rem;}
+#pdt__new .product__shop {padding-bottom: .75rem;}
 
 /* Акции */
 #pdt__sales .product__item {border-radius: 0 0 8rem 0;overflow: hidden;}
@@ -732,9 +741,10 @@ h6 {font-size: 0.875rem;}
 #pdt__sales .product__item:hover .product__links {opacity: 1;right: 0;}
 #pdt__sales .product__links {opacity: 0;top: 0;right: -100%;background: #EFEFEF;border-radius: 0 0 1.25rem 1.25rem;flex-direction: column;position: absolute;transition: all 0.3s ease-in-out;}
 #pdt__sales .product__links a {padding: .625rem;}
-#pdt__sales .product__shop {width: calc(100% - 16.125rem);padding: 1.25rem;}
+#pdt__sales .product__shop {width: calc(100% - 16.125rem);padding: 1.5rem 2rem;}
 #pdt__sales .product__name {margin-bottom: 1.25rem;display: block;}
 #pdt__sales .product__ratings {margin-bottom: 1.25rem;}
+#pdt__sales .ratings__count {font-size: .75rem}
 #pdt__sales .product__price {padding-right: 1rem;margin-bottom: 1.25rem;}
 #pdt__sales .product__addCart i {font-size: 1.5rem;}
 #pdt__sales .product__addCart span {margin-left: 1rem;}
@@ -773,9 +783,9 @@ h6 {font-size: 0.875rem;}
 .product__item {width: calc(25% - 2rem);margin: 2rem 1rem 0 1rem;background: #EFEFEF;position: relative;}
 .product__img {height: 16.125rem;}
 .product__img img {max-width: 100%;max-height: 100%;}
-.product__name {margin-bottom: .625rem;height: 4.75rem;overflow: hidden;}
+.product__name {margin-bottom: .625rem;height: 4.5rem;line-height: 1.4;overflow: hidden;}
 .product__name span {max-height: 4.75rem;overflow: hidden;display: block;}
-.product__shop {padding: 1.75rem 1rem 1rem 1rem;position: relative;}
+.product__shop {padding: 2rem .75rem 1rem 1rem;position: relative;}
 .product__price {margin-bottom: 1rem;}
 .product__price .price__now {font-size: 1rem;color: #70787D;}
 .product__price.has-oldPrice .price__now {margin-right: 1rem;}
