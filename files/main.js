@@ -277,7 +277,7 @@ function ajaxForms(id,flag,successMessage,errorMessage){
 }
 
 // "Обратный звонок".
-ajaxForms('#callback','callbackFlag','Спасибо за обращение! Мы перезвоним вам в ближайшее время','Вы уже отправляли запрос. Пожалуйста ожидайте звонка.')
+ajaxForms('#viewed-callback','callbackFlag','Спасибо за обращение! Мы перезвоним вам в ближайшее время','Вы уже отправляли запрос. Пожалуйста ожидайте звонка.')
 // "Обратный звонок" в модальном окне.
 ajaxForms('#fancybox__callback','fancyCallbackFlag','Спасибо за обращение! Мы перезвоним вам в ближайшее время','Вы уже отправляли запрос. Пожалуйста ожидайте звонка.')
 // "Обратная связь" в модальном окне.
@@ -736,7 +736,7 @@ function pdtSlider() {
 		nav: true,
 		navContainer: '',
 		navText: [ , ],
-		dots: false,
+		dots: true,
 		dotsContainer: '',
 		autoHeight: false,
 		autoHeightClass: 'owl-height',
@@ -786,34 +786,29 @@ function pdtSlider() {
 		}
 	});
 
-	// Функция слайдера для Хитов продаж на главной странице
-	$('#pdt__sale .owl-carousel').owlCarousel({
-		items: 4,
-		margin: 32,
-		loop: false,
-		rewind: true,
-		lazyLoad: true,
-		nav: true,
-		navContainer: '',
-		navText: [ , ],
-		dots: false,
-		autoHeight: false,
-		autoHeightClass: 'owl-height',
-		autoplay: false,
-		autoplayHoverPause: true,
-		smartSpeed: 500,
-		mouseDrag: true,
-		touchDrag: true,
-		pullDrag: true,
-		responsiveClass: true,
-		responsiveRefreshRate: 100,
-		responsive: {
-			0:{items:1, autoHeight: true},
-			480:{items:2},
-			768:{items:3},
-			1200:{items:4}
+	// Функция слайдера для "Товары на главной"
+	var btn = $('#pdt__sale').find('.showAll');
+	btn.on('click', function (event){
+		event.preventDefault();
+		var t = $(this);
+		var parents = t.parents().find('#pdt__sale')
+		var btnText = t.find('span')
+		console.log('t', t)
+		console.log('parents', parents)
+		if(t.hasClass('active')){
+			t.removeClass('active')
+			parents.removeClass('active')
+			btnText.text('Показать все')
+			parents.find('.product__item').removeClass('show')
+			parents.css({height: ''})
+		}else{
+			t.addClass('active')
+			parents.addClass('active')
+			btnText.text('Скрыть')
+			parents.find('.product__item').addClass('show')
+			parents.css({height: '100%'})
 		}
-	});
+	})
 
 	// Табы в товарах на главной
   $('#pdt .nav__tab').on('click', function (event) {
@@ -859,33 +854,10 @@ function slideShow() {
 	});
 
 	function counter(event) {
-		var items = event.item.count;
-		var item = event.item.index + 1;
-		var dotsCont = $('.slider > .owl-dots').html();
-		// Удаляем счетчик слайдов
-		$('#slideshow .count').remove();
-		// Добавляем счетчик слайдов
-		$('#slideshow .owl-count').append('<span class="count">0'+ item + '/0' + items +'</span>')
-
-		// Удаляем старую навигацию
-		$('.slider__nav .owl-dot').remove();
-		// Добавляем клонированную навигацию
-		$('.slider__nav .owl-dots').append(dotsCont);
-		// Навигация при клике на кнопку
-		$('.slider__nav .owl-dot').on('click', function () {
-			owlS.trigger('to.owl.carousel', [$(this).index(), 300]);
+		$('#slideshow .owl-dot').each(function(i){
+			$(this).find('span').text(i+1)
 		});
 	}
-
-	// Навигация при клике НАЗАД
-	$('.slider__nav .owl-prev').on('click', function () {
-		owlS.trigger('prev.owl.carousel');
-	});
-
-	// Навигация при клике ВПЕРЕД
-	$('.slider__nav .owl-next').on('click', function () {
-		owlS.trigger('next.owl.carousel');
-	});
 }
 
 // Новости
@@ -2973,7 +2945,31 @@ function startOrder(){
 	return false;
 }
 
-
+///////////////////////////////////////
+// Функция скрывания категорий и меню в подвале, если больше 5 пунктов.
+///////////////////////////////////////
+function footerLinksMore(){
+	$('.footer__links').each(function(){
+		var t = $(this);
+		// Добавляем кнопку Еще если больше 5 пунктов
+		if(t.find('li').length > 5) {
+			t.append('<li class="show"><a class="footer__links-open" href="javascript:;"><span>Ещё</span><i class="icon-tick_down"></i></a></li>');
+		}
+		// Действия при нажатии на кнопку Еще
+		t.find('.footer__links-open').on('click', function(){
+			if($(this).hasClass('opened')){
+				$(this).removeClass('opened')
+				t.find('li').removeClass('show')
+				$(this).parent().addClass('show')
+				$(this).find('span').text('Еще')
+			}else{
+				$(this).addClass('opened')
+				t.find('li').addClass('show')
+				$(this).find('span').text('Скрыть')
+			}
+		});
+	});	
+}
 
 ///////////////////////////////////////
 // Загрузка основных функций шаблона
@@ -2986,6 +2982,7 @@ $(document).ready(function(){
   mainnav('footer .mainnav', '1');
   toTop();
 	viewed();
+	footerLinksMore();
   // Ленивая загрузка
   $(function(){
     var observer = lozad(); // lazy loads elements with default selector as '.lozad'
@@ -3045,6 +3042,8 @@ $(document).ready(function(){
 	// console.log('textWidth', textWidth)
 	// console.log('count', count)
 	// console.log(content)
+
+
 });
 
 function clonePromoText() {
