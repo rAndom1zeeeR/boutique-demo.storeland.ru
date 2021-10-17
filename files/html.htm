@@ -516,6 +516,11 @@
 					</div>
 					{% ENDFOR %}
 				</div>
+				<div class="products__buttons flex">
+					<a href="javascript:;" class="prev"><i class="icon-arrow_left"></i></a>
+					<div class="owl-dots flex"></div>
+					<a href="javascript:;" class="next"><i class="icon-arrow_right"></i></a>
+				</div>
 			</div>
 		</section>
 		{% ENDIF index_page_favorites_goods_empty %}
@@ -735,6 +740,11 @@
 						</form>
 					</div>
 					{% ENDFOR %}
+				</div>
+				<div class="products__buttons flex">
+					<a href="javascript:;" class="prev"><i class="icon-arrow_left"></i></a>
+					<div class="owl-dots flex"></div>
+					<a href="javascript:;" class="next"><i class="icon-arrow_right"></i></a>
 				</div>
 			</div>
 		</section>
@@ -1012,6 +1022,11 @@
 					{% IFNOT index_page_sale_goods.last %}{index_page_sale_goods.index | is_divided("2","</div><div class=product__items>","")}{% ENDIF %}
 					{% IF index_page_sale_goods.last %}</div>{% ENDIF %}
 					{% ENDFOR %}
+				</div>
+				<div class="products__buttons flex">
+					<a href="javascript:;" class="prev"><i class="icon-arrow_left"></i></a>
+					<div class="owl-dots flex"></div>
+					<a href="javascript:;" class="next"><i class="icon-arrow_right"></i></a>
 				</div>
 			</div>
 		</section>
@@ -1908,7 +1923,7 @@
 					</form>
 				</div>
 			</div>
-			
+
 			<!-- Политика конфиденциальности в модальном окне -->
 			<div id="fancybox__pp" class="modal" style="display:none">
 				<div class="modal__title block__title">
@@ -1979,9 +1994,12 @@
 // Загрузка основных функций шаблона для главной страницы
 $(document).ready(function(){
 	//counterDate();
-	slideShow();
 	//newsCarousel();
-	pdtSlider();
+	slideShow();
+	pdtSale();
+	pdtBest();
+	pdtNew();
+	pdtSales();
 	clonePromoText();
 });
 </script>

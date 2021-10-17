@@ -585,6 +585,7 @@ h6 {font-size: 0.875rem;}
 #slideshow .owl-dots {width: 40%;right: 0;bottom: 3rem;position: absolute;text-align: left;}
 #slideshow .owl-dot span {position: absolute;top: 0;left: -1rem;}
 
+
 /**************************************/
 /*** Каталог ***/
 /**************************************/
@@ -738,6 +739,11 @@ h6 {font-size: 0.875rem;}
 #pdt__best .product__price {padding-right: 1rem;}
 #pdt__best .product__addCart i {font-size: 1.5rem;}
 #pdt__best .product__addCart span {margin-left: 1rem;}
+[id^="pdt__"] .products__buttons {justify-content: flex-end;}
+[id^="pdt__"] .owl-dots {margin: 0 .5rem;}
+[id^="pdt__"] .owl-dots .owl-dot {margin: 0 .5rem;}
+[id^="pdt__"] .owl-dots .owl-dot:after {display: none;}
+[id^="pdt__"] .prev, [id^="pdt__"] .next {font-size: 1.5rem;line-height: 1;}
 
 /* Новинки */
 #pdt__new .product__name {height: 6rem;}

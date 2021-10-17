@@ -694,99 +694,8 @@ function counterDate() {
 	}, 1000);
 }
 
-// Функция слайдеров на главной
-function pdtSlider() {
-	// Функция слайдер для "Акции" на главной странице
-	$('#pdt__sales .owl-carousel').owlCarousel({
-		items: 2,
-		margin: 32,
-		loop: false,
-		rewind: true,
-		lazyLoad: true,
-		nav: true,
-		navContainer: '',
-		navText: [ , ],
-		dots: false,
-		dotsContainer: '',
-		autoHeight: false,
-		autoHeightClass: 'owl-height',
-		autoplay: false,
-		autoplayHoverPause: true,
-		smartSpeed: 500,
-		mouseDrag: true,
-		touchDrag: true,
-		pullDrag: true,
-		responsiveClass: true,
-		responsiveRefreshRate: 100,
-		responsive: {
-			0:{items:1, autoHeight: true},
-			480:{items:2},
-			768:{items:3},
-			1200:{items:2}
-		}
-	});
-
-	// Функция слайдера для "Лидеры продаж" на главной странице
-	$('#pdt__best .owl-carousel').owlCarousel({
-		items: 4,
-		margin: 32,
-		loop: false,
-		rewind: true,
-		lazyLoad: true,
-		nav: true,
-		navContainer: '',
-		navText: [ , ],
-		dots: true,
-		dotsContainer: '',
-		autoHeight: false,
-		autoHeightClass: 'owl-height',
-		autoplay: false,
-		autoplayHoverPause: true,
-		smartSpeed: 500,
-		mouseDrag: true,
-		touchDrag: true,
-		pullDrag: true,
-		responsiveClass: true,
-		responsiveRefreshRate: 100,
-		responsive: {
-			0:{items:1, autoHeight: true},
-			480:{items:2},
-			768:{items:3},
-			1200:{items:4}
-		}
-	});
-
-	// Функция слайдера для Новинок на главной странице
-	$('#pdt__new .owl-carousel').owlCarousel({
-		items: 5,
-		margin: 32,
-		loop: false,
-		rewind: true,
-		lazyLoad: true,
-		nav: true,
-		navContainer: '',
-		navText: [ , ],
-		dots: false,
-		autoHeight: false,
-		autoHeightClass: 'owl-height',
-		autoplay: false,
-		autoplayHoverPause: true,
-		smartSpeed: 500,
-		mouseDrag: true,
-		touchDrag: true,
-		pullDrag: true,
-		responsiveClass: true,
-		responsiveRefreshRate: 100,
-		responsive: {
-			0:{items:1, autoHeight: true},
-			480:{items:2},
-			768:{items:3},
-			992:{items:4},
-			1200:{items:5}
-		}
-	});
-
-	// Функция слайдера для "Товары на главной"
+// Функция показать все для "Товары на главной"
+function pdtSale() {
 	var btn = $('#pdt__sale').find('.showAll');
 	btn.on('click', function (event){
 		event.preventDefault();
@@ -808,20 +717,184 @@ function pdtSlider() {
 			parents.find('.product__item').addClass('show')
 			parents.css({height: '100%'})
 		}
-	})
+	});
+}
 
-	// Табы в товарах на главной
-  $('#pdt .nav__tab').on('click', function (event) {
-    event.preventDefault();
-    var content = $(this).attr('data-open');
-    $('#pdt [data-content]').prepend('<div class="preloader"><div class="loading"></div></div>');
-    preload();
-    $('#pdt .nav__tab').removeClass('active')
-    $('#pdt [data-content]').removeClass('active');
-    $(this).addClass('active');
-    $('#pdt [data-content="'+ content +'"').addClass('active');
-  });
+// Функция слайдера для "Хиты продаж" на главной странице
+function pdtBest(){
+	var id = $('#pdt__best');
+	var carousel = id.find('.owl-carousel');
+	var buttons = id.find('.products__buttons');
+	var dots = id.find('.owl-dots');
+	carousel.owlCarousel({
+		items: 4,
+		margin: 32,
+		loop: false,
+		rewind: true,
+		lazyLoad: true,
+		nav: false,
+		navContainer: '',
+		navText: [ , ],
+		dots: true,
+		dotsContainer: dots,
+		autoHeight: false,
+		autoHeightClass: 'owl-height',
+		autoplay: false,
+		autoplayHoverPause: true,
+		smartSpeed: 500,
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: true,
+		responsiveClass: true,
+		responsiveRefreshRate: 100,
+		responsive: {
+			0:{items:1, autoHeight: true},
+			480:{items:2},
+			768:{items:3},
+			1200:{items:4}
+		},
+		onInitialized: number,
+		onChanged: number,
+		onResize: number,
+		onResized: number
+	});
 
+	// Нумерация страниц
+	function number() {
+		buttons.find('.owl-dot').each(function(i){
+			$(this).find('span').text(i+1)
+		});
+		// Скрываем кнопки навигации
+		dots.hasClass('disabled') ? buttons.hide() : buttons.show()
+	}
+
+	// Навигация при клике НАЗАД
+	buttons.find('.prev').on('click', function () {
+		carousel.trigger('prev.owl.carousel');
+	});
+
+	// Навигация при клике ВПЕРЕД
+	buttons.find('.next').on('click', function () {
+		carousel.trigger('next.owl.carousel');
+	});
+}
+
+// Функция слайдера для "Новинки" на главной странице
+function pdtNew(){
+	var id = $('#pdt__new');
+	var carousel = id.find('.owl-carousel');
+	var buttons = id.find('.products__buttons');
+	var dots = id.find('.owl-dots');
+	carousel.owlCarousel({
+		items: 4,
+		margin: 32,
+		loop: false,
+		rewind: true,
+		lazyLoad: true,
+		nav: false,
+		navContainer: '',
+		navText: [ , ],
+		dots: true,
+		dotsContainer: dots,
+		autoHeight: false,
+		autoHeightClass: 'owl-height',
+		autoplay: false,
+		autoplayHoverPause: true,
+		smartSpeed: 500,
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: true,
+		responsiveClass: true,
+		responsiveRefreshRate: 100,
+		responsive: {
+			0:{items:1, autoHeight: true},
+			480:{items:2},
+			768:{items:3},
+			1200:{items:4}
+		},
+		onInitialized: number,
+		onChanged: number,
+		onResize: number,
+		onResized: number
+	});
+
+	// Нумерация страниц
+	function number() {
+		buttons.find('.owl-dot').each(function(i){
+			$(this).find('span').text(i+1)
+		});
+		// Скрываем кнопки навигации
+		dots.hasClass('disabled') ? buttons.hide() : buttons.show()
+	}
+
+	// Навигация при клике НАЗАД
+	buttons.find('.prev').on('click', function () {
+		carousel.trigger('prev.owl.carousel');
+	});
+
+	// Навигация при клике ВПЕРЕД
+	buttons.find('.next').on('click', function () {
+		carousel.trigger('next.owl.carousel');
+	});
+}
+
+// Функция слайдера для "Акции" на главной странице
+function pdtSales(){
+	var id = $('#pdt__sales');
+	var carousel = id.find('.owl-carousel');
+	var buttons = id.find('.products__buttons');
+	var dots = id.find('.owl-dots');
+	carousel.owlCarousel({
+		items: 2,
+		margin: 32,
+		loop: false,
+		rewind: true,
+		lazyLoad: true,
+		nav: false,
+		navContainer: '',
+		navText: [ , ],
+		dots: true,
+		dotsContainer: dots,
+		autoHeight: false,
+		autoHeightClass: 'owl-height',
+		autoplay: false,
+		autoplayHoverPause: true,
+		smartSpeed: 500,
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: true,
+		responsiveClass: true,
+		responsiveRefreshRate: 100,
+		responsive: {
+			0:{items:1, autoHeight: true},
+			480:{items:2},
+			768:{items:2},
+			1200:{items:2}
+		},
+		onInitialized: number,
+		onChanged: number,
+		onResize: number,
+		onResized: number
+	});
+
+	// Нумерация страниц
+	function number() {
+		buttons.find('.owl-dot').each(function(i){
+			$(this).find('span').text(i+1)
+		});
+		// Скрываем кнопки навигации
+		dots.hasClass('disabled') ? buttons.hide() : buttons.show()
+	}
+
+	// Навигация при клике НАЗАД
+	buttons.find('.prev').on('click', function () {
+		carousel.trigger('prev.owl.carousel');
+	});
+
+	// Навигация при клике ВПЕРЕД
+	buttons.find('.next').on('click', function () {
+		carousel.trigger('next.owl.carousel');
+	});
 }
 
 // Слайдер для главной страницы
@@ -840,6 +913,7 @@ function slideShow() {
 		dotsContainer: '',
 		dotsData: false,
 		dotsSpeed: 400,
+		dotsEach: true,
 		smartSpeed: 500,
 		URLhashListener: true,
 		autoplay: false,
@@ -991,8 +1065,8 @@ function newsCarousel() {
 	});
 }
 
+// Функция слайдер для "Вы смотрели" на главной странице
 function viewed() {
-	// Функция слайдер для "Акции" на главной странице
 	$('.viewed .owl-carousel').owlCarousel({
 		items: 1,
 		margin: 0,
