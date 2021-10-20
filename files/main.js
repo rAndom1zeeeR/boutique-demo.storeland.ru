@@ -279,15 +279,15 @@ function ajaxForms(id,flag,successMessage,errorMessage){
 // "Обратный звонок".
 ajaxForms('#viewed-callback','callbackFlag','Спасибо за обращение! Мы перезвоним вам в ближайшее время','Вы уже отправляли запрос. Пожалуйста ожидайте звонка.')
 // "Обратный звонок" в модальном окне.
-ajaxForms('#fancybox__callback','fancyCallbackFlag','Спасибо за обращение! Мы перезвоним вам в ближайшее время','Вы уже отправляли запрос. Пожалуйста ожидайте звонка.')
+ajaxForms('#fancybox__callback','fancyCallbackFlag','Запрос обратного звонка успешно отправлен администрации магазина','Вы уже отправляли запрос. Пожалуйста ожидайте звонка.')
 // "Обратная связь" в модальном окне.
-ajaxForms('#fancybox__feedback','fancyFeedbackFlag','Спасибо за обращение! Мы свяжемся с вами в ближайшее время','Вы уже отправляли запрос. Пожалуйста ожидайте.')
+ajaxForms('#fancybox__feedback','fancyFeedbackFlag','Запрос обратной связи успешно отправлен администрации магазина','Вы уже отправляли запрос. Пожалуйста ожидайте.')
 // "Обратная связь".
 ajaxForms('.form__feedback','feedbackFlag','Спасибо за обращение! Мы свяжемся с вами в ближайшее время','Вы уже отправляли запрос. Пожалуйста ожидайте.')
 // "Подписаться".
 ajaxForms('#subscribe','subscribeFlag','Спасибо за обращение! Вы подписались на наши уведомления','Вы уже отправляли запрос. Пожалуйста ожидайте.')
 // "Уведомить" в модальном окне.
-ajaxForms('#fancybox__notify','notifyFlag','Спасибо за обращение! Вы подписались на уведомления о поступлении товара','Вы уже отправляли запрос. Пожалуйста ожидайте.')
+ajaxForms('#fancybox__notify','notifyFlag','Вы будете уведомлены о поступлении товара','Вы уже отправляли запрос. Пожалуйста ожидайте.')
 // "Обратный звонок".
 ajaxForms('.page-сallback','pageCallbackFlag','Спасибо за обращение! Мы перезвоним вам в ближайшее время','Вы уже отправляли запрос. Пожалуйста ожидайте звонка.')
 
@@ -1753,9 +1753,9 @@ $(document).ready(function(){
 
 	// Уведомить при отсутствии товара
 	$('.add-notify').on('click', function(){
-		$('#fancy__info').val('Уведомить -- ' + $(this).attr('data-name'));
-		$('#fancy__name').val($(this).attr('data-name'));
-		$('#fancy__art').val($(this).attr('data-art'));
+		var formBlock = $(this).closest('.goodsListForm');
+    var goodsMod = formBlock.find('[name="form[goods_mod_id]"]').val();
+    $('#fancy-notify-goods-mod').val(goodsMod)
 	});
 });
 

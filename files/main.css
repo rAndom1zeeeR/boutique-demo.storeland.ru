@@ -284,7 +284,11 @@ h6 {font-size: 0.875rem;}
 /**************************************/
 .fancybox-close-small {line-height: 1;}
 .fancybox-close-small:hover {color: #ffffff;}
-.fancybox-content {padding: 2.75rem 2rem 2rem 2rem;max-width: 50rem;}
+.fancybox-content {padding: 2.75rem 2rem 2rem 2rem;max-width: 50rem;background-color: #efefef;}
+.fancybox-content .block__title {margin-bottom: 2rem;}
+.fancybox-content .block__title .title {text-transform: uppercase;}
+.fancybox-content input, .fancybox-content textarea {background-color: transparent;}
+.fancybox-content .form__buttons {text-align: center;}
 @media (max-width: 639.98px) {
 	.fancybox-content {padding: 2.75rem 1rem 1rem 1rem;}
 }
@@ -607,7 +611,7 @@ h6 {font-size: 0.875rem;}
 .banners__top .banners__item {width: calc(50% - 2rem);}
 .banners__item[data-item="1"] {border-radius: 14rem 0 0 0;}
 .banners__item[data-item="4"] {border-radius: 0 0 14rem 0;}
-#banners [class^="button-"] {opacity: 0;line-height: 1.5;padding: 1rem 3rem .5rem;height: 4.5rem;flex-direction: column;}
+#banners [class^="button-"] {opacity: 0;line-height: 1.5;padding: 1rem 3rem .5rem;height: 4.5rem;flex-direction: column;display: flex;}
 #banners .banners__item:hover [class^="button-"] {opacity: 1;}
 #banners [class^="button-"]:before {left: .5rem;top: .5rem;}
 #banners [class^="button-"] span + span {display: block;}
