@@ -903,7 +903,7 @@ function slideShow() {
 	var owlS = $('#slideshow .owl-carousel');
 	owlS.owlCarousel({
 		items: 1,
-		loop: false,
+		loop: true,
 		rewind: true,
 		lazyLoad: true,
 		nav: false,
@@ -916,13 +916,16 @@ function slideShow() {
 		dotsEach: true,
 		smartSpeed: 500,
 		URLhashListener: true,
-		autoplay: false,
+		autoplay: true,
+    autoplayTimeout: '3000',
 		autoplayHoverPause: true,
 		autoHeight: true,
 		autoHeightClass: 'owl-height',
 		mouseDrag: true,
 		touchDrag: true,
 		pullDrag: true,
+		animateOut: 'fadeOut',
+    animateIn: 'fadeIn',
 		onInitialized: counter,
 		onChanged: counter
 	});

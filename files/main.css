@@ -116,10 +116,12 @@ textarea.error:-ms-input-placeholder {color: red;}
 /**************************************/
 .button, button, [class^="button-"], .paymentFormSubmitLink, .paymentFormTbodySubmitButton {color: #212121;background: #A9BDCE;padding: 0 4rem;line-height: 3rem;border: 0;border-radius: 3rem 0;text-align: center;font-size: 1rem;font-family: 'Montserrat', sans-serif;cursor: pointer;display: inline-block;position: relative;transition: all 0.3s ease;}
 .button:hover, button:hover, [class^="button-"]:hover, .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover, .button.active, .button.opened, [class^="button-"].active, [class^="button-"].opened {color: #212121;background-color: #CFA191;}
-[class^="button-"]:before {content: '';border: 1px solid #70787D;border-radius: 3rem 0;left: 0rem;top: 0rem;position: absolute;width: 100%;height: 100%;transition: all 0.3s ease;}
-[class^="button-"]:hover:before {left: .5rem;top: .5rem;}
+[class*="button-"]:before {content: '';border: 1px solid #70787D;border-radius: 3rem 0;left: 0rem;top: 0rem;position: absolute;width: 100%;height: 100%;transition: all 0.3s ease;}
+[class*="button-"]:hover:before {left: .5rem;top: .5rem;opacity: 1;}
+.button-primary:before {opacity: 0;}
 .button-secondary {background-color: #EFEFEF;}
 .button-secondary:hover, .button-secondary.active, .button-secondary.opened {background-color: #CFA191;}
+
 
 .button.empty {color: #656d72;background-color: #eef2f5;}
 .button.empty:hover {color: #656d72;background-color: #eef2f5;}
@@ -613,6 +615,7 @@ h6 {font-size: 0.875rem;}
 .banners__item[data-item="4"] {border-radius: 0 0 14rem 0;}
 #banners [class^="button-"] {opacity: 0;line-height: 1.5;padding: 1rem 3rem .5rem;height: 4.5rem;flex-direction: column;display: flex;}
 #banners .banners__item:hover [class^="button-"] {opacity: 1;}
+#banners .banners__item[data-item="1"] [class^="button-"] {opacity: 1;}
 #banners [class^="button-"]:before {left: .5rem;top: .5rem;}
 #banners [class^="button-"] span + span {display: block;}
 

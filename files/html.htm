@@ -1339,7 +1339,7 @@
 									<input id="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" class="form__input form__phone" type="tel" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}" placeholder="Номер телефона" autocomplete="off" required />
 								</div>		
 								<div class="form__buttons">
-									<button type="submit" title="Заказать звонок" class="form__button button">Заказать звонок</button>
+									<button type="submit" title="Заказать звонок" class="button-primary form__button">Заказать звонок</button>
 								</div>		
 								<div class="form__pp">
 									<span>Нажимая на кнопку &laquo;Заказать звонок&raquo;, Вы соглашаетесь с</span>
@@ -1596,13 +1596,13 @@
 							{% IFNOT news_list_shop_empty %}
 							<div class="news_list_shop flex-stretch" data-content="news_list_shop">
 								{% FOR news_list_shop %}
-								{% IF news_list_shop.index > 2 %}{continue}{% ENDIF %}
+								<!-- {% IF news_list_shop.index > 2 %}{continue}{% ENDIF %} -->
 								<div class="news__item {news_list_shop.index | is_divided('2','second','first')}">
 									<a class="news__image flex-center" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
 										<noscript>
-										<img src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_shop.TITLE}" />
+										<img src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}{news_list_shop.index | is_divided('2','news_2','news_1')}.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_shop.TITLE}" />
 										</noscript>
-										<img class="lozad script__on" data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_shop.TITLE}" />
+										<img class="lozad script__on" data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}{news_list_shop.index | is_divided('2','news_2','news_1')}.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_shop.TITLE}" />
 									</a>
 									<div class="news__content">
 										{% IF news_list_shop.SHOW_TIME %}
@@ -1667,7 +1667,7 @@
 									<input class="form__input form__email required" type="email" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_EMAIL}]" value="{FORM_CALLBACK_EMAIL}" placeholder="email@email.ru *" autocomplete="off" required />
 								</div>
 								<div class="form__buttons">
-									<button type="submit" title="Заказать звонок" class="form__button button">
+									<button type="submit" title="Заказать звонок" class="button-primary form__button button">
 										<span>Подписаться</span>
 									</button>
 								</div>	
@@ -1910,7 +1910,7 @@
 						</div>
 
 						<div class="form__buttons">
-							<button type="submit" title="Заказать звонок" class="form__button button">Заказать звонок</button>
+							<button type="submit" title="Заказать звонок" class="button-primary form__button button">Заказать звонок</button>
 						</div>
 
 						<div class="form__pp">
@@ -1946,7 +1946,7 @@
 						</div>
 
 						<div class="form__buttons">
-							<button type="submit" title="Отправить" class="form__button button">Отправить</button>
+							<button type="submit" title="Отправить" class="button-primary form__button button">Отправить</button>
 						</div>
 
 						<div class="form__pp">
@@ -1968,10 +1968,6 @@
 						<input type="hidden" name="return_to" value="{CALLBACK_URL}" class="callbackredirect" />
 						<input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="Уведомить о поступлении товара"/>
 						<input type="hidden" name="form[goods_mod_id]" value="" id="fancy-notify-goods-mod"/>
-						<!-- <input type="hidden" name="form[Имя_Товара]" value="{GOODS_NAME}" id="fancy__name" />
-						<input type="hidden" name="form[Артикул]" value="{GOODS_MOD_ART_NUMBER}" id="fancy__art" /> -->
-						<!-- Для использования почты для уведомлений необходимо убрать комментарии для строки ниже -->
-						<!-- input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="Уведомить по Email" /-->
 						<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
 						{ANTISPAM_CODE}
 						<!-- Для использования почты для уведомлений необходимо удалить блок с телефоном -->
@@ -1984,7 +1980,7 @@
 						</div>
 
 						<div class="form__buttons">
-							<button type="submit" title="Уведомить" class="form__button button">Уведомить</button>
+							<button type="submit" title="Уведомить" class="button-primary form__button button">Уведомить</button>
 						</div>
 
 						<div class="form__pp">
