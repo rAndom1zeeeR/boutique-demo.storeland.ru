@@ -1595,36 +1595,38 @@
 							<!-- Список Новости -->
 							{% IFNOT news_list_shop_empty %}
 							<div class="news_list_shop flex-stretch" data-content="news_list_shop">
-								{% FOR news_list_shop %}
-								<!-- {% IF news_list_shop.index > 2 %}{continue}{% ENDIF %} -->
-								<div class="news__item {news_list_shop.index | is_divided('2','second','first')}">
-									<a class="news__image flex-center" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
-										<noscript>
-										<img src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}{news_list_shop.index | is_divided('2','news_2','news_1')}.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_shop.TITLE}" />
-										</noscript>
-										<img class="lozad script__on" data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}{news_list_shop.index | is_divided('2','news_2','news_1')}.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_shop.TITLE}" />
-									</a>
-									<div class="news__content">
-										{% IF news_list_shop.SHOW_TIME %}
-										<div class="news__date">
-											<span>{news_list_shop.TIME | date("d.m.Y")}</span>
-										</div>
-										{% ENDIF %}
-										<a class="news__title flex" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
-											<span>{news_list_shop.TITLE}</span>
+								<div class="owl-carousel">
+									{% FOR news_list_shop %}
+									<!-- {% IF news_list_shop.index > 2 %}{continue}{% ENDIF %} -->
+									<div class="news__item {news_list_shop.index | is_divided('2','second','first')}">
+										<a class="news__image flex-center" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
+											<noscript>
+											<img src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}{news_list_shop.index | is_divided('2','news_2','news_1')}.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_shop.TITLE}" />
+											</noscript>
+											<img class="lozad script__on" data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}{news_list_shop.index | is_divided('2','news_2','news_1')}.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_shop.TITLE}" />
 										</a>
-										{% IF news_list_shop.TEXT_SHORT %}
-										<div class="news__desciprion flex">
-											<span>{news_list_shop.TEXT_SHORT}</span>
+										<div class="news__content">
+											{% IF news_list_shop.SHOW_TIME %}
+											<div class="news__date">
+												<span>{news_list_shop.TIME | date("d.m.Y")}</span>
+											</div>
+											{% ENDIF %}
+											<a class="news__title flex" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
+												<span>{news_list_shop.TITLE}</span>
+											</a>
+											{% IF news_list_shop.TEXT_SHORT %}
+											<div class="news__desciprion flex">
+												<span>{news_list_shop.TEXT_SHORT}</span>
+											</div>
+											{% ENDIF %}
+											<a class="news__button flex" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
+												<span>Подробнее</span>
+												<i class="icon-arrow_right"></i>
+											</a>
 										</div>
-										{% ENDIF %}
-										<a class="news__button flex" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
-											<span>Подробнее</span>
-											<i class="icon-arrow_right"></i>
-										</a>
 									</div>
+									{% ENDFOR %}
 								</div>
-								{% ENDFOR %}
 							</div>
 							{% ENDIF %}
 						</div>
@@ -2061,7 +2063,7 @@
 // Загрузка основных функций шаблона для главной страницы
 $(document).ready(function(){
 	//counterDate();
-	//newsCarousel();
+	newsCarousel();
 	slideShow();
 	pdtSale();
 	pdtBest();

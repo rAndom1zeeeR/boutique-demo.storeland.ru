@@ -684,8 +684,8 @@ h6 {font-size: 0.875rem;}
 /*** Новости ***/
 /**************************************/
 #news .news__images {margin: 0 1rem;width: calc(50% - 2rem);height: 32rem;border-radius: 14rem 0 0 0;background-size: cover;z-index: 2;}
-#news .news__items {width: 50%;}
-#news .news__item {margin: 0 1rem;width: calc(50% - 2rem);background-color: #E5E5E5;position: relative;}
+#news .news__items {margin: 0 1rem;width: calc(50% - 2rem);}
+#news .news__item {background-color: #E5E5E5;height: 100%;position: relative;}
 #news .news__image {height: 16.25rem;}
 #news .news__date {margin: 0 0 .75rem 0;color: #70787D;font-size: .75rem;line-height: 1;}
 #news .news__title {margin: 0 0 .75rem 0;height: 3.5rem;overflow: hidden;}
@@ -695,9 +695,9 @@ h6 {font-size: 0.875rem;}
 #news .news__content {padding: 1rem;}
 #news .news__button {font-size: .75rem;}
 #news .news__button i {font-size: 1.5rem;margin-left: .5rem;}
-#news .news__item:nth-child(2n) {border-radius: 0 0 11rem 0;}
-#news .news__item:nth-child(2n) .news__image {position: absolute;bottom: 0;right: 0;}
-#news .news__item:nth-child(2n) .news__image img {border-radius: 0 0 11rem 0;}
+#news .owl-item.active + .owl-item.active .news__item {border-radius: 0 0 11rem 0;}
+#news .owl-item.active + .owl-item.active .news__image {position: absolute;bottom: 0;right: 0;}
+#news .owl-item.active + .owl-item.active .news__image img {border-radius: 0 0 11rem 0;}
 
 
 /**************************************/
