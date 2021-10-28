@@ -116,8 +116,8 @@ textarea.error:-ms-input-placeholder {color: red;}
 /**************************************/
 .button, button, [class^="button-"], .paymentFormSubmitLink, .paymentFormTbodySubmitButton {color: #212121;background: #A9BDCE;padding: 0 4rem;line-height: 3rem;border: 0;border-radius: 3rem 0;text-align: center;font-size: 1rem;font-family: 'Montserrat', sans-serif;cursor: pointer;display: inline-block;position: relative;transition: all 0.3s ease;}
 .button:hover, button:hover, [class^="button-"]:hover, .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover, .button.active, .button.opened, [class^="button-"].active, [class^="button-"].opened {color: #212121;background-color: #CFA191;}
-[class*="button-"]:before {content: '';border: 1px solid #70787D;border-radius: 3rem 0;left: 0rem;top: 0rem;position: absolute;width: 100%;height: 100%;transition: all 0.3s ease;}
-[class*="button-"]:hover:before {left: .5rem;top: .5rem;opacity: 1;}
+.wrapper [class*="button-"]:before {content: '';border: 1px solid #70787D;border-radius: 3rem 0;left: 0rem;top: 0rem;position: absolute;width: 100%;height: 100%;transition: all 0.3s ease;}
+.wrapper [class*="button-"]:hover:before {left: .5rem;top: .5rem;opacity: 1;}
 .button-primary:before {opacity: 0;}
 .button-secondary {background-color: #EFEFEF;}
 .button-secondary:hover, .button-secondary.active, .button-secondary.opened {background-color: #CFA191;}
@@ -549,31 +549,58 @@ h6 {font-size: 0.875rem;}
 
 /**************************************/
 /*** Шапка ***/
-/* Иконка Меню не работает, проблема с файлом
-/* 
 /**************************************/
 .index #header {position: absolute;background-color: transparent;z-index: 3;width: 100%;}
 .header__top {padding: 2rem 0;}
 .header__middle {padding: 2rem 0;}
+@media (max-width: 991.98px) {
+	.header__middle {padding: 1rem 0 2rem 0;}
+}
+@media (max-width: 767.98px) {
+	.header__middle {display: none;}
+}
+
 /* Шапка. Общие элементы. Иконки */
-.header__block-icon {width: 2.5rem;transition: all 0.3s ease;}
-.header__block-icon i {font-size: 1.5rem;}
-.header__block-icon i.icon-search {font-size: 1.25rem;}
-.header__block-content {width: calc(100% - 2.5rem);transition: all 0.3s ease;}
+.header__block-icon {font-size: 1.5rem;line-height: 1;transition: all 0.3s ease;}
+.header__block-content {width: calc(100% - 1.5rem);padding-left: 1rem;transition: all 0.3s ease;}
 .header__block-link {font-size: 1.125rem;max-width: 12rem;display: block;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
 .header__block-click {margin-top: .25rem;font-size: .75rem;text-decoration: underline !important;text-align: center;display: block;}
 .header__block:hover .header__block-icon,
 .header__block:hover .header__block-content,
 .header__block:hover .header__block-link,
 .has-items .header__block-icon {color: #B69355;cursor: pointer;}
+@media (max-width: 991.98px) {
+	.email .header__block-content {display: none;}
+}
+@media (max-width: 767.98px) {
+}
+@media (max-width: 639.98px) {
+	header .header__block-content {display: none;}
+}
 
 /* Шапка. Логотип */
 .logo a {max-width: 12rem;display: inline-block;}
 .logo h2 {text-transform: uppercase;font-weight: normal;}
+@media (max-width: 767.98px) {
+	.logo a {max-width: 9rem;}
+}
+
+/* Шапка. Меню */
+@media (max-width: 767.98px) {
+	header .menu {display: none;}
+}
+
+/* Шапка. Поиск */
+.search .header__block-icon {font-size: 1.25rem;}
+.search .header__block-content {width: calc(100% - 1.25rem);}
 
 /* Шапка. Добавление в Избр, Срав, Корзина, ЛК */
 .addto {justify-content: flex-end;}
 .addto__block {margin-left: 4rem;position: relative;}
+.addto__block [data-count] {font-size: .875rem;}
+@media (max-width: 1199.98px) {
+	.addto__block {margin-left: 3rem;}
+}
 
 
 /**************************************/
@@ -582,14 +609,38 @@ h6 {font-size: 0.875rem;}
 /**************************************/
 .slider__item {height: 53rem;background-position: center;background-size: cover;}
 .slider__content {width: 40%;margin: 0 0 0 auto;padding-top: 10rem;text-align: center;}
-.slider__title {font-size: 3rem;font-weight: bold;}
+.slider__title {font-size: 3rem;font-weight: bold;display: block;}
 .slider__buttons {margin-top: 3rem;}
 .slider__button span {display: none;}
 .slider__button i {font-size: 7.5rem;}
-.slider__bg {height: 100%;background-position: 40% 0;}
+.slider__bg {height: 100%;background-position: 40% 0;background-size: cover;}
 #slideshow {position: relative;}
-#slideshow .owl-dots {width: 40%;right: 0;bottom: 3rem;position: absolute;text-align: left;}
+#slideshow .owl-dots {width: 40%;padding-left: 1rem;right: 0;bottom: 2rem;position: absolute;text-align: left;}
 #slideshow .owl-dot span {position: absolute;top: 0;left: -1rem;}
+@media (max-width: 1199.98px) {
+	.slider__title {font-size: 2.5rem;}
+	.slider__bg {background-position: 50% 0;}
+}
+@media (max-width: 991.98px) {
+	.slider__content {padding-top: 6rem;}
+}
+@media (max-width: 767.98px) {
+	.slider__item {height: 34rem;}
+	.slider__content {padding-top: 1rem;}
+}
+@media (max-width: 639.98px) {
+	.slider__title {font-size: 1.5rem;}
+	.slider__buttons {margin-top: 2rem;}
+	.slider__button i {font-size: 5rem;}
+	#slideshow .owl-dots .owl-dot:after {width: 1rem;}
+	#slideshow .owl-dots .owl-dot.active:after {width: 2rem;}
+}
+@media (max-width: 479.98px) {
+	.slider__item {height: 24rem;}
+	.slider__title {font-size: 1.125rem;}
+	.slider__content {width: 50%;}
+	#slideshow .owl-dots {width: 100%;text-align: right;}
+}
 
 
 /**************************************/

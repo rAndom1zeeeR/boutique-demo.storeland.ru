@@ -916,7 +916,7 @@ function slideShow() {
 		dotsEach: true,
 		smartSpeed: 500,
 		URLhashListener: true,
-		autoplay: true,
+		autoplay: false,
     autoplayTimeout: '3000',
 		autoplayHoverPause: true,
 		autoHeight: true,
