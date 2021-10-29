@@ -931,6 +931,7 @@ function pdtCatalog() {
       1200:{items:6}
     }
   });
+	
 	// Навигация при клике НАЗАД
 	$('.catalog__nav-prev').on('click', function () {
 		owlC.trigger('prev.owl.carousel');

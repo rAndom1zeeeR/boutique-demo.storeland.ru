@@ -211,7 +211,11 @@ h6 {font-size: 0.875rem;}
 .block__title .title_separator:before, .block__title .title_separator:after {content: '';width: 2rem;height: 1px;background-color: #212121;display: inline-block;}
 .block__title .title_separator span {margin: 0 1rem;}
 /* Блок Заголовков. Адаптивность */
+@media (max-width: 639.98px) {
+	.block__title .title {font-size: 1.25rem;}
+}
 @media (max-width: 479.98px) {
+	.block__title .title {font-size: 1.125rem;}
 }
 
 
@@ -649,6 +653,10 @@ h6 {font-size: 0.875rem;}
 #catalog .catalog__link {font-size: 1rem;} 
 [class^="catalog__nav-"] {font-size: 1.875rem;line-height: 1;}
 #catalog .catalog__items {width: calc(100% - 6rem);margin: 0 1rem;}
+@media (max-width: 479.98px) {
+	[class^="catalog__nav-"] {display: none;}
+	#catalog .catalog__items {width: 100%;}
+}
 
 /**************************************/
 /*** Баннеры ***/
@@ -668,6 +676,36 @@ h6 {font-size: 0.875rem;}
 #banners .banners__item[data-item="1"] [class^="button-"] {opacity: 1;}
 #banners [class^="button-"]:before {left: .5rem;top: .5rem;}
 #banners [class^="button-"] span + span {display: block;}
+.banners__hidden {display: none;}
+@media (max-width: 1199.98px) {
+	.banners__items {height: 33rem;}
+}
+@media (max-width: 991.98px) {
+	.banners__items {height: 25rem;}
+	.banners__left {width: 16rem;}
+	.banners__right {width: calc(100% - 16rem);}
+	#banners [class^="button-"] {padding: 1rem 2rem .5rem;}
+}
+@media (max-width: 639.98px) {
+	#banners [class^="button-"] {height: auto;}
+	.banners__items {height: 23rem;}
+	.banners__left {width: 15rem;}
+	.banners__right {width: calc(100% - 15rem);}
+	.banners__top {height: 100%;}
+	.banners__top .banners__item {width: 100%;height: calc(50% - .5rem)}
+	.banners__top .banners__item + .banners__item {margin-top: 1rem;}
+	.banners__item[data-item="1"] {margin-right: 0;}
+	.banners__bottom {display: none;}
+	.banners__hidden {display: block;height: 12rem;margin-top: 1rem;}
+}
+@media (max-width: 479.98px) {
+	.banners__items {height: 44rem;}
+	.banners__left {width: 100%;}
+	.banners__right {width: 100%;}
+	.banners__top .banners__item {height: 15rem;}
+	.banners__item[data-item="1"] {height: 12rem;margin: 0 1rem 1rem 1rem;}
+	#banners .banners__item [class^="button-"] {opacity: 1;}
+}
 
 
 /**************************************/
