@@ -897,6 +897,51 @@ function pdtSales(){
 	});
 }
 
+// Функция Слайдер категорий Каталога на всех страницах.
+function pdtCatalog() {
+	var owlC = $('#catalog .owl-carousel');
+  owlC.owlCarousel({
+    items: 6,
+    margin: 60,
+    loop: true,
+    rewind: false,
+    lazyLoad: true,
+    nav: false,
+    navContainer: '',
+    navText: [ , ],
+    dots: false,
+		autoWidth:true,
+    autoHeight: false,
+    autoHeightClass: 'owl-height',
+    autoplay: true,
+    autoplayHoverPause: true,
+    smartSpeed: 500,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    responsiveClass: true,
+    responsiveRefreshRate: 100,
+    responsive: {
+      0:{items:1},
+      320:{items:1, margin: 16},
+      375:{items:2, margin: 32},
+      640:{items:3},
+      768:{items:4},
+      992:{items:5},
+      1200:{items:6}
+    }
+  });
+	// Навигация при клике НАЗАД
+	$('.catalog__nav-prev').on('click', function () {
+		owlC.trigger('prev.owl.carousel');
+	});
+
+	// Навигация при клике ВПЕРЕД
+	$('.catalog__nav-next').on('click', function () {
+		owlC.trigger('next.owl.carousel');
+	});
+}
+
 // Слайдер для главной страницы
 function slideShow() {
 	// Слайдер на главной
@@ -1000,7 +1045,7 @@ function newsCarousel() {
 	});
 }
 
-// Функция слайдер для "Вы смотрели" на главной странице
+// Функция слайдер для "Вы смотрели"
 function viewed() {
 	$('.viewed .owl-carousel').owlCarousel({
 		items: 1,

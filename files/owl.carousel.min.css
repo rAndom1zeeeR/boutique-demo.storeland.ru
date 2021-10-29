@@ -17,9 +17,11 @@
 .owl-dots {text-align: center;}
 .owl-dots.disabled {display: none;}
 .owl-dots .owl-dot {margin: 0 1rem;padding: 0;background-color: transparent;border-radius: 0;line-height: 1;display: inline-block;vertical-align: middle;position: relative;}
-.owl-dots .owl-dot:after {content: '';width: 2.5rem;height: 1px;background-color: #70787D;transition: all 0.3s ease;display: inline-block;vertical-align: middle;}
+.owl-dots .owl-dot:after {content: '';width: 1.5rem;height: 1px;background-color: #70787D;transition: all 0.3s ease;display: inline-block;vertical-align: middle;}
+.owl-dots .owl-dot.active:after {width: 2.5rem;}
 .owl-dots .owl-dot.active, .owl-dots .owl-dot:hover {color: #B69355;}
 .owl-dots .owl-dot.active:after, .owl-dots .owl-dot:hover:after {background-color: #B69355;}
+
 
 
 /*** Изображения в слайдере ***/

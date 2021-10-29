@@ -615,7 +615,7 @@ h6 {font-size: 0.875rem;}
 .slider__button i {font-size: 7.5rem;}
 .slider__bg {height: 100%;background-position: 40% 0;background-size: cover;}
 #slideshow {position: relative;}
-#slideshow .owl-dots {width: 40%;padding-left: 1rem;right: 0;bottom: 2rem;position: absolute;text-align: left;}
+#slideshow .owl-dots {width: 40%;padding-left: 2rem;right: 0;bottom: 2rem;position: absolute;text-align: left;}
 #slideshow .owl-dot span {position: absolute;top: 0;left: -1rem;}
 @media (max-width: 1199.98px) {
 	.slider__title {font-size: 2.5rem;}
@@ -645,11 +645,10 @@ h6 {font-size: 0.875rem;}
 
 /**************************************/
 /*** Каталог ***/
-/**************************************/
-.catalog__item .sub {display: none;}
-.catalog__link {font-size: 1rem;} 
-.catalog__item[data-level="0"] {margin-right: 4rem;}
-
+/**************************************/                                          
+#catalog .catalog__link {font-size: 1rem;} 
+[class^="catalog__nav-"] {font-size: 1.875rem;line-height: 1;}
+#catalog .catalog__items {width: calc(100% - 6rem);margin: 0 1rem;}
 
 /**************************************/
 /*** Баннеры ***/
