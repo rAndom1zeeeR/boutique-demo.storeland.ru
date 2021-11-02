@@ -737,7 +737,7 @@ function pdtBest(){
 		navText: [ , ],
 		dots: true,
 		dotsContainer: dots,
-		autoHeight: false,
+		autoHeight: true,
 		autoHeightClass: 'owl-height',
 		autoplay: false,
 		autoplayHoverPause: true,
@@ -749,8 +749,11 @@ function pdtBest(){
 		responsiveRefreshRate: 100,
 		responsive: {
 			0:{items:1, autoHeight: true},
+			320:{items:1, autoHeight: true},
 			480:{items:2},
+			640:{items:2},
 			768:{items:3},
+			992:{items:3},
 			1200:{items:4}
 		},
 		onInitialized: number,
@@ -761,11 +764,19 @@ function pdtBest(){
 
 	// Нумерация страниц
 	function number() {
-		buttons.find('.owl-dot').each(function(i){
+		dots.find('.owl-dot').each(function(i){
 			$(this).find('span').text(i+1)
 		});
 		// Скрываем кнопки навигации
-		dots.hasClass('disabled') ? buttons.hide() : buttons.show()
+		dots.hasClass('disabled') ? buttons.hide() : buttons.show();
+		// Скрываем не активные элементы навигации
+		var dotActive = dots.find('.owl-dot.active');
+		dots.find('.owl-dot').hide();
+		dotActive.prev().prev().show();
+		dotActive.prev().show();
+		dotActive.show();
+		dotActive.next().show();
+		dotActive.next().next().show();
 	}
 
 	// Навигация при клике НАЗАД
@@ -786,7 +797,7 @@ function pdtNew(){
 	var buttons = id.find('.products__buttons');
 	var dots = id.find('.owl-dots');
 	carousel.owlCarousel({
-		items: 4,
+		items: 5,
 		margin: 32,
 		loop: false,
 		rewind: true,
@@ -796,7 +807,7 @@ function pdtNew(){
 		navText: [ , ],
 		dots: true,
 		dotsContainer: dots,
-		autoHeight: false,
+		autoHeight: true,
 		autoHeightClass: 'owl-height',
 		autoplay: false,
 		autoplayHoverPause: true,
@@ -808,9 +819,12 @@ function pdtNew(){
 		responsiveRefreshRate: 100,
 		responsive: {
 			0:{items:1, autoHeight: true},
+			320:{items:1, autoHeight: true},
 			480:{items:2},
+			640:{items:2},
 			768:{items:3},
-			1200:{items:4}
+			992:{items:4},
+			1200:{items:5}
 		},
 		onInitialized: number,
 		onChanged: number,
@@ -820,11 +834,19 @@ function pdtNew(){
 
 	// Нумерация страниц
 	function number() {
-		buttons.find('.owl-dot').each(function(i){
+		dots.find('.owl-dot').each(function(i){
 			$(this).find('span').text(i+1)
 		});
 		// Скрываем кнопки навигации
-		dots.hasClass('disabled') ? buttons.hide() : buttons.show()
+		dots.hasClass('disabled') ? buttons.hide() : buttons.show();
+		// Скрываем не активные элементы навигации
+		var dotActive = dots.find('.owl-dot.active');
+		dots.find('.owl-dot').hide();
+		dotActive.prev().prev().show();
+		dotActive.prev().show();
+		dotActive.show();
+		dotActive.next().show();
+		dotActive.next().next().show();
 	}
 
 	// Навигация при клике НАЗАД
@@ -867,8 +889,11 @@ function pdtSales(){
 		responsiveRefreshRate: 100,
 		responsive: {
 			0:{items:1, autoHeight: true},
+			320:{items:1, autoHeight: true},
 			480:{items:2},
+			640:{items:2},
 			768:{items:2},
+			992:{items:2},
 			1200:{items:2}
 		},
 		onInitialized: number,
@@ -879,11 +904,19 @@ function pdtSales(){
 
 	// Нумерация страниц
 	function number() {
-		buttons.find('.owl-dot').each(function(i){
+		dots.find('.owl-dot').each(function(i){
 			$(this).find('span').text(i+1)
 		});
 		// Скрываем кнопки навигации
-		dots.hasClass('disabled') ? buttons.hide() : buttons.show()
+		dots.hasClass('disabled') ? buttons.hide() : buttons.show();
+		// Скрываем не активные элементы навигации
+		var dotActive = dots.find('.owl-dot.active');
+		dots.find('.owl-dot').hide();
+		dotActive.prev().prev().show();
+		dotActive.prev().show();
+		dotActive.show();
+		dotActive.next().show();
+		dotActive.next().next().show();
 	}
 
 	// Навигация при клике НАЗАД
@@ -920,18 +953,9 @@ function pdtCatalog() {
     touchDrag: true,
     pullDrag: true,
     responsiveClass: true,
-    responsiveRefreshRate: 100,
-    responsive: {
-      0:{items:1},
-      320:{items:1, margin: 16},
-      375:{items:2, margin: 32},
-      640:{items:3},
-      768:{items:4},
-      992:{items:5},
-      1200:{items:6}
-    }
+    responsiveRefreshRate: 100
   });
-	
+
 	// Навигация при клике НАЗАД
 	$('.catalog__nav-prev').on('click', function () {
 		owlC.trigger('prev.owl.carousel');
