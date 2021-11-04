@@ -770,13 +770,21 @@ function pdtBest(){
 		// Скрываем кнопки навигации
 		dots.hasClass('disabled') ? buttons.hide() : buttons.show();
 		// Скрываем не активные элементы навигации
-		var dotActive = dots.find('.owl-dot.active');
-		dots.find('.owl-dot').hide();
-		dotActive.prev().prev().show();
-		dotActive.prev().show();
-		dotActive.show();
-		dotActive.next().show();
-		dotActive.next().next().show();
+		var dotActiveIndex = dots.find('.owl-dot.active').index();
+		var dotVisibleStep = 2;
+		var dotPrevActiveIndex = dotActiveIndex - dotVisibleStep;
+		var dotNextActiveIndex = dotActiveIndex + dotVisibleStep;
+
+		dots.find('.owl-dot')
+			.hide()
+			.filter(function(index, item){
+				if(index >= dotPrevActiveIndex &&  index <= dotNextActiveIndex){
+					return true;
+				}
+				return false;
+			})
+			.show()
+			.addClass('show')
 	}
 
 	// Навигация при клике НАЗАД
@@ -840,13 +848,21 @@ function pdtNew(){
 		// Скрываем кнопки навигации
 		dots.hasClass('disabled') ? buttons.hide() : buttons.show();
 		// Скрываем не активные элементы навигации
-		var dotActive = dots.find('.owl-dot.active');
-		dots.find('.owl-dot').hide();
-		dotActive.prev().prev().show();
-		dotActive.prev().show();
-		dotActive.show();
-		dotActive.next().show();
-		dotActive.next().next().show();
+		var dotActiveIndex = dots.find('.owl-dot.active').index();
+		var dotVisibleStep = 2;
+		var dotPrevActiveIndex = dotActiveIndex - dotVisibleStep;
+		var dotNextActiveIndex = dotActiveIndex + dotVisibleStep;
+
+		dots.find('.owl-dot')
+			.hide()
+			.filter(function(index, item){
+				if(index >= dotPrevActiveIndex &&  index <= dotNextActiveIndex){
+					return true;
+				}
+				return false;
+			})
+			.show()
+			.addClass('show')
 	}
 
 	// Навигация при клике НАЗАД
@@ -890,9 +906,9 @@ function pdtSales(){
 		responsive: {
 			0:{items:1, autoHeight: true},
 			320:{items:1, autoHeight: true},
-			480:{items:2},
-			640:{items:2},
-			768:{items:2},
+			480:{items:1},
+			640:{items:1},
+			768:{items:1},
 			992:{items:2},
 			1200:{items:2}
 		},
@@ -910,13 +926,21 @@ function pdtSales(){
 		// Скрываем кнопки навигации
 		dots.hasClass('disabled') ? buttons.hide() : buttons.show();
 		// Скрываем не активные элементы навигации
-		var dotActive = dots.find('.owl-dot.active');
-		dots.find('.owl-dot').hide();
-		dotActive.prev().prev().show();
-		dotActive.prev().show();
-		dotActive.show();
-		dotActive.next().show();
-		dotActive.next().next().show();
+		var dotActiveIndex = dots.find('.owl-dot.active').index();
+		var dotVisibleStep = 2;
+		var dotPrevActiveIndex = dotActiveIndex - dotVisibleStep;
+		var dotNextActiveIndex = dotActiveIndex + dotVisibleStep;
+
+		dots.find('.owl-dot')
+			.hide()
+			.filter(function(index, item){
+				if(index >= dotPrevActiveIndex &&  index <= dotNextActiveIndex){
+					return true;
+				}
+				return false;
+			})
+			.show()
+			.addClass('show')
 	}
 
 	// Навигация при клике НАЗАД

@@ -780,29 +780,31 @@
 					<h2 class="title title_separator"><span>Выгодное предложение</span></h2>
 				</div>
 				<div class="row">
-					<div class="offer__items flex-stretch">
-						<!-- предложение 1 -->
-						<div class="offer__item">
-							<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_1.jpg?design=THEMENAME"></div>
-							<div class="offer__content">
-								<div class="offer__title">Успей купить взрывную коллекцию корсетов со скидкой 20%</div>
-								<a class="offer__button button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
+					<div class="offer__overflow">
+						<div class="offer__items flex-stretch">
+							<!-- предложение 1 -->
+							<div class="offer__item">
+								<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_1.jpg?design=THEMENAME"></div>
+								<div class="offer__content">
+									<div class="offer__title">Успей купить взрывную коллекцию корсетов со скидкой 20%</div>
+									<a class="offer__button button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
+								</div>
 							</div>
-						</div>
-						<!-- предложение 2 -->
-						<div class="offer__item">
-							<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_2.jpg?design=THEMENAME"></div>
-							<div class="offer__content">
-								<div class="offer__title">Успей купить взрывную коллекцию корсетов со скидкой 20%</div>
-								<a class="offer__button button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
+							<!-- предложение 2 -->
+							<div class="offer__item">
+								<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_2.jpg?design=THEMENAME"></div>
+								<div class="offer__content">
+									<div class="offer__title">Успей купить взрывную коллекцию корсетов со скидкой 20%</div>
+									<a class="offer__button button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
+								</div>
 							</div>
-						</div>
-						<!-- предложение 3 -->
-						<div class="offer__item">
-							<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_3.jpg?design=THEMENAME"></div>
-							<div class="offer__content">
-								<div class="offer__title">Успей купить взрывную коллекцию корсетов со скидкой 20%</div>
-								<a class="offer__button button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
+							<!-- предложение 3 -->
+							<div class="offer__item">
+								<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_3.jpg?design=THEMENAME"></div>
+								<div class="offer__content">
+									<div class="offer__title">Успей купить взрывную коллекцию корсетов со скидкой 20%</div>
+									<a class="offer__button button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -951,7 +953,7 @@
 							<div class="product__shop">
 								<!-- Рейтинг -->
 								{% IFNOT SETTINGS_OPINION_DISABLE %}
-								<div class="product__ratings flex justify-between">
+								<div class="product__ratings product__margin flex justify-between">
 									<div class="ratings">
 										{% IF index_page_sale_goods.OPINION_RATING_VALUE %}
 										<span itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
@@ -969,7 +971,7 @@
 								</div>
 								{% ENDIF %}
 								<!-- Название товара -->
-								<a class="product__name" href="{index_page_sale_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_sale_goods.NAME}">
+								<a class="product__name product__margin" href="{index_page_sale_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_sale_goods.NAME}">
 									<span itemprop="name">{index_page_sale_goods.NAME}</span>
 								</a>
 								<!-- Артикул товара -->
@@ -982,7 +984,7 @@
 									<meta itemprop="offerCount" content="{% FOR mods %}{% IF index_page_sale_goods.mods.last %}{index_page_sale_goods.mods.length}{% ENDIF %}{% ENDFOR %}">
 								</div>
 								<!-- Цена -->
-								<div class="product__price {CURRENCY_CHAR_CODE} {% IF index_page_sale_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>index_page_sale_goods.MIN_PRICE_NOW %}has-oldPrice{% ELSEIF index_page_sale_goods.MIN_PRICE_OLD>index_page_sale_goods.MIN_PRICE_NOW %}has-oldPrice{% ENDIF %}" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+								<div class="product__price product__margin {CURRENCY_CHAR_CODE} {% IF index_page_sale_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>index_page_sale_goods.MIN_PRICE_NOW %}has-oldPrice{% ELSEIF index_page_sale_goods.MIN_PRICE_OLD>index_page_sale_goods.MIN_PRICE_NOW %}has-oldPrice{% ENDIF %}" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
 									<meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}" />
 									<meta itemprop="availability" content="{% IF index_page_sale_goods.MAX_REST_VALUE>0 %}http://schema.org/InStock{% ELSE %}http://schema.org/OutOfStock{% ENDIF %}" />
 									<meta itemprop="priceValidUntil" content="{index_page_sale_goods.MAX_DISCOUNT_EXPIRED_AT | date('Y-m-d')}" />
@@ -993,7 +995,7 @@
 									<span class="price__old {CURRENCY_CHAR_CODE}">{index_page_sale_goods.MIN_PRICE_OLD | money_format}</span>
 									{% ENDIF %}
 								</div>
-								<div class="product__discount">Акция действует до {index_page_sale_goods.MAX_DISCOUNT_EXPIRED_AT | date('d.m.Y')}</div>
+								<div class="product__discount product__margin">Акция <span>действует</span> до {index_page_sale_goods.MAX_DISCOUNT_EXPIRED_AT | date('d.m.Y')}</div>
 								<!-- Добавление товара в избранное и сравнение и в корзину -->
 								<div class="product__addCart {% IF index_page_sale_goods.IS_HAS_IN_COMPARE_LIST || index_page_sale_goods.IS_HAS_IN_FAVORITES_LIST %}added{% ENDIF %}">
 									<!-- Добавление в корзину -->

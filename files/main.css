@@ -791,7 +791,7 @@ h6 {font-size: 0.875rem;}
 /**************************************/
 #offer {margin: 6rem 0;}
 .offer__item {width: calc(33.33333333% - 2rem);margin: 0 1rem;overflow: hidden;position: relative;}
-.offer__image {height: 27rem;background-size: cover;background-position: center;transition: all 0.3s ease;}
+.offer__image {width: 100%;height: 27rem;background-size: cover;background-position: center;transition: all 0.3s ease;}
 .offer__item:hover .offer__image {height: 17rem;}
 .offer__content {opacity: 0;height: 0;visibility: hidden;text-align: center;background-color: #ffffff;transition: all 0.3s ease;}
 .offer__item:hover .offer__content {opacity: 1;height: auto;visibility: visible;padding: 2rem 1rem 0 1rem;position: absolute;bottom: 0;}
@@ -949,19 +949,64 @@ h6 {font-size: 0.875rem;}
 /* Акции */
 #pdt__sales .product__item {border-radius: 0 0 8rem 0;overflow: hidden;}
 #pdt__sales .product__item + .product__item {margin-top: 2rem;}
-#pdt__sales .product__image {width: 16.125rem;position: relative;overflow: hidden;}
-#pdt__sales .product__ico {position: relative;}
+#pdt__sales .product__image {width: 16rem;position: relative;overflow: hidden;}
+#pdt__sales .product__img {height: 16rem;margin-bottom: 1.25rem;}
+#pdt__sales .product__ico {top: auto;bottom: 0;}
 #pdt__sales .product__item:hover .product__links {opacity: 1;right: 0;}
 #pdt__sales .product__links {opacity: 0;top: 0;right: -100%;background: #EFEFEF;border-radius: 0 0 1.25rem 1.25rem;flex-direction: column;position: absolute;transition: all 0.3s ease-in-out;}
 #pdt__sales .product__links a {padding: .625rem;}
-#pdt__sales .product__shop {width: calc(100% - 16.125rem);padding: 1.5rem 2rem;}
-#pdt__sales .product__name {margin-bottom: 1.25rem;display: block;}
-#pdt__sales .product__ratings {margin-bottom: 1.25rem;}
+#pdt__sales .product__shop {width: calc(100% - 16rem);padding: 1.5rem 2rem;}
+#pdt__sales .product__margin {margin-bottom: 1.25rem;}
 #pdt__sales .ratings__count {font-size: .75rem}
-#pdt__sales .product__price {padding-right: 1rem;margin-bottom: 1.25rem;}
+#pdt__sales .product__name {display: block;}
+#pdt__sales .product__price {padding-right: 1rem;}
 #pdt__sales .product__addCart i {font-size: 1.5rem;}
 #pdt__sales .product__addCart span {margin-left: 1rem;}
 #pdt__sales .product__discount {font-size: .75rem;color: #B69355;margin-bottom: 1.25rem;letter-spacing: 0.075rem;}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	#pdt__sales .product__image {width: 13rem;}
+	#pdt__sales .product__img {height: 13rem;}
+	#pdt__sales .product__shop {width: calc(100% - 13rem);padding: 1rem;}
+	#pdt__sales .product__margin {margin-bottom: 1rem;}
+	#pdt__sales .product__name {height: 3.5rem;}
+	#pdt__sales .product__name span {height: 3.5rem;}
+	#pdt__sales .product__discount {letter-spacing: 0;}
+}
+@media (max-width: 991.98px) {
+	#pdt__sales .product__image {width: 15rem;}
+	#pdt__sales .product__img {height: 15rem;}
+	#pdt__sales .product__shop {width: calc(100% - 15rem);padding: .9375rem 1.5rem;}
+	#pdt__sales  .product__price .price__old {display: inline-block;margin: 0;}
+}
+@media (max-width: 639.98px) {
+	#pdt__sales .product__item {border-radius: 0 0 6rem 0;}
+	#pdt__sales .product__image {width: 13rem;}
+	#pdt__sales .product__img {height: 13rem;}
+	#pdt__sales .product__shop {width: calc(100% - 13rem);padding: .9375rem;}
+	#pdt__sales .product__margin {margin-bottom: 1rem;}
+	#pdt__sales .product__name {height: 3.5rem;}
+	#pdt__sales .product__name span {height: 3.5rem;}
+	#pdt__sales .product__discount {letter-spacing: 0;}
+	#pdt__sales .product__item .product__links {opacity: 1;}
+}
+@media (max-width: 575.98px) {
+	#pdt__sales .product__image {width: 12rem;}
+	#pdt__sales .product__img {height: 12rem;}
+	#pdt__sales .product__shop {width: calc(100% - 12rem);padding: .875rem;}
+	#pdt__sales .product__margin {margin-bottom: .75rem;}
+}
+@media (max-width: 479.98px) {
+	#pdt__sales .product__item {border-radius: 0 0 4rem 0;}
+	#pdt__sales .product__image {width: 8rem;}
+	#pdt__sales .product__img {height: 8rem;}
+	#pdt__sales .product__shop {width: calc(100% - 8rem);padding: .875rem;}
+	#pdt__sales .product__margin {margin-bottom: .5rem;}
+	#pdt__sales .product__ratings {display: none;}
+	#pdt__sales .product__discount span {display: none;}
+	#pdt__sales .product__name {height: 2.5rem;}
+	#pdt__sales .product__name span {height: 2.5rem;}
+}
+
 
 /* Товары на главной */
 #pdt__sale {margin-top: 6rem;}
