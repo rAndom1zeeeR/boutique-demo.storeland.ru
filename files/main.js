@@ -1033,38 +1033,12 @@ function slideShow() {
 
 // Новости
 function newsCarousel() {
-	// Функция слайдера для всех Новостей
-	$('.news_list_all .owl-carousel').owlCarousel({
-		items: 4,
-		margin: 32,
-		slideBy: 2,
-		loop: false,
-		rewind: true,
-		lazyLoad: true,
-		nav: false,
-		navContainer: '',
-		navText: [ , ],
-		dots: false,
-		autoHeight: false,
-		autoHeightClass: 'owl-height',
-		autoplay: false,
-		autoplayHoverPause: true,
-		smartSpeed: 500,
-		mouseDrag: true,
-		touchDrag: true,
-		pullDrag: true,
-		responsiveClass: true,
-		responsiveRefreshRate: 100,
-		responsive: {
-			0:{items:1, autoHeight: true},
-			480:{items:2},
-			768:{items:3},
-			1200:{items:4}
-		}
-	});
-
+	var id = $('#news');
+	var carousel = id.find('.owl-carousel');
+	var buttons = id.find('.products__buttons');
+	var dots = id.find('.owl-dots');
 	// Функция слайдера для Новостей
-	$('.news_list_shop .owl-carousel').owlCarousel({
+	carousel.owlCarousel({
 		items: 2,
 		margin: 32,
 		slideBy: 2,
@@ -1074,7 +1048,8 @@ function newsCarousel() {
 		nav: false,
 		navContainer: '',
 		navText: [ , ],
-		dots: false,
+		dots: true,
+		dotsContainer: dots,
 		autoHeight: false,
 		autoHeightClass: 'owl-height',
 		autoplay: false,
@@ -1087,10 +1062,130 @@ function newsCarousel() {
 		responsiveRefreshRate: 100,
 		responsive: {
 			0:{items:1, autoHeight: true},
+			320:{items:1, autoHeight: true},
 			480:{items:2},
+			640:{items:2},
 			768:{items:2},
+			992:{items:2},
 			1200:{items:2}
-		}
+		},
+		onInitialized: number,
+		onChanged: number,
+		onResize: number,
+		onResized: number
+	});
+
+	// Нумерация страниц
+	function number() {
+		dots.find('.owl-dot').each(function(i){
+			$(this).find('span').text(i+1)
+		});
+		// Скрываем кнопки навигации
+		dots.hasClass('disabled') ? buttons.hide() : buttons.show();
+		// Скрываем не активные элементы навигации
+		var dotActiveIndex = dots.find('.owl-dot.active').index();
+		var dotVisibleStep = 2;
+		var dotPrevActiveIndex = dotActiveIndex - dotVisibleStep;
+		var dotNextActiveIndex = dotActiveIndex + dotVisibleStep;
+
+		dots.find('.owl-dot')
+			.hide()
+			.filter(function(index, item){
+				if(index >= dotPrevActiveIndex &&  index <= dotNextActiveIndex){
+					return true;
+				}
+				return false;
+			})
+			.show()
+			.addClass('show')
+	}
+
+	// Навигация при клике НАЗАД
+	buttons.find('.prev').on('click', function () {
+		carousel.trigger('prev.owl.carousel');
+	});
+
+	// Навигация при клике ВПЕРЕД
+	buttons.find('.next').on('click', function () {
+		carousel.trigger('next.owl.carousel');
+	});
+}
+
+// Функция слайдера для "Акции" на главной странице
+function offer(){
+	var id = $('#offer');
+	var carousel = id.find('.owl-carousel');
+	var buttons = id.find('.products__buttons');
+	var dots = id.find('.owl-dots');
+	carousel.owlCarousel({
+		items: 3,
+		margin: 32,
+		loop: false,
+		rewind: true,
+		lazyLoad: true,
+		nav: false,
+		navContainer: '',
+		navText: [ , ],
+		dots: true,
+		dotsContainer: dots,
+		autoHeight: false,
+		autoHeightClass: 'owl-height',
+		autoplay: false,
+		autoplayHoverPause: true,
+		smartSpeed: 500,
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: true,
+		responsiveClass: true,
+		responsiveRefreshRate: 100,
+		responsive: {
+			0:{items:1, autoHeight: true},
+			320:{items:1, autoHeight: true},
+			480:{items:2},
+			640:{items:2},
+			768:{items:2},
+			992:{items:3},
+			1200:{items:3}
+		},
+		onInitialized: number,
+		onChanged: number,
+		onResize: number,
+		onResized: number
+	});
+
+	// Нумерация страниц
+	function number() {
+		dots.find('.owl-dot').each(function(i){
+			$(this).find('span').text(i+1)
+		});
+		// Скрываем кнопки навигации
+		dots.hasClass('disabled') ? buttons.hide() : buttons.show();
+		// Скрываем не активные элементы навигации
+		var dotActiveIndex = dots.find('.owl-dot.active').index();
+		var dotVisibleStep = 2;
+		var dotPrevActiveIndex = dotActiveIndex - dotVisibleStep;
+		var dotNextActiveIndex = dotActiveIndex + dotVisibleStep;
+
+		dots.find('.owl-dot')
+			.hide()
+			.filter(function(index, item){
+				if(index >= dotPrevActiveIndex &&  index <= dotNextActiveIndex){
+					return true;
+				}
+				return false;
+			})
+			.show()
+			.addClass('show')
+	}
+
+	// Навигация при клике НАЗАД
+	buttons.find('.prev').on('click', function () {
+		carousel.trigger('prev.owl.carousel');
+	});
+
+	// Навигация при клике ВПЕРЕД
+	buttons.find('.next').on('click', function () {
+		carousel.trigger('next.owl.carousel');
 	});
 }
 
