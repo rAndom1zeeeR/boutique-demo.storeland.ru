@@ -9,7 +9,7 @@ section {margin: 3rem 0;position: relative;}
 .mainBlock-left {width: 25%;padding-right: 1rem;flex-grow: 1;}
 @media (max-width: 1199.98px) {
 	.mainBlock-left {width: 100%;padding: 0;}
-	.mainBlock-right {width: 100%;padding: 2rem 0 0 0;display: none;}
+	.mainBlock-right.has-sidebar {width: 100%;padding: 0;}
 }
 @media (max-width: 991.98px) {
 	section {margin: 2rem 0;}
@@ -215,7 +215,7 @@ h6 {font-size: 0.875rem;}
 	.block__title .title {font-size: 1.25rem;}
 }
 @media (max-width: 479.98px) {
-	.block__title .title {font-size: 1.125rem;}
+	/* .block__title .title {font-size: 1.125rem;} */
 }
 
 
@@ -1188,21 +1188,31 @@ h6 {font-size: 0.875rem;}
 /**************************************/
 .has-sidebar .categories__list {margin-bottom: 2rem;}
 .categories__item {width: calc(25% - 2rem);margin: 2rem 1rem 0 1rem;}
-.categories__image {height: 16.25rem;background-color: #f6f6f6;}
+.categories__image {height: 16.25rem;background-color: #EFEFEF;}
 .categories__image img {max-width: 100%;max-height: 100%;}
-.categories__name {padding: 0 1rem;color: #ffffff;background-color: #B69355;border-top: 1px solid #ffffff;height: 3.5rem;overflow: hidden;}
-.categories__item:hover .categories__name {color: #ffffff;background-color: #B69355;}
-.categories__name i {border: 2px solid #ffffff;border-radius: 100%;padding: .5rem;margin-right: 1rem;}
-.categories__name span {width: calc(100% - 3.125rem);max-height: 2.5rem;overflow: hidden;display: block;}
+.categories__name {font-size: 1.125rem;line-height: 1.5rem;padding: 0 1rem;background-color: #EFEFEF;border-top: 1px solid #ffffff;height: 5.25rem;overflow: hidden;justify-content: center;text-align: center;}
+.categories__name span {max-height: 4.5rem;overflow: hidden;display: block;}
 /* Категории. Адаптивность */
+@media (max-width: 1199.98px) {
+	.categories__image {height: 13rem;}
+}
+@media (max-width: 991.98px) {
+	.categories__item {width: calc(33.333333% - 2rem);}
+	.categories__image {height: 13.25rem;}
+}
 @media (min-width: 768px) {
 	.has-sidebar .categories__item {width: calc(33.333333% - 2rem);}
 }
 @media (max-width: 767.98px) {
 	.categories__item {width: calc(50% - 2rem);}
+	.categories__image {height: 18rem;}
+}
+@media (max-width: 639.98px) {
+	.categories__image {height: 13rem;}
 }
 @media (max-width: 479.98px) {
 	.categories__item {width: 100%;}
+	.categories__image {height: 18rem;}
 }
 
 

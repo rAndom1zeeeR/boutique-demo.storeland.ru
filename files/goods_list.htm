@@ -6,11 +6,10 @@
 		<div class="categories__list flex {% IF index_page %}index{% ENDIF %}">
 			{% FOR nested_categories_list %}
 			<div class="categories__item" data-id="{nested_categories_list.ID}" {% IF nested_categories_list.LEVEL> 0 %}style="display: none;"{% ENDIF %}>
-				<a class="categories__image flex-center grayscale" href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
+				<a class="categories__image flex-center" href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
 					<img class="goods-cat-image-medium" src="{% IF nested_categories_list.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{nested_categories_list.IMAGE_MEDIUM}{% ENDIF %}">
 				</a>
 				<a class="categories__name flex" href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
-					<i class="icon-check"></i>
 					<span>{nested_categories_list.NAME}</span>
 				</a>
 			</div>

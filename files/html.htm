@@ -1049,47 +1049,47 @@
 				<div id="page__title">
 					<div class="block__title">
 						{% IF MOD_LNAME=user && ACT=login %}
-						<h1 class="title">Войти или зарегистрироваться</h1>
+						<h1 class="title title_separator">Войти или зарегистрироваться</h1>
 						{% ELSEIF MOD_LNAME=user && ACT=change %}
-						<h1 class="title">Активация нового пароля</h1>
+						<h1 class="title title_separator">Активация нового пароля</h1>
 						{% ELSEIF MOD_LNAME=user && ACT=recovery %}
-						<h1 class="title">Восстановление пароля</h1>
+						<h1 class="title title_separator">Восстановление пароля</h1>
 						{% ELSEIF MOD_LNAME=user && ACT=favorites %}
-						<h1 class="title">Сохраненные товары</h1>
+						<h1 class="title title_separator">Сохраненные товары</h1>
 						{% ELSEIF MOD_LNAME=user && ACT=history_list %}
-						<h1 class="title">Мои заказы</h1>
+						<h1 class="title title_separator">Мои заказы</h1>
 						{% ELSEIF MOD_LNAME=user && ACT=settings %}
-						<h1 class="title">Личный кабинет</h1>
+						<h1 class="title title_separator">Личный кабинет</h1>
 						{% ELSEIF MOD_LNAME=user && ACT=register %}
-						<h1 class="title">Регистрация клиента</h1>
+						<h1 class="title title_separator">Регистрация клиента</h1>
 						{% ELSEIF MOD_LNAME=order && ACT=stage %}
-						<h1 class="title">Оформление заказа. Шаг {ORDER_STAGE_NUM} из 4</h1>
+						<h1 class="title title_separator">Оформление заказа. Шаг {ORDER_STAGE_NUM} из 4</h1>
 						{% ELSEIF MOD_LNAME=search %}
-						<h1 class="title">Результат поиска по запросу: {% IFNOT search_query_empty %}&laquo;{SEARCH_QUERY}&raquo; <div class="subtitle">({GOODS_PAGES_RESULTS} товар{GOODS_PAGES_RESULTS | gen_word_end("","а","ов")} найд{GOODS_PAGES_RESULTS | gen_word_end("ен","ено","ено")} по запросу)</div>{% ENDIF %}</h1>
+						<h1 class="title title_separator">Результат поиска по запросу: {% IFNOT search_query_empty %}&laquo;{SEARCH_QUERY}&raquo; <div class="subtitle">({GOODS_PAGES_RESULTS} товар{GOODS_PAGES_RESULTS | gen_word_end("","а","ов")} найд{GOODS_PAGES_RESULTS | gen_word_end("ен","ено","ено")} по запросу)</div>{% ENDIF %}</h1>
 						{% ELSEIF MOD_LNAME=discount && ACT=index && ID %}
-						<h1 class="title">{PROMOTIONAL_CAMPAIGN_NAME}</h1>
+						<h1 class="title title_separator">{PROMOTIONAL_CAMPAIGN_NAME}</h1>
 						{% ELSEIF MOD_LNAME=discount && ACT=index %}
-						<h1 class="title">Акции</h1>
+						<h1 class="title title_separator">Акции</h1>
 						{% ELSEIF MOD_LNAME=feedback %}
-						<h1 class="title">Связь с администрацией</h1>
+						<h1 class="title title_separator">Связь с администрацией</h1>
 						{% ELSEIF CURRENT_URL=NEWS_SHOP_URL || CURRENT_URL=NEWS_ARTICLES_URL || CURRENT_URL=NEWS_MASS_MEDIA_URL %}
-						<h1 class="title">{NEWS_SECTION_NAME}</h1>
+						<h1 class="title title_separator">{NEWS_SECTION_NAME}</h1>
 						{% ELSEIF MOD_LNAME=news %}
-						<h1 class="title">{PAGE_TITLE}</h1>
+						<h1 class="title title_separator">{PAGE_TITLE}</h1>
 						{% ELSEIF MOD_LNAME=compare %}
-						<h1 class="title">{% IF compare_list_empty %}Ваш список сравнения пуст{% ELSE %}Сравнение товаров{% ENDIF %}</h1>
+						<h1 class="title title_separator">{% IF compare_list_empty %}Ваш список сравнения пуст{% ELSE %}Сравнение товаров{% ENDIF %}</h1>
 						{% ELSEIF MOD_LNAME=page %}
-						<h1 class="title">{PAGE_NAME}</h1>
+						<h1 class="title title_separator">{PAGE_NAME}</h1>
 						{% ELSEIF MOD_LNAME= %}
-						<h1 class="title">Внутренняя ошибка сервера. {MSG_HEADER}</h1>
+						<h1 class="title title_separator">Внутренняя ошибка сервера. {MSG_HEADER}</h1>
 						{% ELSEIF MOD_LNAME=callback %}
-						<h1 class="title">Заказ обратного звонка</h1>
+						<h1 class="title title_separator">Заказ обратного звонка</h1>
 						{% ELSEIF MOD_LNAME=catalog %}
-						<h1 class="title"><span>{CATEGORY_NAME}</span><span class="results">{GOODS_PAGES_RESULTS} товар{GOODS_PAGES_RESULTS | gen_word_end("","а","ов")}</span></h1>
+						<h1 class="title title_separator"><span>{CATEGORY_NAME}</span></h1>
 						{% ELSEIF MOD_LNAME=cart %}
-						<h1 class="title"><a href="{CART_URL}" title="Корзина">Корзина</a></h1>
+						<h1 class="title title_separator"><a href="{CART_URL}" title="Корзина">Корзина</a></h1>
 						{% ELSEIF MOD_LNAME=goods %}
-						<h1 class="title">{GOODS_NAME}</h1>
+						<h1 class="title title_separator">{GOODS_NAME}</h1>
 						{% ENDIF %}
 					</div>
 				</div>
