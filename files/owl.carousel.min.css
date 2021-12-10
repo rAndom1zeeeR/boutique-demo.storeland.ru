@@ -3,12 +3,12 @@
 
 
 /*** Навигация ***/
-.owl-prev, .owl-next {width: 4rem;height: 4rem;font-size: 2rem;padding: 0;color: #eef2f5;background-color: #ffffff;border: 1px solid #eef2f5;border-radius: 0;line-height: 1;font-family: 'icomoon';font-weight: normal;cursor: pointer;z-index: 2;transition: all 0.3s ease;}
-.owl-prev:hover, .owl-next:hover {color: #B69355;background-color: #ffffff;}
+.owl-prev, .owl-next {width: 2rem;height: 2rem;font-size: 2rem;padding: 0;background-color: transparent;border: 0;border-radius: 0;line-height: 1;font-family: 'icomoon';font-weight: normal;z-index: 2;}
+.owl-prev:hover, .owl-next:hover {color: #B69355;background-color: transparent;}
 .owl-prev {float: left;left: 0;}
 .owl-next {float: right;right: 0;}
-.owl-prev:before {content: '\e91f';}
-.owl-next:before {content: '\e91e';}
+.owl-prev:before {content: '\e902';}
+.owl-next:before {content: '\e903';}
 .owl-nav.disable, .owl-nav [class^="owl-"].disable:hover {cursor: default;color: #dae6ec;}
 .owl-nav.disabled {display: none;}
 

@@ -80,7 +80,7 @@ function SearchFieldInit(obj) {
 	var suggestCount;
 	var suggestSelected = 0;
 	function keyActivate(n){
-		var $links = $('#search__result .result__item a');
+		var $links = $('#search__result .result__item');
 		$links.eq(suggestSelected-1).removeClass('active');
 		if(n == 1 && suggestSelected < suggestCount){
 			suggestSelected++;
@@ -101,7 +101,7 @@ function SearchFieldInit(obj) {
 				// Нажатие enter при выделенном пункте из поиска
 			case 13: // enter
 				if(suggestSelected){
-					var $link = $('#search__result .result__item').eq(suggestSelected - 1).find('a');
+					var $link = $('#search__result .result__item').eq(suggestSelected - 1);
 					var href = $link.attr('href');
 					if(href){
 						document.location = href
@@ -278,7 +278,9 @@ $(function() {
 						data.category[с].image_icon = data.category[с].image_icon;
 					}
 					// Отображаем результат поиска
-					$("#search__result .result__category").append('<div class="result__item" data-id="'+ data.category[с].goods_cat_id +'"><a href="'+ data.category[с].url +'"><div class="result__image"><img src="'+ data.category[с].image_icon +'" class="goods-image-icon" /></div><div class="result__name"><span>'+ data.category[с].goods_cat_name +'</span></div></a></div>');
+					if(с <= 3){
+						$("#search__result .result__category").append('<a class="result__item flex-center" href="'+ data.category[с].url +'" data-id="'+ data.category[с].goods_cat_id +'"><div class="result__image flex-center"><img src="'+ data.category[с].image_icon +'" class="goods-image-icon" /></div><div class="button-secondary flex-center result__name"><span>'+ data.category[с].goods_cat_name +'</span></div></a>');
+					}
 				}
 			}else{
 				$(".result__category .result__item").remove();
@@ -296,11 +298,11 @@ $(function() {
 						data.goods[i].image_icon = data.goods[i].image_icon;
 					}
 					// Отображаем результат поиска
-					if(i <= 3){
-						$("#search__result .result__goods").append('<div class="result__item" data-id="'+ data.goods[i].goods_id +'"><a href="'+ data.goods[i].url +'"><div class="result__image"><img src="'+ data.goods[i].image_icon +'" class="goods-image-icon" /></div><div class="result__name"><span>'+ data.goods[i].goods_name +'</span></div></a></div>');
+					if(i <= 20){
+						$("#search__result .result__goods").append('<a class="result__item flex" href="'+ data.goods[i].url +'" data-id="'+ data.goods[i].goods_id +'"><div class="result__image"><img src="'+ data.goods[i].image_icon +'" class="goods-image-icon" /></div><div class="result__name"><span>'+ data.goods[i].goods_name +'</span></div></a>');
 					}
 					// Если последняя итерация цикла вставим кнопку "показать все"
-					if(i > 3){
+					if(i > 20){
 						$('.result__showAll').show();
 					}
 				}
