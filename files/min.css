@@ -7,7 +7,7 @@
 #noty_layout__bottom {bottom: 0;left: 0;width: 100%;max-width: 100%;}
 #noty_layout__bottomLeft {bottom: 20px;left: 20px;width: 325px;}
 #noty_layout__bottomCenter {bottom: 5%;left: 50%;width: 325px;-webkit-transform: translate(-webkit-calc(-50% - .5px)) translateZ(0) scale(1, 1);transform: translate(calc(-50% - .5px)) translateZ(0) scale(1, 1);}
-#noty_layout__bottomRight {bottom: 20px;right: 20px;width: 480px;}
+#noty_layout__bottomRight {bottom: 20px;right: 20px;max-width: 560px;width: auto;}
 #noty_layout__center {top: 50%;left: 50%;width: 325px;-webkit-transform: translate(-webkit-calc(-50% - .5px), -webkit-calc(-50% - .5px)) translateZ(0) scale(1, 1);transform: translate(calc(-50% - .5px), calc(-50% - .5px)) translateZ(0) scale(1, 1);}
 #noty_layout__centerLeft {top: 50%;left: 20px;width: 325px;-webkit-transform: translate(0, -webkit-calc(-50% - .5px)) translateZ(0) scale(1, 1);transform: translate(0, calc(-50% - .5px)) translateZ(0) scale(1, 1);}
 #noty_layout__centerRight {top: 50%;right: 20px;width: 325px;-webkit-transform: translate(0, -webkit-calc(-50% - .5px)) translateZ(0) scale(1, 1);transform: translate(0, calc(-50% - .5px)) translateZ(0) scale(1, 1);}
@@ -28,19 +28,24 @@
 .noty_bar .noty_body {padding: 0;font-size: 14px;}
 .noty_type__info, .noty_theme__metroui.noty_type__information {background-color: #03A9F4;color: #FFF;}
 .noty_type__alert, .noty_theme__metroui.noty_type__notification {background-color: #fff;color: #1d1d1d;}
-.noty_type__success a, .noty_type__success a:visited, .noty_type__success a:focus, .noty_type__success a:hover {color: #C8E6C9;}
-.noty_type__warning a, .noty_type__warning a:visited, .noty_type__warning a:focus, .noty_type__warning a:hover {color: #FFCCBC;}
+.noty_type__success a, .noty_type__success a:visited, .noty_type__success a:focus, .noty_type__success a:hover {}
+.noty_type__warning a, .noty_type__warning a:visited, .noty_type__warning a:focus, .noty_type__warning a:hover {}
 /*** Страница: Ajax добавление товара в корзину ***/
 .noty_layout {border-radius: 3rem;}
-.noty__addto {color: #ffffff;display: flex;align-items: center;flex-wrap: wrap;}
-.noty_type__success .noty__addto {background-color: #00acc5;}
-.noty_type__warning .noty__addto {background-color: #f44d69;}
-.noty__addto i {width: 6rem;height: 6rem;font-size: 3rem;display: flex;align-items: center;justify-content: center;}
-.noty__addto a {font-weight: bold;}
-.noty__message {width: calc(100% - 6rem);padding: 1rem;}
-.noty_type__success a, .noty_type__success a:visited, .noty_type__success a:focus, .noty_type__success a:hover {color: inherit;}
-.noty_type__success.noty_has_progressbar .noty_progressbar {background-color: #0194aa;opacity: 1;}
-.noty_type__warning.noty_has_progressbar .noty_progressbar {background-color: #8d2b3b;opacity: 1;}
+.noty__addto {padding: 2rem;}
+.noty__addto i {font-size: 1.5rem;margin-right: 1rem;}
+.noty_type__success .noty__addto {background-color: #E5E5E5;}
+.noty_type__warning .noty__addto {background-color: #E5E5E5;}
+.noty__image {width: 9rem;height: 9rem;}
+.noty__content {width: calc(100% - 9rem);padding-right: 2rem;}
+.noty__title {font-size: 1.125rem;font-family: 'Playfair Display';text-transform: uppercase;text-align: center;}
+.noty__title i + span {width: calc(100% - 2.5rem);}
+.noty__message {margin-top: 1.5rem;display: block;}
+.noty__price {margin-top: 1rem;}
+.noty_type__success.noty_has_progressbar .noty_progressbar {background-color: #c0c0c0;opacity: 1;}
+.noty_type__warning.noty_has_progressbar .noty_progressbar {background-color: #c0c0c0;opacity: 1;}
+.noty__link {color: #70787D;}
+.noty_type__warning {text-align: center;}
 
 .animated {
 -webkit-animation-duration: 1s;

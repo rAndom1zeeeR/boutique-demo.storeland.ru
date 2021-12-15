@@ -223,12 +223,14 @@ function ajaxForms(id,flag,successMessage,errorMessage){
         success: function(d){
           var serverCall = JSON.parse(d).status;
           if(serverCall == "ok"){
-            $.fancybox.close();
+						setTimeout(function () {
+							$.fancybox.close();
+						},1000);
             t.hide();
             t.find('.form__input').val(' ');
             t.parent().append('<div class="form__text">'+ errorMessage +'</div>');
             new Noty({
-              text: '<div class="noty__addto"><i class="icon-check"></i><div class="noty__message">' + successMessage + '</div></div>',
+              text: '<div class="noty__addto"><div class="noty__title">Успешно</div><div class="noty__message">' + successMessage + '</div></div>',
               layout:"bottomRight",
               type:"success",
               easing:"swing",
@@ -238,7 +240,7 @@ function ajaxForms(id,flag,successMessage,errorMessage){
                 easing: 'swing',
                 speed: 400
               },
-              timeout:"2000",
+              timeout:"4000",
               progressBar:true
             }).show();
             flag = true;
@@ -250,7 +252,7 @@ function ajaxForms(id,flag,successMessage,errorMessage){
         t.find('.form__input').val(' ');
         t.parent().find('.form__text').hide();
         new Noty({
-          text: '<div class="noty__addto"><i class="icon-close"></i><div class="noty__message">' + errorMessage + '</div></div>',
+          text: '<div class="noty__addto"><div class="noty__title">Не удалось</div><div class="noty__message">' + errorMessage + '</div></div>',
           layout:"bottomRight",
           type:"warning",
           easing:"swing",
@@ -260,7 +262,7 @@ function ajaxForms(id,flag,successMessage,errorMessage){
             easing: 'swing',
             speed: 400
           },
-          timeout:"2000",
+          timeout:"4000",
           progressBar:true
         }).show();
       }
@@ -1285,6 +1287,8 @@ function quickViewMod() {
 			block.removeClass('productViewQuick');
 			block.addClass('productViewMod');
 			block.addClass('modal');
+			block.find('.productView__addto .button').removeClass('button5').addClass('button2');
+			block.find('.productView__image img').attr('src', block.find('.productView__image img').data('src'))
 			return block;
 		}
 		// Быстрый просмотр товара
@@ -1457,11 +1461,11 @@ function addCart() {
 				// Анализ системного сообщения в коризне
 				var str = $(data).html();
 				// Проверяем текст сообщения на наличие ошибки
-				if (str.indexOf("Не удалось добавить товар") != -1) {
+				if (str.indexOf("Не удалось") != -1) {
 					// Сообщение с ошибкой
 					if(typeof(Noty) == "function") {
 						new Noty({
-							text: '<div class="noty__addto"><i class="icon-close"></i><div class="noty__message">'+ $(data).html() + '</div></div>',
+							text: str,
 							layout:"bottomRight",
 							type:"warning",
 							theme:"",
@@ -1488,7 +1492,7 @@ function addCart() {
 					// Сообщение с успешным добавлением
 					if(typeof(Noty) == "function") {
 						new Noty({
-							text: '<div class="noty__addto"><i class="icon-check"></i><div class="noty__message">'+ $(data).html() + '</div></div>',
+							text: str,
 							layout:"bottomRight",
 							type:"success",
 							theme:"",
@@ -1554,6 +1558,7 @@ function addTo() {
 		var atl = $(this).closest('.product__links');
 		var atlS = $(this).closest('.product__shop');
 		var flag = 0;
+
 		$('.addto__compare .addto__item').each(function(){
 			if($(this).attr('data-id') == pDataid){
 				flag = 1;
@@ -1611,6 +1616,7 @@ function addTo() {
 							a.addClass('added');
 							atl.addClass('added');
 							atlS.addClass('added');
+							var textLabel = 'Добавлено в сравнение'
 						} else {
 							var
 									from = delUrl
@@ -1622,6 +1628,7 @@ function addTo() {
 							a.removeClass('added');
 							atl.removeClass('added');
 							atlS.removeClass('added');
+							var textLabel = 'Удалено из сравнения'
 						}
 
 						// Если указано, что изменилось число товаров на сравнении
@@ -1654,10 +1661,14 @@ function addTo() {
 						//if(aText.length) {
 						//  aText.text(aText.attr(isAdd == 1 ? 'data-action-text-del' : 'data-action-text-add'));
 						//}
+						
+						// Блок Сообщения
+						var textContainer = '<div class="noty__addto flex"><div class="noty__content"><a class="noty__title flex" href="'+ pageUrl +'"><i class="icon-compare"></i><span>'+ textLabel +'</span></a><a class="noty__message" href="'+ pUrl +'">'+ pName +'</a><div class="noty__price price__now '+ pDataChar +'"><span class="num">' + addSpaces(pDataPrice) + '</span></div></div><div class="noty__image flex-center"><img src="'+ pImg +'" /></div></div>';
+
 						// Если есть функция, которая отображает сообщения пользователю
 						if(typeof(Noty) == "function") {
 							new Noty({
-								text: '<div class="noty__addto"><i class="icon-check"></i><div class="noty__message">'+ data.message + '</div></div>',
+								text: textContainer,
 								layout:"bottomRight",
 								type:"success",
 								theme:"",
@@ -1681,10 +1692,13 @@ function addTo() {
 							}).show();
 						}
 					} else if('error' == data.status) {
+						// Блок Сообщения
+						var textContainer = '<div class="noty__addto"><a class="noty__title flex-center" href="'+ pageUrl +'"><span>Не удалось</span></a><div class="noty__message"><span>Для добавления товара в сравнение Вам необходимо </span><a class="noty__link" href="/catalog">перейти в каталог</a></div></div></div>';
+
 						// Если есть функция, которая отображает сообщения пользователю
 						if(typeof(Noty) == "function") {
 							new Noty({
-								text: '<div class="noty__addto"><i class="icon-close"></i><div class="noty__message">'+ data.message + '</div></div>',
+								text: textContainer,
 								layout:"bottomRight",
 								type:"warning",
 								theme:"",
@@ -1713,26 +1727,26 @@ function addTo() {
 			return false;
 		}
 	});
+
   // Добавление/удаление товара на сравнение/Сохраненное через ajax
 	$('.add-favorites').off('click').click(function(){
 		// Объект ссылки, по которой кликнули
 		var
 				a = $(this)
+				isAdd = a.attr('data-action-is-add'),
 				addUrl = a.attr('data-action-add-url'),
 				delUrl = a.attr('data-action-delete-url'),
 				addTitle = a.attr('data-action-add-title'),
 				delTitle = a.attr('data-action-delete-title'),
-				isAdd = a.attr('data-action-is-add'),
+				pageUrl = a.attr('data-action-url'),
 				pName = a.attr('data-prodname'),
 				pUrl = a.attr('data-produrl'),
 				pImg = a.attr('data-prodimg'),
-				pPrice = a.attr('data-prodprice'),
 				pDataid = a.attr('data-id'),
 				pDataPrice = a.attr('data-mod-price'),
 				pDataChar = a.attr('data-char-code'),
 				pDataMod = a.attr('data-mod-id'),
-				pDataGoodsid = a.attr('data-goodsid'),
-				aText = a.parent().find('.add-favorites'),
+				aText = a.parent().find('.add-compare'),
 				addTooltip = a.attr('data-action-text-add'),
 				delTooltip = a.attr('data-action-text-del'),
 				requestUrl = a.attr('href');
@@ -1740,6 +1754,7 @@ function addTo() {
 		var atl = $(this).closest('.product__links');
 		var atlS = $(this).closest('.product__shop');
 		var flag = 0;
+
 		$('.addto__favorites .addto__item').each(function(){
 			if($(this).attr('data-id') == pDataid){
 				flag = 1;
@@ -1779,7 +1794,7 @@ function addTo() {
 										'</div>' +
 									'</div>' +
 									'<div class="addto__actions flex">' +
-              			'<a href="'+ delUrl +'?id='+ pDataMod +'" data-id="'+ pDataMod +'" class="addto__remove remove flex-center" title="Убрать товар из списка сравнения" onclick="removeFromFavorites($(this))"><i class="icon-close"></i></a>' +
+              			'<a href="'+ delUrl +'?id='+ pDataMod +'" data-id="'+ pDataMod +'" class="addto__remove remove flex-center" title="Убрать товар из списка избранного" onclick="removeFromFavorites($(this))"><i class="icon-close"></i></a>' +
               		'</div>' +
               	'</div>' +
               '</div>' +
@@ -1797,6 +1812,7 @@ function addTo() {
 							a.addClass('added');
 							atl.addClass('added');
 							atlS.addClass('added');
+							var textLabel = 'Добавлено в избранное'
 						} else {
 							var
 									from = delUrl
@@ -1808,6 +1824,7 @@ function addTo() {
 							a.removeClass('added');
 							atl.removeClass('added');
 							atlS.removeClass('added');
+							var textLabel = 'Удалено из избранного'
 						}
 
 						// Если указано, что изменилось число товаров на сравнении
@@ -1840,10 +1857,14 @@ function addTo() {
 						//if(aText.length) {
 						//  aText.text(aText.attr(isAdd == 1 ? 'data-action-text-del' : 'data-action-text-add'));
 						//}
+
+						// Блок Сообщения Успешно
+						var textContainer = '<div class="noty__addto flex"><div class="noty__content"><a class="noty__title flex" href="'+ pageUrl +'"><i class="icon-favorites"></i><span>'+ textLabel +'</span></a><a class="noty__message" href="'+ pUrl +'">'+ pName +'</a><div class="noty__price price__now '+ pDataChar +'"><span class="num">' + addSpaces(pDataPrice) + '</span></div></div><div class="noty__image flex-center"><img src="'+ pImg +'" /></div></div>';
+						
 						// Если есть функция, которая отображает сообщения пользователю
 						if(typeof(Noty) == "function") {
 							new Noty({
-								text: '<div class="noty__addto"><i class="icon-check"></i><div class="noty__message">'+ data.message + '</div></div>',
+								text: textContainer,
 								layout:"bottomRight",
 								type:"success",
 								theme:"",
@@ -1867,10 +1888,13 @@ function addTo() {
 							}).show();
 						}
 					} else if('error' == data.status) {
+						// Блок Сообщения Ошибка
+						var textContainer = '<div class="noty__addto"><a class="noty__title flex-center" href="'+ pageUrl +'"><span>Не удалось</span></a><div class="noty__message"><span>Для добавления товара в избранное Вам необходимо </span><a class="noty__link" href="/user/login">войти в личный кабинет или зарегистрироваться</a></div></div></div>';
+
 						// Если есть функция, которая отображает сообщения пользователю
 						if(typeof(Noty) == "function") {
 							new Noty({
-								text: '<div class="noty__addto"><i class="icon-close"></i><div class="noty__message">'+ data.message + '</div></div>',
+								text: textContainer,
 								layout:"bottomRight",
 								type:"warning",
 								theme:"",
@@ -2490,8 +2514,8 @@ function pageGoods() {
 			320:{items:2},
 			480:{items:3},
 			641:{items:3},
-			768:{items:4},
-			992:{items:2},
+			768:{items:2},
+			992:{items:3},
 			1200:{items:3}
 		}
 	});
@@ -2580,15 +2604,14 @@ function pageGoods() {
 	function relatedViews(){
 		var id = $('.related__views');
 		var carousel = id.find('.owl-carousel');
-		var buttons = id.find('.products__buttons');
 		var dots = id.find('.owl-dots');
 		carousel.owlCarousel({
-			items: 5,
-			margin: 32,
+			items: 2,
+			margin: 16,
 			loop: false,
 			rewind: true,
 			lazyLoad: true,
-			nav: false,
+			nav: true,
 			navContainer: '',
 			navText: [ , ],
 			dots: true,
@@ -2606,51 +2629,12 @@ function pageGoods() {
 			responsive: {
 				0:{items:1, autoHeight: true},
 				320:{items:1, autoHeight: true},
-				480:{items:2},
+				480:{items:1},
 				640:{items:2},
-				768:{items:3},
-				992:{items:4},
-				1200:{items:5}
-			},
-			onInitialized: number,
-			onChanged: number,
-			onResize: number,
-			onResized: number
-		});
-
-		// Нумерация страниц
-		function number() {
-			dots.find('.owl-dot').each(function(i){
-				$(this).find('span').text(i+1)
-			});
-			// Скрываем кнопки навигации
-			dots.hasClass('disabled') ? buttons.hide() : buttons.show();
-			// Скрываем не активные элементы навигации
-			var dotActiveIndex = dots.find('.owl-dot.active').index();
-			var dotVisibleStep = 2;
-			var dotPrevActiveIndex = dotActiveIndex - dotVisibleStep;
-			var dotNextActiveIndex = dotActiveIndex + dotVisibleStep;
-
-			dots.find('.owl-dot')
-				.hide()
-				.filter(function(index, item){
-					if(index >= dotPrevActiveIndex &&  index <= dotNextActiveIndex){
-						return true;
-					}
-					return false;
-				})
-				.show()
-				.addClass('show')
-		}
-
-		// Навигация при клике НАЗАД
-		buttons.find('.prev').on('click', function () {
-			carousel.trigger('prev.owl.carousel');
-		});
-
-		// Навигация при клике ВПЕРЕД
-		buttons.find('.next').on('click', function () {
-			carousel.trigger('next.owl.carousel');
+				768:{items:1},
+				992:{items:2},
+				1200:{items:2}
+			}
 		});
 	}
 	// Сопутствующие товары Запуск Слайдера
@@ -2817,7 +2801,7 @@ function prodQty(){
 			t.val(max);
 			val = max;
 			new Noty({
-				text: '<div class="noty__addto"><i class="icon-close"></i><div class="noty__message">Внимание! Вы пытаетесь положить в корзину товара больше, чем есть в наличии</div></div>',
+				text: '<div class="noty__addto"><div class="noty__title">Не удалось</div><div class="noty__message">Внимание! Вы пытаетесь положить в корзину товара больше, чем есть в наличии</div></div>',
 				layout:"bottomRight",
 				type:"warning",
 				easing:"swing",
@@ -3215,7 +3199,7 @@ function cartDelete(s){
 			url:url,
 			cache:false,
 			success:function(d){
-				$('.cartTable').html($(d).find('.cartTable').html());
+				$('.page-cartTable').html($(d).find('.page-cartTable').html());
 				cartQuantity();
 				$('#startOrder').on('click', function() {
 					startOrder();

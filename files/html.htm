@@ -1371,7 +1371,7 @@
 						{% ELSEIF MOD_LNAME=catalog %}
 						<h1 class="title title_separator"><span>{CATEGORY_NAME}</span></h1>
 						{% ELSEIF MOD_LNAME=cart %}
-						<h1 class="title title_separator"><a href="{CART_URL}" title="Корзина"><span>Корзина<</span>/a></h1>
+						<h1 class="title title_separator"><a href="{CART_URL}" title="Корзина"><span>Корзина</span></a></h1>
 						{% ENDIF %}
 					</div>
 				</div>
@@ -1512,6 +1512,7 @@
 		<section id="viewed-callback">
 			<div class="container">
 				<div class="flex">
+					{% IFNOT recently_viewed_goods_empty %}
 					<div class="viewed">
 						<div class="block__title">
 							<h2 class="title title_separator"><span>Вы смотрели</span></h2>
@@ -1729,7 +1730,8 @@
 							{% ENDFOR %}
 						</div>
 					</div>
-					<div class="callback">
+					{% ENDIF %}
+					<div class="callback {% IF recently_viewed_goods_empty %}full{% ENDIF %}">
 						<div class="block__title">
 							<h2 class="title title_separator"><span>Мы всегда на связи</span></h2>
 						</div>
@@ -2435,9 +2437,6 @@
 
 
 
-
-
-
 	</div>
 
 <!-- Фиксы для IE -->
@@ -2461,7 +2460,7 @@
 <script async type="text/javascript">
 	// Модальное окно уведомления при отправке сообщения
 	var type = '{% IF FORM_NOTICE_IS_GOOD %}success{% ELSE %}warning{% ENDIF %}';
-	var text = '<div class="noty__addto"><i class="icon-{% IF FORM_NOTICE_IS_GOOD %}check{% ELSE %}warning{% ENDIF %}"></i><div class="noty__message">{FORM_NOTICE | nl2br}</div></div>'
+	var text = '<div class="noty__addto"><div class="noty__title">{% IF FORM_NOTICE_IS_GOOD %}Успешно{% ELSE %}Не удалось{% ENDIF %}</div><div class="noty__message">{FORM_NOTICE | nl2br}</div></div>'
 	setTimeout(function () {
 		notyStart(text, type)
 	}, 1000);
@@ -2512,6 +2511,9 @@ $(document).ready(function(){
 </script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery-star-rating.js?design=Deluxe"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=THEMENAME"></script>
+<style>
+	#page__title {display: none;}
+</style>
 {% ENDIF %}
 
 {% IF MOD_LNAME = compare %}
