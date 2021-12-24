@@ -3336,6 +3336,7 @@ $(document).ready(function(){
 	viewed();
 	footerLinksMore();
 	mobileMenu();
+	sideNav();
   // Ленивая загрузка
   $(function(){
     var observer = lozad(); // lazy loads elements with default selector as '.lozad'
@@ -3399,6 +3400,7 @@ $(document).ready(function(){
 
 });
 
+// Функции клонирования текста в бегущей строке
 function clonePromoText() {
 	$('.promo__line').each(function(){
 		var t = $(this);
@@ -3409,4 +3411,42 @@ function clonePromoText() {
 			text.clone().appendTo(t);
 		}
 	});
+}
+
+// Функции боковой навигации
+function sideNav(){
+	$('.sidenav__item[data-open]').on('click', function(event){
+		// if(getClientWidth() < 768){
+		// 	return (true)
+		// }
+		event.preventDefault();
+		$('div, a, form').removeClass('opened');
+		var value = $(this).data('open');
+		if ($('.sidenav__content[data-content="'+ value +'"]').hasClass('opened')){
+			$(this).removeClass('opened');
+			$(this).parent().removeClass('opened');
+			$('.sidenav').removeClass('opened');
+			$('#overlay').removeClass('opened');
+			$('.sidenav__content[data-content="'+ value +'"]').removeClass('opened');
+		}else{
+			$(this).addClass('opened');
+			$(this).parent().addClass('opened');
+			$('.sidenav').addClass('opened');
+			$('#overlay').addClass('opened');
+			$('.sidenav__content[data-content="'+ value +'"]').addClass('opened');
+		}
+		return false;
+	});
+
+	// Открытие Меню и Каталога в сайдбаре
+	$('.addto__menu-nav a').on('click', function(event){
+		event.preventDefault();
+		var id = $(this).data('id')
+		console.log('id', id)
+		$('.addto__menu-nav a').removeClass('active');
+		$('.addto__menu-item[data-id]').removeClass('active');
+		$(this).addClass('active');
+		$('.addto__menu-item[data-id="'+ id +'"]').addClass('active');
+	});
+
 }

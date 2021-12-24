@@ -120,7 +120,7 @@ textarea.error:-ms-input-placeholder {color: red;}
 .button, button, [class^="button-"], .paymentFormSubmitLink, .paymentFormTbodySubmitButton {color: #212121;background: #A9BDCE;padding: 0 4rem;line-height: 3rem;border: 0;border-radius: 3rem 0;text-align: center;font-size: 1rem;font-family: 'Montserrat', sans-serif;cursor: pointer;display: inline-block;position: relative;transition: all 0.3s ease;}
 .button:hover, button:hover, [class^="button-"]:hover, .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover, .button.active, .button.opened, [class^="button-"].active, [class^="button-"].opened {color: #212121;background-color: #CFA191;}
 .wrapper [class*="button-"]:before {content: '';border: 1px solid #70787D;border-radius: 3rem 0;left: 0rem;top: 0rem;position: absolute;width: 100%;height: 100%;transition: all 0.3s ease;}
-.wrapper [class*="button-"]:hover:before {left: .5rem;top: .5rem;opacity: 1;}
+.wrapper [class*="button-"]:hover:before, .wrapper [class*="button-"].active:before {left: .5rem;top: .5rem;opacity: 1;}
 .button-primary:before {opacity: 0;}
 .button-secondary {background-color: #EFEFEF;}
 .button-secondary:hover, .button-secondary.active, .button-secondary.opened {background-color: #CFA191;}
@@ -547,24 +547,23 @@ h6 {font-size: 0.875rem;}
 /**************************************/
 .addto__title {display: none;font-size: 1.25rem;font-weight: bold;margin-bottom: 2rem;}
 .addto__empty {font-size: 1.25rem;font-weight: bold;}
-.addto__items {max-height: 24.25rem;overflow-y: auto;}
-.addto__item {margin-bottom: 2rem;border: 1px solid #dae6ec;transition: all 0.3s ease;align-items: stretch;}
+.addto__items {max-height: 14rem;overflow-y: auto;}
+.addto__item {margin-top: 1rem;transition: all 0.3s ease;align-items: stretch;}
 .addto__image {width: 6rem;height: 6rem;}
 .addto__content {width: calc(100% - 6rem);}
-.addto__info {padding: .75rem 1rem;width: calc(100% - 3rem);}
+.addto__info {padding: .75rem 1rem;width: calc(100% - 2rem);}
 .addto__name {max-height: 2.25rem;overflow: hidden;display: block;}
 .addto__price {margin-top: .75rem;}
 .addto__mod {display: none;}
 .addto__actions {flex-direction: column;}
-.addto__qty, .addto__remove {width: 3rem;height: 3rem;border-left: 1px solid #dae6ec;}
-.addto__qty {border-bottom: 1px solid #dae6ec;font-size: 1.25rem;}
-.addto__remove {height: 6rem;}
-.addto__cart .addto__remove {height: 3rem;}
+.addto__remove {width: 2rem;height: 2rem;}
+.addto__qty {font-size: 1rem;}
 .addto__total {display: none;}
 .addto__empty {margin: 0;}
+.addto__separator {margin: 0 .25rem;}
 .has-items .addto__title {display: block;}
 .has-items .addto__empty {display: none;}
-.addto__buttons {display: none;}
+.addto__buttons {display: none;padding: .875rem 1rem;}
 .has-items .addto__buttons {display: flex;}
 .addto__buttons .button {padding: 0 3rem;}
 .login .addto__buttons {margin-top: 2rem;}
@@ -1820,7 +1819,61 @@ header .overflowMenu.opened {display: flex;}
 }
 
 
+/**************************************/
+/*** Боковая навигация ***/
+/**************************************/
+.wrapper {overflow: hidden;}
+.sidenav {position: fixed;top: 30%;right: 0;z-index: 15;}
+.sidenav__item {width: 3.75rem;height: 3.75rem;padding: .5rem;background-color: #A9BDCE;border: 1px solid #ffffff;transition: all 0.3s ease;}
+.sidenav__item:hover {background-color: #CFA191;cursor: pointer;}
+.sidenav__item:hover a {color: #212121;}
+.sidenav__item:first-child {border-radius: 2.5rem 0px 0px 0px;}
+.sidenav__item:last-child {border-radius: 0px 0px 0px 2.5rem;}
+.sidenav__item i {font-size: 1.5rem;line-height: 1;}
+.sidenav__item [data-count] {margin-left: .25rem;display: none;}
+.sidenav__contents {position: absolute;top: 0;right: 0;width: 400px;background-color: #EFEFEF;transition: all 0.3s ease-in-out;transform: translateX(400px);}
+.sidenav__items {transition: all 0.3s ease-in-out;transform: translateX(0);}
+.sidenav__content {display: none;min-height: 16.625rem;padding-left: 1rem;}
+.sidenav__content.opened {display: block;}
+.page-favorites .favorites {display: none;}
+/** **/
+.addto__menu-nav {padding: 0 0.25rem;}
+.addto__menu-nav a {margin-top: 2rem;}
+.addto__menu-content {max-height: 20rem;overflow-x: auto;margin: 3rem 0;}
+.addto__menu-content [data-id] {display: none;}
+.addto__menu-content [data-id].active {display: block;}
+.addto__menu-content-link {display: block;margin-bottom: 2rem;text-align: center;}
+.addto__menu-content-link:last-child {margin-bottom: 0;}
+/** **/
+.addto__menu-contacts {padding: 0 0 1rem 0;}
+.addto__menu-contacts .contacts__block {margin: 1rem 0;}
+.addto__menu-contacts .contacts__block-content {width: auto;}
+.addto__menu-contacts .contacts__block-link {font-size: .875rem;}
 
+@media (min-width: 768px) {
+	.sidenav.opened .sidenav__items {position: absolute;transform: translateX(-460px);}
+	.sidenav.opened .sidenav__contents {right: 0;transform: translateX(0);}
+}
+@media (max-width: 767.98px) {
+	.sidenav {top: auto;bottom: 0;left: 0;}
+	.sidenav__items {width: 100%;display: flex;align-items: center;flex-wrap: wrap;}
+	.sidenav__item {flex-grow: 1;height: 3rem;padding: 0;}
+	.sidenav__item:nth-child(n) {border-radius: 0;}	
+	.sidenav.opened .sidenav__contents {right: 0;transform: translateX(0);width: 100%;top: auto;bottom: 3rem;}
+	.sidenav__content {min-height: 100%;}
+}
+@media (max-width: 479.98px) {
+	.addto__menu-nav {flex-direction: column;}
+}
+@media (max-width: 1440px) {
+	.page-cart .sidenav {top: auto;bottom: 0;left: 0;}
+	.page-cart .sidenav__items {width: 100%;display: flex;align-items: center;flex-wrap: wrap;}
+	.page-cart .sidenav__item {border: 0;flex-grow: 1;height: 4rem;padding: 0;}
+	.page-cart .sidenav__item:nth-child(n) {border-radius: 0;}	
+	.page-cart .sidenav.opened .sidenav__contents {right: 0;transform: translateX(0);width: 100%;top: auto;bottom: 3rem;}
+	.page-cart .sidenav__content {min-height: 100%;}
+	.page-cart footer {padding-bottom: 4rem;}
+}
 
 
 

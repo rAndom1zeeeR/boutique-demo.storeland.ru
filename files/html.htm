@@ -75,7 +75,242 @@
 	<!-- Основной контейнер -->
 	<div class="wrapper">
 
+		<!-- Фон -->
 		<div id="overlay"></div>
+
+		<!-- Боковая навигация -->
+		<div class="sidenav">
+			<div class="sidenav__items">
+				<div class="sidenav__item menu flex-center" data-open="menu">
+					<a class="flex-center" href="javascript:;" title="Меню">
+						<i class="icon-menu"></i>
+					</a>
+				</div>
+
+				<div class="sidenav__item cart flex-center {% IF CART_COUNT_TOTAL > 0 %}has-items{% ENDIF %}" data-open="cart">
+					<a class="flex-center" href="{CART_URL}" title="Перейти в сравнение">
+						<i class="icon-cart"></i>
+						<span class="cart__count" data-count="{CART_COUNT_TOTAL}">{CART_COUNT_TOTAL}</span>
+					</a>
+				</div>
+				<div class="sidenav__item favorites flex-center {% IF FAVORITES_GOODS_COUNT > 0 %}has-items{% ENDIF %}" data-open="favorites">
+					<a class="flex-center" href="{FAVORITES_URL}" title="Перейти в сравнение">
+						<i class="icon-favorites"></i>
+						<span class="favorites__count" data-count="{FAVORITES_GOODS_COUNT}">{FAVORITES_GOODS_COUNT}</span>
+					</a>
+				</div>
+				{% IFNOT MOD_LNAME = compare && SETTINGS_COMPARE_DISABLE=0 %}
+				<div class="sidenav__item compare flex-center {% IF COMPARE_GOODS_COUNT > 0 %}has-items{% ENDIF %}" data-open="compare">
+					<a class="flex-center" href="{COMPARE_URL}" title="Перейти в сравнение">
+						<i class="icon-compare"></i>
+						<span class="compare__count" data-count="{COMPARE_GOODS_COUNT}">{COMPARE_GOODS_COUNT}</span>
+					</a>
+				</div>
+				{% ENDIF %}
+				<!-- Наверх -->
+				<div class="sidenav__item flex-center toTop" id="toTop">
+					<a class="flex-center" href="javascript:;" title="Перейти в сравнение">
+						<i class="icon-arrow_up"></i>
+					</a>
+				</div>
+			</div>
+			<div class="sidenav__contents">
+				<!-- Меню -->
+				<div class="addto__menu menu sidenav__content" data-content="menu">
+					<div class="addto__menu-nav flex justify-between">
+						<a href="javascript:;" class="button-primary active" data-id="menu"><span>Меню</span></a>
+						<a href="javascript:;" class="button-primary" data-id="catalog"><span>Каталог</span></a>
+					</div>
+					<div class="addto__menu-content">
+						<div class="addto__menu-item active" data-id="menu">
+							{% FOR menu %}
+								{% FOR header %}
+									{% FOR links %}
+										<a class="addto__menu-content-link {% IF menu.header.links.SELECTED %}active{%ENDIF%} {% IF menu.header.links.NAME = Каталог %}mainnav__catalog{%ENDIF%}" href="{menu.header.links.URL}" title="{% IF menu.header.links.TITLE %}{menu.header.links.TITLE}{% ELSE%}{menu.header.links.NAME}{% ENDIF %}" itemprop="url">
+											<span itemprop="name">{menu.header.links.NAME}</span>
+										</a>
+									{% ENDFOR %}
+								{% ENDFOR %}
+							{% ENDFOR %}
+						</div>						
+						<div class="addto__menu-item" data-id="catalog">
+							{% FOR catalog_full %}
+								{% IF catalog_full.HIDE || catalog_full.LEVEL > 0 %}{continue}{% ENDIF %}								
+								<a href="{catalog_full.URL}" data-level="{catalog_full.LEVEL}" class="addto__menu-content-link {% IF catalog_full.CURRENT %}active{% ENDIF %}">
+									<span>{catalog_full.NAME}</span>
+								</a>
+							{% ENDFOR catalog_full %}
+						</div>
+					</div>
+					<div class="addto__menu-contacts">
+						<!-- Почта -->
+						{% IF SETTINGS_STORE_EMAIL_MAIN %}
+						<div class="contacts__block flex-center">
+							<div class="contacts__block-icon"><i class="icon-mail"></i></div>
+							<div class="contacts__block-content">
+								<a class="contacts__block-link"
+									href="mailto:{SETTINGS_STORE_EMAIL_MAIN}"
+									title="{SETTINGS_STORE_EMAIL_MAIN}">
+									<span itemprop="email">{SETTINGS_STORE_EMAIL_MAIN}</span>
+								</a>
+							</div>
+						</div>
+						{% ENDIF %}
+						<!-- Телефон 1 -->
+						{% IF SETTINGS_STORE_PHONE_NUMBER1 %}
+						<div class="contacts__block flex-center">
+							<div class="contacts__block-icon"><i class="icon-phone"></i></div>
+							<div class="contacts__block-content">
+								<a class="contacts__block-link"
+									href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}"
+									title="{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}">
+									<span itemprop="telephone">{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}</span>
+								</a>
+							</div>
+						</div>
+						{% ENDIF %}
+						
+						<!-- ЛК -->
+						<div class="contacts__block flex-center">
+							<div class="contacts__block-icon"><i class="icon-user"></i></div>
+							<div class="contacts__block-content">
+								<a class="contacts__block-link" href="{USER_LOGIN_URL}" title="Войти в личный кабинет">
+									<span>Войти в ЛК</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					
+					
+
+				</div>
+				<!-- Выпадаюзая Корзина -->
+				<div class="addto__cart cart sidenav__content {% IF CART_COUNT_TOTAL > 0 %}has-items{% ENDIF %}" data-content="cart">
+					{% IFNOT cart_items_empty %}
+					<div class="addto__items">
+						{% FOR cart_items %}
+						<div class="addto__item flex" data-id="{cart_items.GOODS_ID}">
+							<a class="addto__image flex-center" href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}">
+								<img class="goods-image-icon" src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}" />
+							</a>
+							<div class="addto__content flex-stretch">
+								<div class="addto__info">
+									<!-- Название -->
+									<a class="addto__name" href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}">
+										<span>{cart_items.GOODS_NAME}</span>
+									</a>
+									{% IFNOT cart_items.distinctive_properties_empty %}
+									<div class="addto__mod">({% FOR distinctive_properties %}{cart_items.distinctive_properties.NAME}: {cart_items.distinctive_properties.VALUE}{% IFNOT cart_items.distinctive_properties.last %}, {% ENDIF %}{% ENDFOR %})</div>
+									{% ENDIF %}
+									<!-- Цена -->
+									<div class="addto__price {CURRENCY_CHAR_CODE}">
+										<span class="addto__qty">{cart_items.ORDER_LINE_QUANTITY}</span>
+										<span class="addto__separator">x</span>
+										<span class="price__now" data-price="{cart_items.GOODS_MOD_PRICE_NOW}">{cart_items.GOODS_MOD_PRICE_NOW | money_format}</span>
+									</div>
+								</div>
+								<div class="addto__actions flex">
+									<!-- Удаление -->
+									<a class="addto__remove remove flex-center" href="{cart_items.ORDER_LINE_DELETE_URL}" data-qty="{cart_items.ORDER_LINE_QUANTITY}" title="Удалить позицию" data-id="{cart_items.GOODS_ID}" onclick="removeFromCart($(this))">
+										<i class="icon-close"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+						{% ENDFOR %}
+					</div>
+					<div class="addto__total {CURRENCY_CHAR_CODE}">
+						<span class="addto__label">Итого:</span>
+						<span class="price__now cartSumNow">{CART_SUM_NOW | money_format}</span>
+					</div>
+					{% ENDIF %}
+					<div class="addto__empty">В корзине пока ничего нет</div>
+					<div class="addto__buttons flex justify-between">
+						<a class="button5 removeAll" href="{CART_TRUNCATE_URL}" onclick="removeFromCartAll($(this))" title="Очистить корзину">
+							<i class="icon-refresh"></i>
+							<span>Очистить</span>
+						</a>
+						<a href="{CART_URL}" class="button" title="Перейти в Корзину"><span>В корзину</span></a>
+					</div>
+				</div>
+				<!-- Избранное -->
+				<div class="addto__favorites favorites sidenav__content {% IF FAVORITES_GOODS_COUNT > 0 %}has-items{% ENDIF %}" data-content="favorites">
+					<div class="addto__items">
+						{% FOR favorites_goods %}
+						<div class="addto__item flex" data-id="{favorites_goods.ID}">
+							<a class="addto__image flex-center" href="{favorites_goods.URL}"title="{favorites_goods.NAME}">
+								<img class="goods-image-icon" src="{% IF favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{favorites_goods.IMAGE_ICON}{% ENDIF %}" alt="{favorites_goods.NAME}" />
+							</a>
+							<div class="addto__content flex-stretch">
+								<div class="addto__info">
+									<!-- Название -->
+									<a class="addto__name" href="{favorites_goods.URL}" title="{favorites_goods.NAME}">
+										<span>{favorites_goods.NAME}</span>
+									</a>
+									<!-- Цена -->
+									<div class="addto__price {CURRENCY_CHAR_CODE}">
+										<div class="price__now" data-price="{favorites_goods.MIN_PRICE_NOW}">{favorites_goods.MIN_PRICE_NOW | money_format}</div>
+									</div>
+								</div>
+								<div class="addto__actions flex">
+									<!-- Удаление -->
+									<a class="addto__remove remove flex-center" href="{FAVORITES_DELETE_URL}?id={favorites_goods.MIN_PRICE_NOW_ID}" onclick="removeFromFavorites($(this))" data-id="{favorites_goods.MIN_PRICE_NOW_ID}" title="Убрать товар из списка избранного">
+										<i class="icon-close"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+						{% ENDFOR %}
+					</div>
+					<div class="addto__empty">Ваш список избранного пуст</div>
+					<div class="addto__buttons flex justify-between">
+						<a class="button5 removeAll" href="{FAVORITES_RESET_URL}" onclick="removeFromFavoritesAll($(this))" title="Очистить список избранного">
+							<i class="icon-refresh"></i>
+							<span>Очистить</span>
+						</a>
+						<a href="{FAVORITES_URL}" class="button" title="Перейти к Избранное">В Избранное</a>
+					</div>
+				</div>
+				<!-- Сравнение -->
+				<div class="addto__compare compare sidenav__content {% IF COMPARE_GOODS_COUNT > 0 %}has-items{% ENDIF %}" data-content="compare">
+					<div class="addto__items">
+						{% FOR compare_goods %}
+						<div class="addto__item flex" data-id="{compare_goods.ID}">
+							<a class="addto__image flex-center" href="{compare_goods.URL}"title="{compare_goods.NAME}">
+								<img class="goods-image-icon" src="{% IF compare_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{compare_goods.IMAGE_ICON}{% ENDIF %}" alt="{compare_goods.NAME}" />
+							</a>
+							<div class="addto__content flex-stretch">
+								<div class="addto__info">
+									<!-- Название -->
+									<a class="addto__name" href="{compare_goods.URL}" title="{compare_goods.NAME}">
+										<span>{compare_goods.NAME}</span>
+									</a>
+									<!-- Цена -->
+									<div class="addto__price {CURRENCY_CHAR_CODE}">
+										<div class="price__now" data-price="{compare_goods.MIN_PRICE_NOW}">{compare_goods.MIN_PRICE_NOW | money_format}</div>
+									</div>
+								</div>
+								<div class="addto__actions flex">
+									<!-- Удаление -->
+									<a class="addto__remove remove flex-center" href="{COMPARE_DELETE_URL}?id={compare_goods.MIN_PRICE_NOW_ID}" onclick="removeFromCompare($(this))" data-id="{compare_goods.MIN_PRICE_NOW_ID}" title="Убрать товар из списка сравнения">
+										<i class="icon-close"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+						{% ENDFOR %}
+					</div>
+					<div class="addto__empty">Ваш список сравнения пуст</div>
+					<div class="addto__buttons flex justify-between">
+						<a class="button5 removeAll" href="{COMPARE_RESET_URL}" onclick="removeFromCompareAll($(this))" title="Очистить список сравнения">
+							<i class="icon-refresh"></i>
+							<span>Очистить</span>
+						</a>
+						<a href="{COMPARE_URL}" class="button" title="Перейти к Сравнению">В Сравнение</a>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<!-- Шапка -->
 		<header id="header">
@@ -2432,137 +2667,131 @@
 				</div>
 			</div>
 		</noindex>
-
-
-
-
-
 	</div>
-
-<!-- Фиксы для IE -->
-{% IF user_agent_ie || user_agent_mozilla %}
-<script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.find,Promise,Object.assign"></script>
-<script>
-	// Picture element HTML5 shiv
-	document.createElement("picture");
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.3/picturefill.min.js" async></script>
-<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME">
-<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}fix-ie.css?design=THEMENAME">
-{% ENDIF %}
-
-<!-- В случае их возникновения JS ошибок, отображаем их владельцу магазина для возможности отладки. Покупатели сообщений о JS ошибках не видят -->
-{% IF JAVASCRIPT_BUG_HUNTING_URL %}
-<script type="text/javascript" src="{JAVASCRIPT_BUG_HUNTING_URL}"></script>
-{% ENDIF %}
-<!-- ВНИМАНИЕ! Если Вы удалите код ниже, то это повлияет на работу вашего сайта. Пожалуйста ничего не удаляйте без консультации у специалистов. -->
-{% IF FORM_NOTICE %}
-<script async type="text/javascript">
-	// Модальное окно уведомления при отправке сообщения
-	var type = '{% IF FORM_NOTICE_IS_GOOD %}success{% ELSE %}warning{% ENDIF %}';
-	var text = '<div class="noty__addto"><div class="noty__title">{% IF FORM_NOTICE_IS_GOOD %}Успешно{% ELSE %}Не удалось{% ENDIF %}</div><div class="noty__message">{FORM_NOTICE | nl2br}</div></div>'
-	setTimeout(function () {
-		notyStart(text, type)
-	}, 1000);
-</script>
-{% ENDIF %}
-
-{% IF index_page %}
-<script type="text/javascript">	
-// Загрузка основных функций шаблона для главной страницы
-$(document).ready(function(){
-	//counterDate();
-	newsCarousel();
-	slideShow();
-	pdtSale();
-	pdtBest();
-	pdtNew();
-	pdtSales();
-	pdtCatalog();
-	offer();
-	clonePromoText();
-});
-</script>
-{% ENDIF %}
-
-{% IF MOD_LNAME = catalog %}
-<script type="text/javascript">	
-// Загрузка основных функций шаблона Товары
-$(document).ready(function(){
-	catalog();
-	priceFilter();
-});
-</script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}jqueryui.js?design=THEMENAME"></script>
-{% ENDIF %}
-
-{% IF MOD_LNAME = goods %}
-<script type="text/javascript">	
-// Загрузка основных функций шаблона Товар
-$(document).ready(function(){
-	pageGoods();
-	goodsModification();
-	newModification();
-	quantity();
-	prodQty();
-	monthNames();
-	initTabs();	
-});
-</script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery-star-rating.js?design=Deluxe"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=THEMENAME"></script>
-<style>
-	#page__title {display: none;}
-</style>
-{% ENDIF %}
-
-{% IF MOD_LNAME = compare %}
-<script type="text/javascript">	
-// Загрузка основных функций шаблона Сравнения
-$(document).ready(function(){
-	compare()
-});
-</script>
-{% ENDIF %}
-
-{% IF MOD_LNAME = cart || MOD_LNAME = order %}
-<script type="text/javascript">
-// Загрузка основных функций шаблона
-$(document).ready(function(){
-	cartQuantity();
-	// Вызов функции быстрого заказа в корзине
-	$('#startOrder').on('click', function() {
-		startOrder();
-		return false;
-	});
-});
-</script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}debounce.js?design=THEMENAME"></script>
-{% ENDIF %}
-
-<!-- Слайдер. Карусель -->
-<link rel="preload" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript>
+	<!-- /END Основной контейнер -->
+	<!-- Фиксы для IE -->
+	{% IF user_agent_ie || user_agent_mozilla %}
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.find,Promise,Object.assign"></script>
+	<script>
+		// Picture element HTML5 shiv
+		document.createElement("picture");
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.3/picturefill.min.js" async></script>
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME">
-</noscript>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}owl-carousel.js?design=THEMENAME"></script>
-<!-- Скрипты магазина-->
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}main.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}search.js?design=THEMENAME"></script>
-<!-- Уведомления о действиях -->
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}noty.min.js?design=THEMENAME"></script>
-<!-- Маска ввода-->
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery.maskedinput.min.js?design=THEMENAME"></script>
-<!-- Валидатор форм -->
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery.validate.min.js?design=THEMENAME"></script>
-<!-- Модальные окна -->
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery.fancybox.min.js?design=THEMENAME"></script>
-<!-- Предзагрузчик изображений -->
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}lozad.min.js?design=THEMENAME"></script>
-<!-- Определение браузера -->
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}detect.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}forall.js?design=THEMENAME"></script>
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}fix-ie.css?design=THEMENAME">
+	{% ENDIF %}
 
+	<!-- В случае их возникновения JS ошибок, отображаем их владельцу магазина для возможности отладки. Покупатели сообщений о JS ошибках не видят -->
+	{% IF JAVASCRIPT_BUG_HUNTING_URL %}
+	<script type="text/javascript" src="{JAVASCRIPT_BUG_HUNTING_URL}"></script>
+	{% ENDIF %}
+	<!-- ВНИМАНИЕ! Если Вы удалите код ниже, то это повлияет на работу вашего сайта. Пожалуйста ничего не удаляйте без консультации у специалистов. -->
+	{% IF FORM_NOTICE %}
+	<script async type="text/javascript">
+		// Модальное окно уведомления при отправке сообщения
+		var type = '{% IF FORM_NOTICE_IS_GOOD %}success{% ELSE %}warning{% ENDIF %}';
+		var text = '<div class="noty__addto"><div class="noty__title">{% IF FORM_NOTICE_IS_GOOD %}Успешно{% ELSE %}Не удалось{% ENDIF %}</div><div class="noty__message">{FORM_NOTICE | nl2br}</div></div>'
+		setTimeout(function () {
+			notyStart(text, type)
+		}, 1000);
+	</script>
+	{% ENDIF %}
+
+	{% IF index_page %}
+	<script type="text/javascript">	
+	// Загрузка основных функций шаблона для главной страницы
+	$(document).ready(function(){
+		//counterDate();
+		newsCarousel();
+		slideShow();
+		pdtSale();
+		pdtBest();
+		pdtNew();
+		pdtSales();
+		pdtCatalog();
+		offer();
+		clonePromoText();
+	});
+	</script>
+	{% ENDIF %}
+
+	{% IF MOD_LNAME = catalog %}
+	<script type="text/javascript">	
+	// Загрузка основных функций шаблона Товары
+	$(document).ready(function(){
+		catalog();
+		priceFilter();
+	});
+	</script>
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}jqueryui.js?design=THEMENAME"></script>
+	{% ENDIF %}
+
+	{% IF MOD_LNAME = goods %}
+	<script type="text/javascript">	
+	// Загрузка основных функций шаблона Товар
+	$(document).ready(function(){
+		pageGoods();
+		goodsModification();
+		newModification();
+		quantity();
+		prodQty();
+		monthNames();
+		initTabs();	
+	});
+	</script>
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery-star-rating.js?design=Deluxe"></script>
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=THEMENAME"></script>
+	<style>
+		#page__title {display: none;}
+	</style>
+	{% ENDIF %}
+
+	{% IF MOD_LNAME = compare %}
+	<script type="text/javascript">	
+	// Загрузка основных функций шаблона Сравнения
+	$(document).ready(function(){
+		compare()
+	});
+	</script>
+	{% ENDIF %}
+
+	{% IF MOD_LNAME = cart || MOD_LNAME = order %}
+	<script type="text/javascript">
+	// Загрузка основных функций шаблона
+	$(document).ready(function(){
+		cartQuantity();
+		// Вызов функции быстрого заказа в корзине
+		$('#startOrder').on('click', function() {
+			startOrder();
+			return false;
+		});
+	});
+	</script>
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=THEMENAME"></script>
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}debounce.js?design=THEMENAME"></script>
+	{% ENDIF %}
+
+	<!-- Слайдер. Карусель -->
+	<link rel="preload" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript>
+		<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME">
+	</noscript>
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}owl-carousel.js?design=THEMENAME"></script>
+	<!-- Скрипты магазина-->
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}main.js?design=THEMENAME"></script>
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}search.js?design=THEMENAME"></script>
+	<!-- Уведомления о действиях -->
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}noty.min.js?design=THEMENAME"></script>
+	<!-- Маска ввода-->
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery.maskedinput.min.js?design=THEMENAME"></script>
+	<!-- Валидатор форм -->
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery.validate.min.js?design=THEMENAME"></script>
+	<!-- Модальные окна -->
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery.fancybox.min.js?design=THEMENAME"></script>
+	<!-- Предзагрузчик изображений -->
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}lozad.min.js?design=THEMENAME"></script>
+	<!-- Определение браузера -->
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}detect.js?design=THEMENAME"></script>
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}forall.js?design=THEMENAME"></script>
 </body>
 </html>
