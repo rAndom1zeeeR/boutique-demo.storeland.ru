@@ -1287,7 +1287,7 @@ function quickViewMod() {
 			block.removeClass('productViewQuick');
 			block.addClass('productViewMod');
 			block.addClass('modal');
-			block.find('.productView__addto .button').removeClass('button5').addClass('button2');
+			block.find('.productView__addto .button span').text('Добавить в корзину')
 			block.find('.productView__image img').attr('src', block.find('.productView__image img').data('src'))
 			return block;
 		}
@@ -3214,6 +3214,7 @@ function cartDelete(s){
 
 // Функция быстрого оформления заказа в корзине
 function startOrder(){
+	console.log('startOrder')
 	var globalOrder = $('#globalOrder');
 	var cartTable = $('.cartTable');
 	var closeOrder = $('#closeOrder');
@@ -3228,7 +3229,8 @@ function startOrder(){
 	];
 	cartTable.addClass('disable');
 	globalOrder.show('slow');
-	closeOrder.css('display', 'inline-block');
+	closeOrder.addClass('show');
+	$('.cart__clear').hide();
 	startOrder.hide();
 	$.ajax({
 		type: "POST",
@@ -3246,11 +3248,13 @@ function startOrder(){
 			// Стили для новых селектов
 			$(".form__phone").mask("+7 (999) 999-9999");
 			$("#sites_client_phone").mask("+7 (999) 999-9999");
-			closeOrder.on('click', function() {
+			$('#closeOrder, .closeOrder').on('click', function() {
+				console.log('closeOrder')
 				cartTable.removeClass('disable');
 				globalOrder.hide();
 				closeOrder.hide();
 				startOrder.show();
+				$('.cart__clear').show();
 				$('html, body').delay(400).animate({scrollTop : jQuery('#globalOrder').offset().top}, 800);
 				return false;
 			});
