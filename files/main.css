@@ -310,7 +310,8 @@ h6 {font-size: 0.875rem;}
 /**************************************/
 .fancybox-close-small {line-height: 1;}
 .fancybox-close-small:hover {color: #ffffff;}
-.fancybox-content {padding: 2.75rem 2rem 2rem 2rem;max-width: 50rem;background-color: #efefef;}
+.fancybox-content.modal {max-width: 30rem;}
+.fancybox-content {max-width: 50rem;padding: 2.75rem 2rem 2rem 2rem;background-color: #efefef;}
 .fancybox-content .block__title {margin-bottom: 2rem;}
 .fancybox-content input, .fancybox-content textarea {background-color: transparent;}
 .fancybox-content .form__buttons {text-align: center;}
@@ -1787,6 +1788,8 @@ header .overflowMenu.opened {display: flex;}
 .payment__description {margin-top: 1rem;}
 .coupons .coupon__button {position: absolute;right: 0;line-height: 2.5rem;}
 .coupons .coupon__code {width: calc(100% - 14rem);}
+.fake__coupons {margin-bottom: 1.5rem;}
+.fake__button {margin-top: .75rem;}
 /** Итого **/
 .fastOrder__content {width: calc(100% - 27.5rem);padding: 0 6rem;}
 .fastOrder__total {width: 27.5rem;position: sticky;top: 0;}

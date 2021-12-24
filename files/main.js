@@ -1286,7 +1286,6 @@ function quickViewMod() {
 			});
 			block.removeClass('productViewQuick');
 			block.addClass('productViewMod');
-			block.addClass('modal');
 			block.find('.productView__addto .button span').text('Добавить в корзину')
 			block.find('.productView__image img').attr('src', block.find('.productView__image img').data('src'))
 			return block;
@@ -2252,7 +2251,7 @@ function orderScriptsSelect() {
 // Отправка купона при оформлении заказа
 function coupons() {
 	var submitBtn = $('.coupon__button');
-	var couponInput = $('#coupon__code');
+	var couponInput = $('.coupon__code');
 	var resetBtn = $('.coupon__reset');
 	submitBtn.on('click', function(){
 		var url = '/order/stage/confirm';
@@ -2287,6 +2286,7 @@ function coupons() {
 				// Записываем название и размер скидки по купону
 				$('.total__coupons .total__label span').html(discountName);
 				$('.total__coupons .cartSumCoupons').html(discountPrice);
+				$('.cartSumCouponsDiscount').html(discountPrice);
 				$('.total__discount').hide();
 				$('.total__coupons').show();
 				if (newTotalSum > cartSumTotal) {
@@ -2296,6 +2296,7 @@ function coupons() {
 					$('.total__coupons').hide();
 					$('.total__discount').show();
 					$('.cartSumTotal .num').text(addSpaces(newTotalSum));
+					$('.cartSumCouponsDiscount').html('');
 				} else if (newTotalSum == cartSumTotal) {
 					couponInput.parent().removeClass('error');
 					couponInput.parent().addClass('active');
@@ -2343,6 +2344,15 @@ function coupons() {
 		} else {
 			$(this).parent().find('.coupon__reset').removeClass('active')
 		}
+	});
+	// Фальшивая кнопка купона
+	$('.fake__button').on('click', function(event){
+		event.preventDefault();
+		var fakeValue = $('.fake__coupons input').val();
+		
+		couponInput.val(fakeValue);
+		submitBtn.click();
+		
 	});
 }
 
@@ -3252,7 +3262,7 @@ function startOrder(){
 				console.log('closeOrder')
 				cartTable.removeClass('disable');
 				globalOrder.hide();
-				closeOrder.hide();
+				closeOrder.removeClass('show');
 				startOrder.show();
 				$('.cart__clear').show();
 				$('html, body').delay(400).animate({scrollTop : jQuery('#globalOrder').offset().top}, 800);
@@ -3410,6 +3420,14 @@ function clonePromoText() {
 		for (var i = 0; i < count; i++) {
 			text.clone().appendTo(t);
 		}
+	});
+
+	$('.promo__line').marquee({
+			duration: 8000,
+			gap: 50,
+			//time in milliseconds before the marquee will start animating
+			delayBeforeStart: 0,
+			duplicated: true
 	});
 }
 

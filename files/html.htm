@@ -1049,24 +1049,24 @@
 			<div class="promo__container flex-stretch">
 				<!-- Бегущие строки -->
 				<div class="promo__lines promo__lines_start flex">
-					<marquee class="promo__line" scrolldelay="0" behavior="alternate" direction="left">
+					<div class="promo__line" data-direction='right'>
 						<span class="promo__text">Новая коллекция</span>
-					</marquee>
-					<marquee class="promo__line" scrolldelay="100" behavior="alternate" direction="right">
+					</div>
+					<div class="promo__line" data-direction='left'>
 						<span class="promo__text">Новая коллекция</span>
-					</marquee>
+					</div>
 					<a class="promo__button" href="{CATALOG_NEW_URL}" title="Смотреть новинки"><i class="icon-button_new"></i></a>
 				</div>
 				<!-- Промо Изображение -->
 				<div class="promo__images lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_new.jpg?design=THEMENAME"></div>
 				<!-- Бегущие строки -->
 				<div class="promo__lines promo__lines_end flex">
-					<marquee class="promo__line" scrolldelay="0" behavior="alternate" direction="left">
+					<div class="promo__line" data-direction='right'>
 						<span class="promo__text">Новая коллекция</span>
-					</marquee>
-					<marquee class="promo__line" scrolldelay="100" behavior="alternate" direction="right">
+					</div>
+					<div class="promo__line" data-direction='left'>
 						<span class="promo__text">Новая коллекция</span>
-					</marquee>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -2713,6 +2713,7 @@
 		clonePromoText();
 	});
 	</script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery.marquee.min.js?design=THEMENAME"></script>
 	{% ENDIF %}
 
 	{% IF MOD_LNAME = catalog %}

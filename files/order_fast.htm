@@ -5,7 +5,7 @@
   {% IF cart_count_empty %}
     <div class="attention">Ваша корзина пуста, пожалуйста, выберите другой товар для оформления заказа</div>
   {% ELSE %}
-	  <div class="fastOrderForm flex-start">
+	  <div class="fastOrderForm">
 	    <form action="{ORDER_STAGE_CONFIRM_WITHOUT_DOMAIN_URL}" method="post" class="fastOrder__form flex-start" novalidate="novalidate">
 				<div class="fastOrder__content">
 					<!-- Данные покупателя -->
@@ -321,11 +321,23 @@
 						{% ENDFOR %}
 						
 						<!-- Корзина: Купон -->
-						<div class="total__item total__coupons" style="display: none;">
+						<!-- <div class="total__item total__coupons" style="display: none;">
 							<span class="total__label"><span>Купон:</span></span>
 							<span class=""><span class="cartSumCoupons" data-value=""></span></span>
-						</div>
+						</div> -->
 						
+						<!-- Корзина: Купон -->
+						<div class="total__item fake__coupons flex justify-between">
+							<input class="form__input" type="text" name="form[coupon_code]" value="{ORDER_FORM_COUPON_CODE}" placeholder="Введите код"/>
+							<div class="total__item">
+								<span class="total__label"><span>Скидка по промокоду:</span></span>
+								<span class=""><span class="cartSumCouponsDiscount" data-value="">0 руб.</span></span>
+							</div>
+							<a href="javascript:void(0)" class="fake__button" title="Применить">
+								<span>Применить</span>
+							</a>
+						</div>
+
 						<!-- Корзина: Итого -->
 						<div class="total__item total__cart">
 							<span class="total__label">Итого: </span>
