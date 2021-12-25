@@ -2296,7 +2296,7 @@ function coupons() {
 					$('.total__coupons').hide();
 					$('.total__discount').show();
 					$('.cartSumTotal .num').text(addSpaces(newTotalSum));
-					$('.cartSumCouponsDiscount').html('');
+					$('.cartSumCouponsDiscount').html('0 руб.');
 				} else if (newTotalSum == cartSumTotal) {
 					couponInput.parent().removeClass('error');
 					couponInput.parent().addClass('active');
@@ -2321,6 +2321,7 @@ function coupons() {
 	// Сброс
 	resetBtn.on('click', function(){
 		$('.coupon__code').val('').trigger('input');
+		$('.fake__input').val('').trigger('input');
 		setTimeout(function(){
 			$('.total__coupons').hide();
 			$('.total__discount').show();
@@ -2332,6 +2333,7 @@ function coupons() {
 			$('.cartSumCoupons').attr('data-value', newTotalSum);
 			$('.cartSumTotalHide').attr('data-value', newTotalSum);
 			$('.cartSumTotalHide .num').text(addSpaces(newTotalSum));
+			$('.cartSumCouponsDiscount').html('0 руб.');
 			couponInput.parent().removeClass('error');
 			couponInput.parent().removeClass('active');
 			couponInput.val("").attr("placeholder", "Введите купон");
@@ -2348,11 +2350,17 @@ function coupons() {
 	// Фальшивая кнопка купона
 	$('.fake__button').on('click', function(event){
 		event.preventDefault();
-		var fakeValue = $('.fake__coupons input').val();
-		
+		var fakeValue = $('.fake__input').val();		
 		couponInput.val(fakeValue);
 		submitBtn.click();
-		
+	});
+	// Отображение фальшивой кнопки Сброс
+	$('.fake__input').on('input',function(){
+		if($(this).val()) {
+			resetBtn.addClass('active')
+		} else {
+			resetBtn.removeClass('active')
+		}
 	});
 }
 

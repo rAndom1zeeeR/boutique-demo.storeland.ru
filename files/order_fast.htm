@@ -5,8 +5,8 @@
   {% IF cart_count_empty %}
     <div class="attention">Ваша корзина пуста, пожалуйста, выберите другой товар для оформления заказа</div>
   {% ELSE %}
-	  <div class="fastOrderForm">
-	    <form action="{ORDER_STAGE_CONFIRM_WITHOUT_DOMAIN_URL}" method="post" class="fastOrder__form flex-start" novalidate="novalidate">
+	  <div class="fastOrderForm flex-start">
+	    <form action="{ORDER_STAGE_CONFIRM_WITHOUT_DOMAIN_URL}" method="post" class="fastOrder__form" novalidate="novalidate">
 				<div class="fastOrder__content">
 					<!-- Данные покупателя -->
 					<div class="account" order="1">
@@ -300,65 +300,69 @@
 					</div>
 					{% ENDIF %}
 				</div>
+	    </form>
 
-				<!-- Корзина: Итоговый блок -->
-				<div class="fastOrder__total flex">
-					<div class="total__items">
-						<!-- Корзина: Доставка -->
-						<div class="total__item total__delivery">
-							<span class="total__label"><span>Доставка:</span></span>
-							<span class="total__price"><span class="cartSumDelivery" data-value="{CART_SUM_DELIVERY}">{CART_SUM_DELIVERY | money_format}</span></span>
-						</div>
-					
-						<!-- Скидки, действующие на заказ -->
-						{% FOR cart_discount %}
-						{% IF cart_discount.DISCOUNT_IS_ENABLED %}
-						<div class="total__item total__discount">
-							<span class="total__label"><span>{cart_discount.DISCOUNT_NAME}:</span></span>
-							<span class="total__price"><span class="discount__value" data-value="{cart_discount.DISCOUNT_VALUE}">{cart_discount.DISCOUNT_VALUE}</span>{% IF cart_discount.IS_PERCENT %}<span class="percent">%</span>{% ELSE %}<span class="rub"> руб.</span>{% ENDIF %}</span>
-						</div>
-						{% ENDIF %}
-						{% ENDFOR %}
-						
-						<!-- Корзина: Купон -->
-						<!-- <div class="total__item total__coupons" style="display: none;">
-							<span class="total__label"><span>Купон:</span></span>
-							<span class=""><span class="cartSumCoupons" data-value=""></span></span>
-						</div> -->
-						
-						<!-- Корзина: Купон -->
-						<div class="total__item fake__coupons flex justify-between">
-							<input class="form__input" type="text" name="form[coupon_code]" value="{ORDER_FORM_COUPON_CODE}" placeholder="Введите код"/>
-							<div class="total__item">
-								<span class="total__label"><span>Скидка по промокоду:</span></span>
-								<span class=""><span class="cartSumCouponsDiscount" data-value="">0 руб.</span></span>
-							</div>
-							<a href="javascript:void(0)" class="fake__button" title="Применить">
-								<span>Применить</span>
-							</a>
-						</div>
-
-						<!-- Корзина: Итого -->
-						<div class="total__item total__cart">
-							<span class="total__label">Итого: </span>
-							<span class="total__price cartSumTotal price__now" data-value="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</span>
-							<div style="display: none;" class="total__price cartSumNow" data-value="{CART_SUM_NOW}">{CART_SUM_NOW | money_format}</div>
-							<div style="display: none;" class="total__price cartSumTotalHide" data-value="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</div>
-							<div style="display: none;" class="total__price cartSumDiscount" data-value="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</div>
-						</div>
+			<!-- Корзина: Итоговый блок -->
+			<div class="fastOrder__total">
+				<div class="block__title">
+					<h2 class="title title_separator"><span>Ваш заказ</span></h2>
+				</div>
+				<div class="total__items">
+					<!-- Корзина: Доставка -->
+					<div class="total__item total__delivery">
+						<span class="total__label"><span>Доставка:</span></span>
+						<span class="total__price"><span class="cartSumDelivery" data-value="{CART_SUM_DELIVERY}">{CART_SUM_DELIVERY | money_format}</span></span>
 					</div>
+				
+					<!-- Скидки, действующие на заказ -->
+					{% FOR cart_discount %}
+					{% IF cart_discount.DISCOUNT_IS_ENABLED %}
+					<div class="total__item total__discount">
+						<span class="total__label"><span>{cart_discount.DISCOUNT_NAME}:</span></span>
+						<span class="total__price"><span class="discount__value" data-value="{cart_discount.DISCOUNT_VALUE}">{cart_discount.DISCOUNT_VALUE}</span>{% IF cart_discount.IS_PERCENT %}<span class="percent">%</span>{% ELSE %}<span class="rub"> руб.</span>{% ENDIF %}</span>
+					</div>
+					{% ENDIF %}
+					{% ENDFOR %}
 					
-					<!-- Корзина: Оформление -->
-					<div class="total__buttons flex">
-						<a class="button button5 closeOrder" title="Отменить заказ"><span>Изменить </span><span>заказ</span></a>
-						<a id="makeOrder" class="button disabled" title="Перейти к быстрому оформлению заказа"><span>Оформить </span><span>заказ</span></a>
-						<div class="total__pp">
-							<span>Нажимая на кнопку &laquo;Оформить заказ&raquo;, Вы соглашаетесь</span>
-							<a data-fancybox data-src="#fancybox__pp" href="javascript:;">с правилами обработки данных</a>
+					<!-- Корзина: Купон -->
+					<!-- <div class="total__item total__coupons" style="display: none;">
+						<span class="total__label"><span>Купон:</span></span>
+						<span class=""><span class="cartSumCoupons" data-value=""></span></span>
+					</div> -->
+					
+					<!-- Корзина: Купон -->
+					<div class="total__item fake__coupons flex justify-between">
+						<input class="fake__input form__input" type="text" name="form[coupon_code]" value="{ORDER_FORM_COUPON_CODE}" placeholder="Введите код"/>
+						<a href="javascript:void(0)" class="coupon__reset" title="Сбросить"></a>
+						<div class="total__item">
+							<span class="total__label"><span>Скидка по промокоду:</span></span>
+							<span class=""><span class="cartSumCouponsDiscount" data-value="">0 руб.</span></span>
 						</div>
+						<a href="javascript:void(0)" class="fake__button" title="Применить">
+							<span>Применить</span>
+						</a>
+					</div>
+
+					<!-- Корзина: Итого -->
+					<div class="total__item total__cart">
+						<span class="total__label">Итого: </span>
+						<span class="total__price cartSumTotal price__now" data-value="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</span>
+						<div style="display: none;" class="total__price cartSumNow" data-value="{CART_SUM_NOW}">{CART_SUM_NOW | money_format}</div>
+						<div style="display: none;" class="total__price cartSumTotalHide" data-value="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</div>
+						<div style="display: none;" class="total__price cartSumDiscount" data-value="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</div>
 					</div>
 				</div>
-	    </form>
+				
+				<!-- Корзина: Оформление -->
+				<div class="total__buttons flex">
+					<a class="button button5 closeOrder" title="Отменить заказ"><span>Изменить </span><span>заказ</span></a>
+					<a id="makeOrder" class="button disabled" title="Перейти к быстрому оформлению заказа"><span>Оформить </span><span>заказ</span></a>
+					<div class="total__pp">
+						<span>Нажимая на кнопку &laquo;Оформить заказ&raquo;, Вы соглашаетесь</span>
+						<a data-fancybox data-src="#fancybox__pp" href="javascript:;">с правилами обработки данных</a>
+					</div>
+				</div>
+			</div>
 	  </div>
   	{% ENDIF %}
 	</div>

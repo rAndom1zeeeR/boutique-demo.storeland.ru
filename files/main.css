@@ -547,7 +547,7 @@ h6 {font-size: 0.875rem;}
 /*** Выпадающий контент. Корзина, Сравнение, Избранное ***/
 /**************************************/
 .addto__title {display: none;font-size: 1.25rem;font-weight: bold;margin-bottom: 2rem;}
-.addto__empty {font-size: 1.25rem;font-weight: bold;}
+.addto__empty {font-size: 1.25rem;font-weight: bold;margin-top: 1rem;}
 .addto__items {max-height: 14rem;overflow-y: auto;}
 .addto__item {margin-top: 1rem;transition: all 0.3s ease;align-items: stretch;}
 .addto__image {width: 6rem;height: 6rem;}
@@ -560,7 +560,6 @@ h6 {font-size: 0.875rem;}
 .addto__remove {width: 2rem;height: 2rem;}
 .addto__qty {font-size: 1rem;}
 .addto__total {display: none;}
-.addto__empty {margin: 0;}
 .addto__separator {margin: 0 .25rem;}
 .has-items .addto__title {display: block;}
 .has-items .addto__empty {display: none;}
@@ -1776,11 +1775,14 @@ header .overflowMenu.opened {display: flex;}
 #globalOrder {margin-top: 3rem;}
 .fastOrderForm .form__fields label {display: none;}
 .fastOrderForm [order] {margin-bottom: 3rem;width: 100%;}
+.fastOrderForm .coupons {display: none;}
 .fastOrderForm label {display: none;}
 .fastOrderForm label.error {display: none !important;}
 .fastOrderForm .selectBox select {border-bottom: 1px solid #70787D;padding: 0 .5rem;width: 100%;max-width: 100%;}
 .fastOrderForm .form__fields.flex .form__field {width: calc(33.333333% - 2rem);flex-grow: 1;}
 .fastOrderForm .form__fields .form__field {margin: 0 1rem;width: calc(100% - 2rem);}
+.fastOrderForm .form__registration {padding: 0 1rem;}
+.fastOrderForm .form__registration label {margin: 0 0 0 1rem;display: inline-block;}
 .delivery__zoneSelect {margin-top: 1rem;}
 .delivery__descriptionBlock {margin-top: 2rem;}
 .delivery__descriptionBlock .delivery__price {font-weight: bold;}
@@ -1788,16 +1790,19 @@ header .overflowMenu.opened {display: flex;}
 .payment__description {margin-top: 1rem;}
 .coupons .coupon__button {position: absolute;right: 0;line-height: 2.5rem;}
 .coupons .coupon__code {width: calc(100% - 14rem);}
-.fake__coupons {margin-bottom: 1.5rem;}
+.coupon__reset {display: none;position: absolute;right: 1rem;top: 1rem;line-height: 1;cursor: pointer;}
+.coupon__reset.active {display: block;}
+.coupon__reset:after {content: "\e90c";font-family: 'icomoon';}
+.fake__coupons {margin-bottom: 1.5rem;position: relative;}
 .fake__button {margin-top: .75rem;}
 /** Итого **/
-.fastOrder__content {width: calc(100% - 27.5rem);padding: 0 6rem;}
+.fastOrder__form {width: calc(100% - 27.5rem);padding: 0 6rem;}
 .fastOrder__total {width: 27.5rem;position: sticky;top: 0;}
 .fastOrder__total .total__items {width: 100%;}
 .fastOrder__total .total__buttons {width: 100%;justify-content: space-between;}
 .fastOrder__total .total__pp {text-align: left;}
 /** Быстрый заказ. Модальное окно **/
-.fastOrder .fastOrder__content {width: 100%;padding: 0;}
+.fastOrder .fastOrder__form {width: 100%;padding: 0;}
 .fastOrder .fastOrder__total {width: 100%;margin-top: 3rem;}
 .fastOrder .selectBox select {background-color: #efefef;}
 .fastOrder .fastOrder__total .total__buttons {justify-content: center;}
@@ -1809,10 +1814,10 @@ header .overflowMenu.opened {display: flex;}
 @media (max-width: 479.98px) {
 }
 @media (max-width: 1199.98px) {
-	.fastOrder__content {padding: 0 4rem 0 0;}
+	.fastOrder__form {padding: 0 4rem 0 0;}
 }
 @media (max-width: 991.98px) {
-	.fastOrder__content {width: 100%;padding: 0;}
+	.fastOrder__form {width: 100%;padding: 0;}
 	.fastOrder__total {width: 100%;}
 }
 @media (max-width: 479.98px) {
@@ -1836,7 +1841,7 @@ header .overflowMenu.opened {display: flex;}
 .sidenav__item [data-count] {margin-left: .25rem;display: none;}
 .sidenav__contents {position: absolute;top: 0;right: 0;width: 400px;background-color: #EFEFEF;transition: all 0.3s ease-in-out;transform: translateX(400px);}
 .sidenav__items {transition: all 0.3s ease-in-out;transform: translateX(0);}
-.sidenav__content {display: none;min-height: 16.625rem;padding-left: 1rem;}
+.sidenav__content {display: none;min-height: 18.75rem;padding-left: 1rem;}
 .sidenav__content.opened {display: block;}
 .page-favorites .favorites {display: none;}
 /** **/
