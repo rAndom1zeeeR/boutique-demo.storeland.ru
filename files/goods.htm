@@ -306,7 +306,7 @@
 					<!-- Добавление товара в Корзину -->
 					<div class="productView__addto flex">
 						<!-- Добавление товара в корзину -->
-						<button type="submit" class="add-cart button" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину">
+						<button type="submit" class="button-primary button add-cart" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину">
 							<i class="icon-cart"></i>
 							<span>Купить</span>
 						</button>
@@ -683,15 +683,15 @@
 						<div class="opinion__block">
 							<label for="opinion_captcha_string" title="Введите код с картинки">Введите код:</label>
 							<div class="opinion__captcha">
-								<input type="text" id="opinion_captcha_string" name="form[{ANTISPAM_FORM_FIELD_NAME_CAPTCHA_STRING}]" autocomplete="off" class="captcha form__input" value="{FORM_}" />
+								<input type="text" id="opinion_captcha_string" name="form[{ANTISPAM_FORM_FIELD_NAME_CAPTCHA_STRING}]" autocomplete="off" class="captcha form__input" value="{FORM_}" placeholder="Введите капчу"/>
 								<img src="{CAPTCHA_URL}" class="captcha__image" alt="Код" title="Проверочный код, который нужно ввести в соседнее поле" />
-								<i class="icon-refresh captcha__refresh"></i>
+								<a class="captcha__refresh" href="javascript:;"><i class="icon-compare"></i></a>
 							</div>
 						</div>
 						{% ENDIF %}
 						<!-- Кнопка отправки формы -->
 						<div class="opinion__block opinion__buttons">
-							<button class="button" type="button" title="Добавить отзыв о &laquo;{GOODS_NAME}&raquo;">Оставить отзыв</button>
+							<button class="button-primary" type="button" title="Добавить отзыв о &laquo;{GOODS_NAME}&raquo;">Оставить отзыв</button>
 							<div class="form__pp">
 								<span>Нажимая на кнопку &laquo;Отправить&raquo;, Вы соглашаетесь</span>
 								<a data-fancybox data-src="#fancybox__pp" href="javascript:;">с правилами обработки данных</a>

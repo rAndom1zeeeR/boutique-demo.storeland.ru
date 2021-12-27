@@ -564,13 +564,13 @@ h6 {font-size: 0.875rem;}
 .has-items .addto__empty {display: none;}
 .addto__buttons {display: none;padding: .875rem 1rem;}
 .has-items .addto__buttons {display: flex;}
-.addto__buttons .button {padding: 0 3rem;}
+.addto__buttons .button-primary {padding: 0 3rem;}
 .login .addto__buttons {margin-top: 2rem;}
 .login .form__text {margin-bottom: 2rem;}
 @media (max-width: 479.98px) {
 	.addto__info {width: 100%;}
 	.addto__actions {display: none;}
-	.addto__buttons .button {padding: 0 1.5rem;}
+	.addto__buttons .button-primary {padding: 0 1.5rem;}
 	.addto__empty {font-size: 1rem;}
 }
 
@@ -1524,6 +1524,11 @@ header .overflowMenu.opened {display: flex;}
 .goodsModificationsValue {margin: 0 1rem 1rem 1rem;}
 .goodsModificationsValue:hover {cursor: pointer;}
 .goodsModificationsValue.disabled {color: #70787D;}
+/* Товар. Кол-во */
+.qty input {width: 4rem;text-align: center;border: 0;height: 2rem;}
+.qty a {font-size: 1rem;color: #70787D;}
+.qty a:hover {color: #B69355;}
+.qty input {background-color: transparent;}
 /** Товар. Адаптивность **/
 @media (max-width: 1199.98px) {
 	.productView {border-radius: 0px 0px 8rem 0px;}
@@ -1600,6 +1605,9 @@ header .overflowMenu.opened {display: flex;}
 .opinion__block.opinion__buttons {text-align: center;margin-bottom: 0;}
 .opinion__block .form__pp {margin-top: 1rem;}
 .opinion__empty {margin-top: 1.5rem;}
+.opinion__captcha {position: relative;}
+.captcha__image {position: absolute;right: 0;}
+.captcha__refresh {position: absolute;right: 4.5rem;top: .75rem;cursor: pointer;}
 /** Товар. Отзывы. Адаптивность **/
 @media (max-width: 767.98px) {
 	.opinion__content {width: 100%;padding: 0;}
@@ -1687,16 +1695,12 @@ header .overflowMenu.opened {display: flex;}
 .productViewMod .productView__shop {width: calc(100% - 14rem);padding: 0 2rem 0 0;order: 1;}
 .productViewMod .productView__inner {display: none;}
 .productViewMod .productView__addto {flex-wrap: nowrap;}
-.productViewMod .productView__addto .button i {display: none;}
-.productViewMod .productView__addto .button.quick {display: none;}
-.productViewMod .productView__addto .button span {margin: 0;}
+.productViewMod .productView__addto .add-cart i {display: none;}
+.productViewMod .productView__addto .add-cart.quick {display: none;}
+.productViewMod .productView__addto .add-cart span {margin: 0;}
 .productViewMod .productView__campaign {display: none;}
 .productViewMod .productView__text {display: none;}
 .productViewMod .productView__qty {display: block;}
-.qty input {width: 4rem;text-align: center;border: 0;height: 2rem;}
-.qty a {font-size: 1rem;color: #70787D;}
-.qty a:hover {color: #B69355;}
-.qty input {background-color: transparent;}
 @media (max-width: 639.98px) {
 	.productViewMod .productView__images {width: 100%;order: 1;}
 	.productViewMod .productView__shop {width: 100%;padding: 1rem 0 0 0;order: 2;}
@@ -1850,6 +1854,8 @@ header .overflowMenu.opened {display: flex;}
 .sidenav__item {width: 3.75rem;height: 3.75rem;padding: .5rem;background-color: #A9BDCE;border: 1px solid #ffffff;transition: all 0.3s ease;}
 .sidenav__item:hover {background-color: #CFA191;cursor: pointer;}
 .sidenav__item:hover a {color: #212121;}
+.has-items.sidenav__item a {color: #B69355;}
+.has-items.sidenav__item:hover a {color: #212121;}
 .sidenav__item:first-child {border-radius: 2.5rem 0px 0px 0px;}
 .sidenav__item:last-child {border-radius: 0px 0px 0px 2.5rem;}
 .sidenav__item i {font-size: 1.5rem;line-height: 1;}

@@ -1286,7 +1286,7 @@ function quickViewMod() {
 			});
 			block.removeClass('productViewQuick');
 			block.addClass('productViewMod');
-			block.find('.productView__addto .button span').text('Добавить в корзину')
+			block.find('.productView__addto .add-cart span').text('Добавить в корзину')
 			block.find('.productView__image img').attr('src', block.find('.productView__image img').data('src'))
 			return block;
 		}
@@ -1459,6 +1459,8 @@ function addCart() {
 				//$.fancybox.open(data);
 				// Анализ системного сообщения в коризне
 				var str = $(data).html();
+				console.log('data', data)
+				console.log('str', str)
 				// Проверяем текст сообщения на наличие ошибки
 				if (str.indexOf("Не удалось") != -1) {
 					// Сообщение с ошибкой
@@ -3431,8 +3433,8 @@ function clonePromoText() {
 	});
 
 	$('.promo__line').marquee({
-			duration: 8000,
-			gap: 50,
+			duration: 10000,
+			gap: 80,
 			//time in milliseconds before the marquee will start animating
 			delayBeforeStart: 0,
 			duplicated: true

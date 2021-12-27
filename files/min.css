@@ -39,13 +39,14 @@
 .noty__image {width: 9rem;height: 9rem;}
 .noty__content {width: calc(100% - 9rem);padding-right: 2rem;}
 .noty__title {font-size: 1.125rem;font-family: 'Playfair Display';text-transform: uppercase;text-align: center;}
-.noty__title i + span {width: calc(100% - 2.5rem);}
+.noty__title i + span {width: calc(100% - 2.5rem);text-align: left;}
 .noty__message {margin-top: 1.5rem;display: block;}
 .noty__price {margin-top: 1rem;}
 .noty_type__success.noty_has_progressbar .noty_progressbar {background-color: #c0c0c0;opacity: 1;}
 .noty_type__warning.noty_has_progressbar .noty_progressbar {background-color: #c0c0c0;opacity: 1;}
 .noty__link {color: #70787D;}
 .noty_type__warning {text-align: center;}
+.noty__addto + .noty__addto {display: none;}
 
 .animated {
 -webkit-animation-duration: 1s;
