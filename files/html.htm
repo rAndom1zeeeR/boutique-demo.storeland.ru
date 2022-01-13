@@ -763,7 +763,7 @@
 		<section id="catalog">
 			<div class="container">
 				<div class="flex">
-					<a href="javascript:;" class="catalog__nav-prev">
+					<a href="javascript:;" class="catalog__nav-prev flex">
 						<i class="icon-arrow_left"></i>
 					</a>
 					<div class="catalog__items flex owl-carousel">
@@ -776,7 +776,7 @@
 							</div>
 						{% ENDFOR catalog_full %}
 					</div>
-					<a href="javascript:;" class="catalog__nav-next">
+					<a href="javascript:;" class="catalog__nav-next flex">
 						<i class="icon-arrow_right"></i>
 					</a>
 				</div>
@@ -1627,7 +1627,7 @@
 												<a href="{catalog_full.URL}" data-level="{catalog_full.LEVEL}" class="catalog__link flex {% IF catalog_full.CURRENT %}opened{% ENDIF %}">
 													{% IF catalog_full.LEVEL = 0 %}<span class="icon"></span>{% ENDIF %}
 													<span class="name">{catalog_full.NAME}</span>
-													{% IF catalog_full.ISSET_VISIBLE_SUB %}<span class="open"></span>{% ENDIF %}
+													{% IF catalog_full.ISSET_VISIBLE_SUB %}<span class="open {% IF catalog_full.CURRENT_PARENT %}opened{% ENDIF %}"></span>{% ENDIF %}
 												</a>
 											{% IF catalog_full.ISSET_SUB=0 %}
 											</div>
@@ -1644,7 +1644,10 @@
 						{% IF SHOW_GOODS_PRICE_FILTERS || SHOW_GOODS_FILTERS %}
 						<!-- Если в тарифном плане подключен модуль фильтров по товарам -->
 						<div id="filters" class="sidebar__block filters">
-							<div class="sidebar__title">Фильтры</div>
+							<div class="sidebar__title">
+								<span>Фильтры</span>
+								<a class="close" href="javascript:void(0);" onclick="closeAll();"><i class="icon-close"></i></a>
+							</div>
 							<div class="sidebar__content {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %}">
 								<form action="" method="get" class="form__filters">
 									<!-- Если есть возможность фильтрации товаров по ценам -->
@@ -2201,24 +2204,24 @@
 			<div class="promo__container flex-stretch">
 				<!-- Бегущие строки -->
 				<div class="promo__lines promo__lines_start flex">
-					<marquee class="promo__line" scrolldelay="0" behavior="alternate">
+					<div class="promo__line" data-direction='right'>
 						<span class="promo__text">Наши новости</span>
-					</marquee>
-					<marquee class="promo__line" scrolldelay="100" behavior="alternate">
+					</div>
+					<div class="promo__line" data-direction='left'>
 						<span class="promo__text">Наши новости</span>
-					</marquee>
+					</div>
 					<a class="promo__button" href="{NEWS_ALL_URL}" title="Смотреть новинки"><i class="icon-button_news"></i></a>
 				</div>
 				<!-- Промо Изображение -->
 				<div class="promo__images lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_news.jpg?design=THEMENAME"></div>
 				<!-- Бегущие строки -->
 				<div class="promo__lines promo__lines_end flex">
-					<marquee class="promo__line" scrolldelay="0" direction="right" behavior="alternate">
+					<div class="promo__line" data-direction='right'>
 						<span class="promo__text">Наши новости</span>
-					</marquee>
-					<marquee class="promo__line" scrolldelay="100" direction="right" behavior="alternate">
+					</div>
+					<div class="promo__line" data-direction='left'>
 						<span class="promo__text">Наши новости</span>
-					</marquee>
+					</div>
 				</div>
 			</div>
 		</section>
