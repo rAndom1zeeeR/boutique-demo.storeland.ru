@@ -79,6 +79,7 @@
 									</div>
 								</div>
 								{% ENDIF %}
+								{% IF SETTINGS_ORDER_FIELDS_REGION < 3 || SETTINGS_ORDER_FIELDS_CITY < 3 || SETTINGS_ORDER_FIELDS_ZIP_CODE < 3 %}
 								<div class="form__fields flex">
 									<!-- Если поле области запрашивается -->
 									{% IF SETTINGS_ORDER_FIELDS_REGION < 3 %}
@@ -102,6 +103,7 @@
 									</div>
 									{% ENDIF %}
 								</div>
+								{% ENDIF %}
 								<!-- Если поле адреса доставки запрашивается -->
 								{% IF SETTINGS_ORDER_FIELDS_ADDRESS < 3 %}
 								<div class="form__fields {% IF SETTINGS_ORDER_FIELDS_ADDRESS=1 %}required{% ENDIF %}">
