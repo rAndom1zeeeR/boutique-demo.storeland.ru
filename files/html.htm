@@ -729,7 +729,7 @@
 					<div class="slider__bg flex lozad" data-background-image="{ASSETS_IMAGES_PATH}background.png?design=THEMENAME">
 						<div class="container">
 							<div class="slider__content">
-								<h3><a href="{CATALOG_URL}" class="slider__title">Почувствуй себя желанной</a></h3>
+								<h3><a href="{CATALOG_URL}" class="slider__title">Красиво и комфортно одновременно</a></h3>
 								<div class="slider__buttons">
 									<a class="slider__button" href="{CATALOG_URL}" title="Смотреть каталог">
 										<i class="icon-button_catalog"></i>
@@ -745,7 +745,7 @@
 					<div class="slider__bg flex lozad" data-background-image="{ASSETS_IMAGES_PATH}background.png?design=THEMENAME">
 						<div class="container">
 							<div class="slider__content">
-								<h3><a href="{CATALOG_URL}" class="slider__title">Почувствуй себя желанной</a></h3>
+								<h3><a href="{CATALOG_URL}" class="slider__title">Белье для лучшей поддержки!</a></h3>
 								<div class="slider__buttons">
 									<a class="slider__button" href="{CATALOG_URL}" title="Смотреть каталог">
 										<i class="icon-button_catalog"></i>
@@ -1297,7 +1297,7 @@
 							<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_1.jpg?design=THEMENAME"></div>
 							<div class="offer__content">
 								<div class="offer__title">Успей купить взрывную коллекцию корсетов со скидкой 20%</div>
-								<a class="offer__button button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
+								<a class="button-primary offer__button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
 							</div>
 						</div>
 						<!-- предложение 2 -->
@@ -1305,7 +1305,7 @@
 							<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_2.jpg?design=THEMENAME"></div>
 							<div class="offer__content">
 								<div class="offer__title">Успей купить взрывную коллекцию корсетов со скидкой 20%</div>
-								<a class="offer__button button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
+								<a class="button-primary offer__button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
 							</div>
 						</div>
 						<!-- предложение 3 -->
@@ -1313,7 +1313,7 @@
 							<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_3.jpg?design=THEMENAME"></div>
 							<div class="offer__content">
 								<div class="offer__title">Успей купить взрывную коллекцию корсетов со скидкой 20%</div>
-								<a class="offer__button button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
+								<a class="button-primary offer__button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
 							</div>
 						</div>
 					</div>
@@ -1902,7 +1902,7 @@
 												<div class="rating" style="width:0%" alt="Рейтинг не определён" title="Рейтинг не определён"></div>
 												{% ENDIF %}
 											</div>
-											<div class="ratings__count">({recently_viewed_goods.OPINION_RATING_CNT_ALL})</div>
+											<div class="ratings__count">{recently_viewed_goods.OPINION_RATING_CNT_ALL} отзыв{recently_viewed_goods.OPINION_RATING_CNT_ALL | gen_word_end("","а","ов")}</div>
 										</div>
 										{% ENDIF %}
 										<!-- Название товара -->
@@ -2593,7 +2593,7 @@
 						</div>
 
 						<div class="form__fields">
-							<textarea id="callback_comment" class="textarea" rows="2" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_COMMENT}]" placeholder="Комментарий" >{FORM_CALLBACK_COMMENT}</textarea>
+							<textarea id="callback_comment" class="textarea" rows="1" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_COMMENT}]" placeholder="Комментарий" >{FORM_CALLBACK_COMMENT}</textarea>
 						</div>
 
 						<div class="form__buttons">
@@ -2623,7 +2623,7 @@
 						{ANTISPAM_CODE}
 						<!-- Для использования почты для уведомлений необходимо удалить блок с телефоном -->
 						<div class="form__fields">
-							<input class="form__input form__phone" type="tel" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}" placeholder="+7 (987) 654-3210" autocomplete="off" required />
+							<input class="form__input form__phone" type="tel" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}" placeholder="+7 (987) 654-32-10" autocomplete="off" required />
 						</div>
 						<!-- Для использования почты для уведомлений необходимо удалить ниже style="display: none;" -->
 						<div class="form__fields" style="display: none;">

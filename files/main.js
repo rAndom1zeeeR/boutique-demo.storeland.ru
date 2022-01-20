@@ -205,7 +205,7 @@ function validEmail(id){
 ///////////////////////////////////////
 function ajaxForms(id,flag,successMessage,errorMessage){
   var flag = false;
-  //console.log('ajaxForms loaded ', id)
+  console.log('ajaxForms loaded ', id)
   var form = $(id).find('.form__callback');
   form.on('submit',function(event){
     event.preventDefault();
@@ -1060,7 +1060,7 @@ function slideShow() {
 		dotsEach: true,
 		smartSpeed: 500,
 		URLhashListener: true,
-		autoplay: false,
+		autoplay: true,
     autoplayTimeout: '3000',
 		autoplayHoverPause: true,
 		autoHeight: true,
@@ -2699,7 +2699,7 @@ function pageGoods() {
 		}
 	});
 	// Валидация формы на странице оформления заказа, а так же формы на страницы связи с администрацией
-	$(".opinion__form .button").on('click', function(){
+	$(".opinion__form button").on('click', function(){
 		var form = $(".opinion__form");
 		form.validate({
 			errorPlacement: function(error, element) { }
@@ -3434,7 +3434,7 @@ function clonePromoText() {
 
 	$('.promo__line').marquee({
 			duration: 15000,
-			gap: 80,
+			gap: 200,
 			//time in milliseconds before the marquee will start animating
 			delayBeforeStart: 0,
 			duplicated: true
@@ -3475,6 +3475,7 @@ function sideNav(){
 		$('.addto__menu-item[data-id]').removeClass('active');
 		$(this).addClass('active');
 		$('.addto__menu-item[data-id="'+ id +'"]').addClass('active');
+		id == 'catalog' ? $('.addto__menu-contacts').hide() : $('.addto__menu-contacts').show()
 	});
 
 }
