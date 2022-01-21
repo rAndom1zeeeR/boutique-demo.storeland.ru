@@ -48,6 +48,14 @@
 .noty_type__warning {text-align: center;}
 .noty__addto + .noty__addto {display: none;}
 
+@media (max-width: 479.98px) {
+  .noty__addto {padding: 1.25rem;}
+  .noty__addto .noty__image {display: none;}
+  .noty__content {width: 100%;padding: 0;}
+  .noty__title {font-size: 1rem;}
+}
+
+
 .animated {
 -webkit-animation-duration: 1s;
 animation-duration: 1s;

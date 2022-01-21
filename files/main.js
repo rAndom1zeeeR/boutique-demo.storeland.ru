@@ -156,9 +156,11 @@ function validName(id){
     name.attr('placeholder','Введите Имя');
     return true;
   }else{
-    name.addClass('error');
-    name.parent().addClass('error');
-    name.attr('placeholder','Вы не ввели Имя');
+		setTimeout(function () {
+			name.addClass('error');
+			name.parent().addClass('error');
+			name.attr('placeholder','Вы не ввели Имя');
+		}, 2000);
     return false;
   }
 }
@@ -174,10 +176,12 @@ function validPhone(id){
     return true;
   }
   else{
-    phone.addClass('error');
-    phone.parent().addClass('error');
-    phone.attr('placeholder','Вы не ввели номер');
-    return false;
+		setTimeout(function () {
+			phone.addClass('error');
+			phone.parent().addClass('error');
+			phone.attr('placeholder','Вы не ввели номер');
+		}, 2000);
+		return false;
   }
 }
 
@@ -191,11 +195,13 @@ function validEmail(id){
     email.attr('placeholder','Введите Email');
     return true;
   }else{
-    email.addClass('error');
-    email.parent().addClass('error');
-    email.val('');
-    email.attr('placeholder','Вы ввели неверный Email');
-    return false;
+		setTimeout(function () {
+			email.addClass('error');
+			email.parent().addClass('error');
+			email.val('');
+			email.attr('placeholder','Вы ввели неверный Email');
+		}, 2000);
+		return false;
   }
 }
 
@@ -225,10 +231,14 @@ function ajaxForms(id,flag,successMessage,errorMessage){
           if(serverCall == "ok"){
 						setTimeout(function () {
 							$.fancybox.close();
-						},1000);
+						},2000);
             t.hide();
             t.find('.form__input').val(' ');
-            t.parent().append('<div class="form__text">'+ errorMessage +'</div>');
+            t.parent().append('<div class="form__text">'+ successMessage +'</div>');
+						setTimeout(function () {
+							t.parent().find('.form__text').remove();
+							t.parent().append('<div class="form__text">'+ errorMessage +'</div>');
+						},4000);
             new Noty({
               text: '<div class="noty__addto"><div class="noty__title">Успешно</div><div class="noty__message">' + successMessage + '</div></div>',
               layout:"bottomRight",
@@ -242,7 +252,7 @@ function ajaxForms(id,flag,successMessage,errorMessage){
               },
               timeout:"4000",
               progressBar:true
-            }).show();
+            }).hide();
             flag = true;
           }
         }
@@ -272,9 +282,9 @@ function ajaxForms(id,flag,successMessage,errorMessage){
 
   // Валидация при клике
   form.on('click',function(event){
-    validName(form);
-    validPhone(form);
-    validEmail(form);
+		validName(form);
+		validPhone(form);
+		validEmail(form);
   });
 }
 
@@ -542,12 +552,10 @@ function openMenu() {
   // Открытие Меню
   $('.menu__icon').on('click', function (event){
     event.preventDefault();
-		$(this).parent().find('.header__block-hidden').prepend('<div class="preloader small"><div class="loading"></div></div>');
 		$(this).toggleClass('opened');
 		$(this).parent().toggleClass('opened');
 		$(this).parent().find('.header__block-hidden').toggleClass('opened');
-		preload();
-		$('#overlay').toggleClass('opened');
+		$('#overlay').addClass('opened')		
   });
 
   // Открытие Поиск
@@ -556,15 +564,8 @@ function openMenu() {
 		$(this).toggleClass('opened');
 		$(this).parent().toggleClass('opened');
 		$(this).parent().find('.header__block-hidden').toggleClass('opened');
-		$('#overlay').toggleClass('opened');
+		$('#overlay').addClass('opened')
   });
-
-  // // Открытие поиска
-  // $('.search__icon.button').on('click', function (event) {
-  //   event.preventDefault();
-  //   $(this).parent().toggleClass('opened');
-  //   $('#overlay').addClass('opened');
-  // });
 
   // Имитация клика по каталогу в меню
   // $('.mainnav__catalog').on('click', function (event){
@@ -3355,7 +3356,7 @@ $(document).ready(function(){
   toTop();
 	viewed();
 	footerLinksMore();
-	mobileMenu();
+	// mobileMenu();
 	sideNav();
   // Ленивая загрузка
   $(function(){
