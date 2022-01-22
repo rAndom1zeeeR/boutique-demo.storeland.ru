@@ -239,20 +239,20 @@ function ajaxForms(id,flag,successMessage,errorMessage){
 							t.parent().find('.form__text').remove();
 							t.parent().append('<div class="form__text">'+ errorMessage +'</div>');
 						},4000);
-            new Noty({
-              text: '<div class="noty__addto"><div class="noty__title">Успешно</div><div class="noty__message">' + successMessage + '</div></div>',
-              layout:"bottomRight",
-              type:"success",
-              easing:"swing",
-              animation: {
-                open: 'animated fadeInUp',
-                close: 'animated fadeOutDown',
-                easing: 'swing',
-                speed: 400
-              },
-              timeout:"4000",
-              progressBar:true
-            }).hide();
+            // new Noty({
+            //   text: '<div class="noty__addto"><div class="noty__title">Успешно</div><div class="noty__message">' + successMessage + '</div></div>',
+            //   layout:"bottomRight",
+            //   type:"success",
+            //   easing:"swing",
+            //   animation: {
+            //     open: 'animated fadeInUp',
+            //     close: 'animated fadeOutDown',
+            //     easing: 'swing',
+            //     speed: 400
+            //   },
+            //   timeout:"4000",
+            //   progressBar:true
+            // }).show();
             flag = true;
           }
         }
@@ -1005,43 +1005,6 @@ function pdtCatalog() {
 	});
 }
 
-// Функция Слайдер категорий Каталога на всех страницах.
-function mobileMenu() {
-	var owlC = $('.header__block-hidden .owl-carousel');
-  owlC.owlCarousel({
-    items: 6,
-    margin: 60,
-    loop: true,
-    rewind: false,
-    lazyLoad: true,
-    nav: false,
-    navContainer: '',
-    navText: [ , ],
-    dots: false,
-		autoWidth:true,
-    autoHeight: false,
-    autoHeightClass: 'owl-height',
-    autoplay: true,
-    autoplayHoverPause: true,
-    smartSpeed: 500,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: true,
-    responsiveClass: true,
-    responsiveRefreshRate: 100
-  });
-
-	// Навигация при клике НАЗАД
-	$('.mainnav__nav-prev').on('click', function () {
-		owlC.trigger('prev.owl.carousel');
-	});
-
-	// Навигация при клике ВПЕРЕД
-	$('.mainnav__nav-next').on('click', function () {
-		owlC.trigger('next.owl.carousel');
-	});
-}
-
 // Слайдер для главной страницы
 function slideShow() {
 	// Слайдер на главной
@@ -1263,6 +1226,84 @@ function viewed() {
 		pullDrag: true,
 		responsiveClass: true,
 		responsiveRefreshRate: 100
+	});
+}
+
+// Функция слайдера для "Новинки" на главной странице
+function pdtCart(){
+	var id = $('#pdt__cart');
+	var carousel = id.find('.owl-carousel');
+	var buttons = id.find('.products__buttons');
+	var dots = id.find('.owl-dots');
+	carousel.owlCarousel({
+		items: 5,
+		margin: 32,
+		loop: false,
+		rewind: true,
+		lazyLoad: true,
+		nav: false,
+		navContainer: '',
+		navText: [ , ],
+		dots: true,
+		dotsContainer: dots,
+		autoHeight: true,
+		autoHeightClass: 'owl-height',
+		autoplay: false,
+		autoplayHoverPause: true,
+		smartSpeed: 500,
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: true,
+		responsiveClass: true,
+		responsiveRefreshRate: 100,
+		responsive: {
+			0:{items:1, autoHeight: true},
+			320:{items:1, autoHeight: true},
+			480:{items:2},
+			640:{items:2},
+			768:{items:3},
+			992:{items:4},
+			1200:{items:5}
+		},
+		onInitialized: number,
+		onChanged: number,
+		onResize: number,
+		onResized: number
+	});
+
+	// Нумерация страниц
+	function number() {
+		dots.find('.owl-dot').each(function(i){
+			$(this).find('span').text(i+1)
+		});
+		// Скрываем кнопки навигации
+		dots.hasClass('disabled') ? buttons.hide() : buttons.show();
+		// Скрываем не активные элементы навигации
+		var dotActiveIndex = dots.find('.owl-dot.active').index();
+		var dotVisibleStep = 2;
+		var dotPrevActiveIndex = dotActiveIndex - dotVisibleStep;
+		var dotNextActiveIndex = dotActiveIndex + dotVisibleStep;
+
+		dots.find('.owl-dot')
+			.hide()
+			.filter(function(index, item){
+				if(index >= dotPrevActiveIndex &&  index <= dotNextActiveIndex){
+					return true;
+				}
+				return false;
+			})
+			.show()
+			.addClass('show')
+	}
+
+	// Навигация при клике НАЗАД
+	buttons.find('.prev').on('click', function () {
+		carousel.trigger('prev.owl.carousel');
+	});
+
+	// Навигация при клике ВПЕРЕД
+	buttons.find('.next').on('click', function () {
+		carousel.trigger('next.owl.carousel');
 	});
 }
 
@@ -2353,17 +2394,18 @@ function coupons() {
 	// Фальшивая кнопка купона
 	$('.fake__button').on('click', function(event){
 		event.preventDefault();
-		var fakeValue = $('.fake__input').val();		
-		couponInput.val(fakeValue);
-		submitBtn.click();
+		var fakeValue = $('.fake__input').val();
+		if(fakeValue == ''){
+			$('.fake__input').addClass('error')
+		}else{
+			$('.fake__input').removeClass('error')
+			couponInput.val(fakeValue);
+			submitBtn.click();
+		}
 	});
 	// Отображение фальшивой кнопки Сброс
 	$('.fake__input').on('input',function(){
-		if($(this).val()) {
-			resetBtn.addClass('active')
-		} else {
-			resetBtn.removeClass('active')
-		}
+		$(this).val() ? resetBtn.addClass('active') : resetBtn.removeClass('active')
 	});
 }
 

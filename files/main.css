@@ -666,7 +666,7 @@ header .overflowMenu.opened {display: flex;}
 .search__reset {top: .375rem;right: 2.25rem;opacity: 0;font-size: .75rem;position: absolute;}
 .search__filled .search__reset {opacity: 1;}
 .search__loading .lds-ring {display: block;}
-.lds-ring {display: none;position: absolute;top: 0;right: 4rem;width: 1rem;height: 1rem;}
+.lds-ring {display: none;position: absolute;top: .25rem;right: 4rem;width: 1rem;height: 1rem;}
 .lds-ring div {border: 2px solid #B69355;border-color: #B69355 transparent transparent transparent;width: 1rem;height: 1rem;margin: 0;border-radius: 50%;animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;display: block;position: absolute;}
 .lds-ring div:nth-child(1) {animation-delay: -0.45s;}
 .lds-ring div:nth-child(2) {animation-delay: -0.3s;}
@@ -704,10 +704,19 @@ header .overflowMenu.opened {display: flex;}
 	.result__category .result__item:nth-child(n+3) {display: none;}
 }
 @media (max-width: 767.98px) {
-	.result__goods {width: 100%;height: 15rem;}
-	.result__category {display: none !important;}
+	.result__goods {height: 15rem;}
+	.result__category {}
 }
-
+@media (max-width: 639.98px) {
+	.result__goods {width: 100%;}
+	.result__category {width: 100%;}
+	.result__category .result__item {width: calc(50% - 1rem);margin-right: 1rem;}
+	.result__category .result__item:nth-child(2n) {margin-left: 1rem;margin-right: 0;}
+	.result__category .result__item:nth-child(n+3) {display: flex;}
+}
+@media (max-width: 479.98px) {
+	.result__category .result__item {height: 8rem;}
+}
 
 /**************************************/
 /*** Слайдшоу ***/
@@ -1838,7 +1847,7 @@ header .overflowMenu.opened {display: flex;}
 .payment__description {margin-top: 1rem;}
 .coupons .coupon__button {position: absolute;right: 0;line-height: 2.5rem;}
 .coupons .coupon__code {width: calc(100% - 14rem);}
-.coupon__reset {display: none;position: absolute;right: 1rem;top: 1rem;line-height: 1;cursor: pointer;}
+.coupon__reset {display: none;position: absolute;right: 1rem;top: .75rem;line-height: 1;cursor: pointer;}
 .coupon__reset.active {display: block;}
 .coupon__reset:after {content: "\e90c";font-family: 'icomoon';}
 .fake__coupons {margin-bottom: 1.5rem;position: relative;}

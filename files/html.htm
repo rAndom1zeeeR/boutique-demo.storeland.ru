@@ -846,6 +846,7 @@
 							<input type="hidden" name="form[goods_from]" value="{index_page_favorites_goods.GOODS_FROM}" />
 							<input type="hidden" name="form[goods_mod_id]" value="{index_page_favorites_goods.MIN_PRICE_NOW_ID}" />
 							<input type="hidden" name="form[goods_id][{index_page_favorites_goods.ID}]" value="{index_page_favorites_goods.ID}" />
+							<input type="hidden" name="form[goods_unique_put_only_one]" value="1" />
 							<link itemprop="image" href="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 							<!-- Изображение товара -->
 							<div class="product__image">
@@ -1076,6 +1077,7 @@
 							<input type="hidden" name="form[goods_from]" value="{index_page_new_goods.GOODS_FROM}" />
 							<input type="hidden" name="form[goods_mod_id]" value="{index_page_new_goods.MIN_PRICE_NOW_ID}" />
 							<input type="hidden" name="form[goods_id][{index_page_new_goods.ID}]" value="{index_page_new_goods.ID}" />
+							<input type="hidden" name="form[goods_unique_put_only_one]" value="1" />
 							<link itemprop="image" href="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 							<!-- Изображение товара -->
 							<div class="product__image">
@@ -1331,6 +1333,7 @@
 							<input type="hidden" name="form[goods_from]" value="{index_page_sale_goods.GOODS_FROM}" />
 							<input type="hidden" name="form[goods_mod_id]" value="{index_page_sale_goods.MIN_PRICE_NOW_ID}" />
 							<input type="hidden" name="form[goods_id][{index_page_sale_goods.ID}]" value="{index_page_sale_goods.ID}" />
+							<input type="hidden" name="form[goods_unique_put_only_one]" value="1" />
 							<link itemprop="image" href="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 							<!-- Изображение товара -->
 							<div class="product__image">
@@ -1757,6 +1760,7 @@
 									<input type="hidden" name="form[goods_from]" value="{recently_viewed_goods.GOODS_FROM}" />
 									<input type="hidden" name="form[goods_mod_id]" value="{recently_viewed_goods.MIN_PRICE_NOW_ID}" />
 									<input type="hidden" name="form[goods_id][{recently_viewed_goods.ID}]" value="{recently_viewed_goods.ID}" />
+									<input type="hidden" name="form[goods_unique_put_only_one]" value="1" />
 									<link itemprop="image" href="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{recently_viewed_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 									<!-- Изображение товара -->
 									<div class="product__image">
@@ -2008,6 +2012,7 @@
 								<input type="hidden" name="form[goods_from]" value="{index_page_goods.GOODS_FROM}" />
 								<input type="hidden" name="form[goods_mod_id]" value="{index_page_goods.MIN_PRICE_NOW_ID}" />
 								<input type="hidden" name="form[goods_id][{index_page_goods.ID}]" value="{index_page_goods.ID}" />
+								<input type="hidden" name="form[goods_unique_put_only_one]" value="1" />
 								<link itemprop="image" href="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 								<!-- Изображение товара -->
 								<div class="product__image">
@@ -2757,6 +2762,7 @@
 	// Загрузка основных функций шаблона
 	$(document).ready(function(){
 		cartQuantity();
+		pdtCart();
 		// Вызов функции быстрого заказа в корзине
 		$('#startOrder').on('click', function() {
 			startOrder();
