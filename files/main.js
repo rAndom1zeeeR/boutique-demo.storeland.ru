@@ -843,8 +843,8 @@ function pdtNew(){
 			0:{items:1, autoHeight: true},
 			320:{items:1, autoHeight: true},
 			480:{items:2},
-			640:{items:2},
-			768:{items:3},
+			640:{items:3},
+			768:{items:4},
 			992:{items:4},
 			1200:{items:5}
 		},

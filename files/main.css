@@ -621,7 +621,7 @@ h6 {font-size: 0.875rem;}
 
 /* Шапка. Меню */
 header .mainnav ul {height: 2rem;overflow: hidden;}
-header .mainnav__list-link {padding: .5rem 1rem;font-size: 1rem;line-height: 1;display: block;}
+header .mainnav__list-link {padding: .5rem 2rem;font-size: 1rem;line-height: 1;display: block;}
 header .mainnav__more a {padding: 0;font-size: 1.5rem;}
 header .mainnav__more span {display: none;}
 header .overflowMenu {display: none;margin-top: 1.5rem;}
@@ -1107,11 +1107,12 @@ header .overflowMenu.opened {display: flex;}
 }
 @media (max-width: 991.98px) {
 	#pdt__new .products__grid {height: 27.5rem;}
-	#pdt__new .product__img {height: 13.375rem;}
+	#pdt__new .product__img {height: 9.5rem;}
+	#pdt__new .product__ico span {padding: .25rem;}
 }
 @media (max-width: 767.98px) {
 	#pdt__new .products__grid {height: 30.625rem;}
-	#pdt__new .product__img {height: 16.375rem;}
+	#pdt__new .product__img {height: 11.375rem;}
 }
 @media (max-width: 639.98px) {
 	#pdt__new .products__grid {height: 27.25rem;}
@@ -1194,8 +1195,9 @@ header .overflowMenu.opened {display: flex;}
 #pdt__sale .product__item {display: block;}
 #pdt__sale .product__item:nth-child(n+9) {display: none;}
 #pdt__sale .product__item.show {display: block !important;}
+.product__ico span {padding: .25rem;}
 .products__buttons {margin-top: 2rem;text-align: center;}
-@media (min-width: 992px) {
+@media (min-width: 768px) {
 	#pdt__sale .product__item {width: calc(25% - 2rem);}
 }
 @media (max-width: 1199.98px) {
@@ -1203,15 +1205,23 @@ header .overflowMenu.opened {display: flex;}
 }
 @media (max-width: 991.98px) {
 	#pdt__sale {margin-top: 3rem;}
-	#pdt__sale .product__img {height: 13.25rem;}
-	#pdt__sale .product__item:nth-child(n+7) {display: none;}
+	#pdt__sale .product__img {height: 9.5rem;}
 }
 @media (max-width: 767.98px) {
+	#pdt__sale .product__item {width: calc(33.333333% - 2rem);}
+	#pdt__sale .product__item:nth-child(n+7) {display: none;}
+	#pdt__sale .product__img {height: 11.375rem;}
+}
+@media (max-width: 639.98px) {
+	#pdt__sale .product__item {width: calc(50% - 2rem);}
 	#pdt__sale .product__item:nth-child(n+5) {display: none;}
+	#pdt__sale .product__img {height: 13rem;}
 }
 @media (max-width: 479.98px) {
 	#pdt__sale {margin-top: 2rem;}
+	#pdt__sale .product__item {width: 100%;}
 	#pdt__sale .product__item:nth-child(n+3) {display: none;}
+	#pdt__sale .product__img {height: 16.375rem;}
 }
 
 
