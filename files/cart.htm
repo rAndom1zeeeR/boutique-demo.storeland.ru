@@ -44,7 +44,9 @@
 								<div class="cart__price {CURRENCY_CHAR_CODE}">
 									<!-- {% IF cart_items.ORDER_LINE_PRICE_OLD > 0 %}<div class="price__old">{cart_items.ORDER_LINE_PRICE_OLD | money_format}</div>{% ENDIF %} -->
 									<div class="cartPriceTotal price__now">{cart_items.ORDER_LINE_PRICE_NOW | money_format}</div>
+									{% IF cart_items.ORDER_LINE_PRICE_OLD > cart_items.ORDER_LINE_PRICE_NOW %}
 									<div class="price__old">{cart_items.ORDER_LINE_PRICE_OLD | money_format}</div>
+									{% ENDIF %}
 								</div>
 							</div>
 							<!-- Удалить -->

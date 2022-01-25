@@ -340,7 +340,7 @@
 
 	<!-- Табы Описание, Хар-ки, Доставка, Отзывы -->
 	<div class="productView__tabs">
-		<div class="flex-start">
+		<div class="flex-start {% IF related_views_goods_empty %}related__views-empty{% ENDIF %} {% IF GOODS_DESCRIPTION_LARGE=0 || GOODS_SEO_DESCRIPTION_SHORT=0 || GOODS_SEO_DESCRIPTION_LARGE=0 %}productView__description-empty{% ENDIF %}">
 			<!-- Описание -->
 			{% IF GOODS_DESCRIPTION_LARGE || GOODS_SEO_DESCRIPTION_SHORT || GOODS_SEO_DESCRIPTION_LARGE %}
 			<div class="productView__description" data-tab-content="1">

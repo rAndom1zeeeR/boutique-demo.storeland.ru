@@ -281,7 +281,7 @@ function ajaxForms(id,flag,successMessage,errorMessage){
   });
 
   // Валидация при клике
-  form.on('click',function(event){
+  form.on('submit',function(event){
 		validName(form);
 		validPhone(form);
 		validEmail(form);
@@ -2324,15 +2324,25 @@ function coupons() {
 				}
 				// Получаем новую итоговую стоимость заказа
 				var totalBlock = $(data).closest('#myform').find('.total');
-				var totalSum = totalBlock.find('.total-sum').data('total-sum');
-				var deliveryPrice = parseInt($('.cartSumDelivery .num').text());
+				var totalSum = parseInt(totalBlock.find('.total-sum').data('total-sum'));
+				var deliveryPrice = parseInt($('.cartSumDelivery:eq(0) .num').text());
 				var newTotalSum = totalSum + deliveryPrice;
 				// Записываем название и размер скидки по купону
-				$('.total__coupons .total__label span').html(discountName);
-				$('.total__coupons .cartSumCoupons').html(discountPrice);
-				$('.cartSumCouponsDiscount').html(discountPrice);
-				$('.total__discount').hide();
-				$('.total__coupons').show();
+				if (discountName.length) {
+					$('.total__coupons .total__label span').html(discountName);
+					$('.total__coupons .cartSumCoupons').html(discountPrice);
+					$('.cartSumCouponsDiscount').html(discountPrice);
+					$('.total__discount').hide();
+					$('.total__coupons').show();
+				}
+				console.log('totalBlock', totalBlock)
+				console.log('totalSum', totalSum)
+				console.log('deliveryPrice', deliveryPrice)
+				console.log('newTotalSum', newTotalSum)
+				console.log('discountName', discountName)
+				console.log('discountPrice', discountPrice)
+				console.log('discountPercent', discountPercent)
+				console.log('', )
 				if (newTotalSum > cartSumTotal) {
 					couponInput.parent().addClass('error');
 					couponInput.parent().removeClass('active');
@@ -2369,8 +2379,8 @@ function coupons() {
 		setTimeout(function(){
 			$('.total__coupons').hide();
 			$('.total__discount').show();
-			var cartSum = $('.cartSumDiscount').data('value');
-			var deliveryPrice = parseInt($('.cartSumDelivery .num').text());
+			var cartSum = parseInt($('.cartSumDiscount').data('value'));
+			var deliveryPrice = parseInt($('.cartSumDelivery:eq(0) .num').text());
 			var newTotalSum = cartSum + deliveryPrice;
 			$('.cartSumTotal .num').text(addSpaces(newTotalSum));
 			$('.cartSumTotal').attr('data-value', newTotalSum);
@@ -3476,7 +3486,7 @@ function clonePromoText() {
 	});
 
 	$('.promo__line').marquee({
-			duration: 15000,
+			duration: 25000,
 			gap: 200,
 			//time in milliseconds before the marquee will start animating
 			delayBeforeStart: 0,

@@ -88,13 +88,13 @@
 				</div>
 
 				<div class="sidenav__item cart flex-center {% IF CART_COUNT_TOTAL > 0 %}has-items{% ENDIF %}" data-open="cart">
-					<a class="flex-center" href="{CART_URL}" title="Перейти в сравнение">
+					<a class="flex-center" href="{CART_URL}" title="Перейти в Корзину">
 						<i class="icon-cart"></i>
 						<span class="cart__count" data-count="{CART_COUNT_TOTAL}">{CART_COUNT_TOTAL}</span>
 					</a>
 				</div>
 				<div class="sidenav__item favorites flex-center {% IF FAVORITES_GOODS_COUNT > 0 %}has-items{% ENDIF %}" data-open="favorites">
-					<a class="flex-center" href="{FAVORITES_URL}" title="Перейти в сравнение">
+					<a class="flex-center" href="{FAVORITES_URL}" title="Перейти в Избранное">
 						<i class="icon-favorites"></i>
 						<span class="favorites__count" data-count="{FAVORITES_GOODS_COUNT}">{FAVORITES_GOODS_COUNT}</span>
 					</a>
@@ -109,7 +109,7 @@
 				{% ENDIF %}
 				<!-- Наверх -->
 				<div class="sidenav__item flex-center toTop" id="toTop">
-					<a class="flex-center" href="javascript:;" title="Перейти в сравнение">
+					<a class="flex-center" href="javascript:;" title="Перейти наверх">
 						<i class="icon-arrow_up"></i>
 					</a>
 				</div>
@@ -1300,7 +1300,7 @@
 						<div class="offer__item">
 							<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_2.jpg?design=THEMENAME"></div>
 							<div class="offer__content">
-								<div class="offer__title">Успей купить взрывную коллекцию корсетов со скидкой 20%</div>
+								<div class="offer__title">Сексуальное белье, одежда для дома и корсеты со скидкой от 30%</div>
 								<a class="button-primary offer__button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
 							</div>
 						</div>
@@ -1308,7 +1308,7 @@
 						<div class="offer__item">
 							<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_3.jpg?design=THEMENAME"></div>
 							<div class="offer__content">
-								<div class="offer__title">Успей купить взрывную коллекцию корсетов со скидкой 20%</div>
+								<div class="offer__title">100% поддержка для вашей груди</div>
 								<a class="button-primary offer__button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
 							</div>
 						</div>
@@ -1649,7 +1649,7 @@
 								<form action="" method="get" class="form__filters">
 									<!-- Если есть возможность фильтрации товаров по ценам -->
 									{% IF SHOW_GOODS_PRICE_FILTERS %}
-									<div class="filters-price collapsible active">
+									<div class="filter__list filters-price collapsible active">
 										<a href="javascript:;" class="filter__name collapsible__click flex justify-between">
 											<span>Цена</span>
 											<i class="icon-tick_right"></i>
