@@ -129,7 +129,7 @@
 				<input type="hidden" name="form[goods_from]" value="{cart_related_goods.GOODS_FROM}" />
 				<input type="hidden" name="form[goods_mod_id]" value="{cart_related_goods.MIN_PRICE_NOW_ID}" />
 				<input type="hidden" name="form[goods_id][{cart_related_goods.ID}]" value="{cart_related_goods.ID}" />
-				<input type="hidden" name="form[goods_unique_put_only_one]" value="1" />
+				<!-- <input type="hidden" name="form[goods_unique_put_only_one]" value="1" /> -->
 				<link itemprop="image" href="{% IF cart_related_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{cart_related_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 				<!-- Изображение товара -->
 				<div class="product__image">

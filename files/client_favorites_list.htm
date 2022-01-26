@@ -12,7 +12,7 @@
 					<input type="hidden" name="form[goods_from]" value="{favorites_goods.GOODS_FROM}" />
 					<input type="hidden" name="form[goods_mod_id]" value="{favorites_goods.MIN_PRICE_NOW_ID}" />
 					<input type="hidden" name="form[goods_id][{favorites_goods.ID}]" value="{favorites_goods.ID}" />
-					<input type="hidden" name="form[goods_unique_put_only_one]" value="1" />
+					<!-- <input type="hidden" name="form[goods_unique_put_only_one]" value="1" /> -->
 					<link itemprop="image" href="{% IF favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{favorites_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 					<!-- Изображение товара -->
 					<div class="product__image">
@@ -41,7 +41,7 @@
 							{% ENDIF %}
 						</div>
 						<!-- Название товара -->
-						<a class="product__name" href="{favorites_goods.URL_MIN_PRICE_NOW | url_amp}" title="{favorites_goods.NAME}">
+						<a class="product__name flex-center" href="{favorites_goods.URL_MIN_PRICE_NOW | url_amp}" title="{favorites_goods.NAME}">
 							<span itemprop="name">{favorites_goods.NAME}</span>
 						</a>
 						<!-- Артикул товара -->

@@ -117,9 +117,9 @@
 			<div class="sidenav__contents">
 				<!-- Меню -->
 				<div class="addto__menu menu sidenav__content" data-content="menu">
-					<div class="addto__menu-nav flex justify-between">
-						<a href="javascript:;" class="button-primary active" data-id="menu"><span>Меню</span></a>
-						<a href="javascript:;" class="button-primary" data-id="catalog"><span>Каталог</span></a>
+					<div class="addto__menu-nav flex">
+						<a href="javascript:;" class="button active" data-id="menu"><span>Меню</span></a>
+						<a href="javascript:;" class="button" data-id="catalog"><span>Каталог</span></a>
 					</div>
 					<div class="addto__menu-content">
 						<div class="addto__menu-item active" data-id="menu">
@@ -846,7 +846,7 @@
 							<input type="hidden" name="form[goods_from]" value="{index_page_favorites_goods.GOODS_FROM}" />
 							<input type="hidden" name="form[goods_mod_id]" value="{index_page_favorites_goods.MIN_PRICE_NOW_ID}" />
 							<input type="hidden" name="form[goods_id][{index_page_favorites_goods.ID}]" value="{index_page_favorites_goods.ID}" />
-							<input type="hidden" name="form[goods_unique_put_only_one]" value="1" />
+							<!-- <input type="hidden" name="form[goods_unique_put_only_one]" value="1" /> -->
 							<link itemprop="image" href="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 							<!-- Изображение товара -->
 							<div class="product__image">
@@ -1077,7 +1077,7 @@
 							<input type="hidden" name="form[goods_from]" value="{index_page_new_goods.GOODS_FROM}" />
 							<input type="hidden" name="form[goods_mod_id]" value="{index_page_new_goods.MIN_PRICE_NOW_ID}" />
 							<input type="hidden" name="form[goods_id][{index_page_new_goods.ID}]" value="{index_page_new_goods.ID}" />
-							<input type="hidden" name="form[goods_unique_put_only_one]" value="1" />
+							<!-- <input type="hidden" name="form[goods_unique_put_only_one]" value="1" /> -->
 							<link itemprop="image" href="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 							<!-- Изображение товара -->
 							<div class="product__image">
@@ -1286,30 +1286,32 @@
 				<div class="block__title">
 					<h2 class="title title_separator"><span>Выгодное предложение</span></h2>
 				</div>
-				<div class="offer__overflow">
-					<div class="offer__items owl-carousel">
-						<!-- предложение 1 -->
-						<div class="offer__item">
-							<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_1.jpg?design=THEMENAME"></div>
-							<div class="offer__content">
-								<div class="offer__title">Успей купить взрывную коллекцию корсетов со скидкой 20%</div>
-								<a class="button-primary offer__button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
+				<div class="offer__inner">
+					<div class="row">
+						<div class="offer__items flex-stretch">
+							<!-- предложение 1 -->
+							<div class="offer__item">
+								<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_1.jpg?design=THEMENAME"></div>
+								<div class="offer__content">
+									<div class="offer__title">Успей купить взрывную коллекцию корсетов со скидкой 20%</div>
+									<a class="button-primary offer__button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
+								</div>
 							</div>
-						</div>
-						<!-- предложение 2 -->
-						<div class="offer__item">
-							<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_2.jpg?design=THEMENAME"></div>
-							<div class="offer__content">
-								<div class="offer__title">Сексуальное белье, одежда для дома и корсеты со скидкой от 30%</div>
-								<a class="button-primary offer__button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
+							<!-- предложение 2 -->
+							<div class="offer__item">
+								<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_2.jpg?design=THEMENAME"></div>
+								<div class="offer__content">
+									<div class="offer__title">Сексуальное белье, одежда для дома и корсеты со скидкой от 30%</div>
+									<a class="button-primary offer__button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
+								</div>
 							</div>
-						</div>
-						<!-- предложение 3 -->
-						<div class="offer__item">
-							<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_3.jpg?design=THEMENAME"></div>
-							<div class="offer__content">
-								<div class="offer__title">100% поддержка для вашей груди</div>
-								<a class="button-primary offer__button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
+							<!-- предложение 3 -->
+							<div class="offer__item">
+								<div class="offer__image lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_offer_3.jpg?design=THEMENAME"></div>
+								<div class="offer__content">
+									<div class="offer__title">100% поддержка для вашей груди</div>
+									<a class="button-primary offer__button" href="{CATALOG_URL}" title="Перейти в каталог">Подробнее</a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -1333,7 +1335,7 @@
 							<input type="hidden" name="form[goods_from]" value="{index_page_sale_goods.GOODS_FROM}" />
 							<input type="hidden" name="form[goods_mod_id]" value="{index_page_sale_goods.MIN_PRICE_NOW_ID}" />
 							<input type="hidden" name="form[goods_id][{index_page_sale_goods.ID}]" value="{index_page_sale_goods.ID}" />
-							<input type="hidden" name="form[goods_unique_put_only_one]" value="1" />
+							<!-- <input type="hidden" name="form[goods_unique_put_only_one]" value="1" /> -->
 							<link itemprop="image" href="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 							<!-- Изображение товара -->
 							<div class="product__image">
@@ -1760,7 +1762,7 @@
 									<input type="hidden" name="form[goods_from]" value="{recently_viewed_goods.GOODS_FROM}" />
 									<input type="hidden" name="form[goods_mod_id]" value="{recently_viewed_goods.MIN_PRICE_NOW_ID}" />
 									<input type="hidden" name="form[goods_id][{recently_viewed_goods.ID}]" value="{recently_viewed_goods.ID}" />
-									<input type="hidden" name="form[goods_unique_put_only_one]" value="1" />
+									<!-- <input type="hidden" name="form[goods_unique_put_only_one]" value="1" /> -->
 									<link itemprop="image" href="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{recently_viewed_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 									<!-- Изображение товара -->
 									<div class="product__image">
@@ -2012,7 +2014,7 @@
 								<input type="hidden" name="form[goods_from]" value="{index_page_goods.GOODS_FROM}" />
 								<input type="hidden" name="form[goods_mod_id]" value="{index_page_goods.MIN_PRICE_NOW_ID}" />
 								<input type="hidden" name="form[goods_id][{index_page_goods.ID}]" value="{index_page_goods.ID}" />
-								<input type="hidden" name="form[goods_unique_put_only_one]" value="1" />
+								<!-- <input type="hidden" name="form[goods_unique_put_only_one]" value="1" /> -->
 								<link itemprop="image" href="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 								<!-- Изображение товара -->
 								<div class="product__image">
