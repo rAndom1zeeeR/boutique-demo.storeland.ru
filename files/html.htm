@@ -324,23 +324,19 @@
 							</div>
 							<!-- Меню. Открытое -->
 							<div class="header__block-hidden">
-								<div class="container">
-									<div class="row">
-										<nav class="mainnav flex">
-											<div class="mainnav__list flex">
-												{% FOR menu %}
-													{% FOR header %}
-														{% FOR links %}
-															<a class="mainnav__list-link {% IF menu.header.links.SELECTED %}active{%ENDIF%} {% IF menu.header.links.NAME = Каталог %}mainnav__catalog{%ENDIF%}" href="{menu.header.links.URL}" title="{% IF menu.header.links.TITLE %}{menu.header.links.TITLE}{% ELSE%}{menu.header.links.NAME}{% ENDIF %}" itemprop="url">
-																<span itemprop="name">{menu.header.links.NAME}</span>
-															</a>
-														{% ENDFOR %}
-													{% ENDFOR %}
+								<nav class="mainnav flex">
+									<div class="mainnav__list flex">
+										{% FOR menu %}
+											{% FOR header %}
+												{% FOR links %}
+													<a class="mainnav__list-link {% IF menu.header.links.SELECTED %}active{%ENDIF%} {% IF menu.header.links.NAME = Каталог %}mainnav__catalog{%ENDIF%}" href="{menu.header.links.URL}" title="{% IF menu.header.links.TITLE %}{menu.header.links.TITLE}{% ELSE%}{menu.header.links.NAME}{% ENDIF %}" itemprop="url">
+														<span itemprop="name">{menu.header.links.NAME}</span>
+													</a>
 												{% ENDFOR %}
-											</div>
-										</nav>
+											{% ENDFOR %}
+										{% ENDFOR %}
 									</div>
-								</div>
+								</nav>
 							</div>
 						</div>
 
