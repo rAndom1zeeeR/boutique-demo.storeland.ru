@@ -555,7 +555,11 @@ function openMenu() {
 		$(this).toggleClass('opened');
 		$(this).parent().toggleClass('opened');
 		$(this).parent().find('.header__block-hidden').toggleClass('opened');
-		$('#overlay').addClass('opened')		
+		$('#overlay').addClass('opened')
+		
+		$('.search__icon').removeClass('opened');
+		$('.search').removeClass('opened');
+		$('.search').find('.header__block-hidden').removeClass('opened');
   });
 
   // Открытие Поиск
@@ -565,6 +569,9 @@ function openMenu() {
 		$(this).parent().toggleClass('opened');
 		$(this).parent().find('.header__block-hidden').toggleClass('opened');
 		$('#overlay').addClass('opened')
+		$('.menu__icon').removeClass('opened');
+		$('.menu').removeClass('opened');
+		$('.menu').find('.header__block-hidden').removeClass('opened');
   });
 
   // Имитация клика по каталогу в меню
