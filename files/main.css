@@ -161,9 +161,9 @@ textarea.error:-ms-input-placeholder {color: red;}
 /*** Рейтинг Товаров ***/
 /**************************************/
 .ratings {display: inline-block;position: relative;vertical-align: middle;line-height: 0;overflow: hidden;}
-.ratings:before {font-size: 1.25rem;color: #70787D;line-height: 1;font-family: 'icomoon';content: '\e91a\20\e91a\20\e91a\20\e91a\20\e91a';}
+.ratings:before {font-size: 1.25rem;color: #70787D;line-height: 1;font-family: 'icomoon';content: '\e91a\e91a\e91a\e91a\e91a';letter-spacing: .25rem;}
 .ratings .rating {position: absolute;left: 0;top: 0;overflow: hidden;}
-.ratings .rating:before {font-size: 1.25rem;color: #B69355;line-height: 1;white-space:nowrap;font-family: 'icomoon';content: '\e91a\20\e91a\20\e91a\20\e91a\20\e91a';}
+.ratings .rating:before {font-size: 1.25rem;color: #B69355;line-height: 1;white-space:nowrap;font-family: 'icomoon';content: '\e91a\e91a\e91a\e91a\e91a';letter-spacing: .25rem;}
 .stars {overflow: hidden;}
 .star {margin: 0 .125rem;color: #70787D;width: 1.25rem;height: 1.25rem;line-height: 1.25rem;font-size: 1.25rem;white-space: nowrap;float:left;cursor: pointer;zoom:1;display:block;}
 .star:after {content: '\e91a';font-family: 'icomoon';}
@@ -307,14 +307,16 @@ h6 {font-size: 0.875rem;}
 /**************************************/
 .fancybox-close-small {line-height: 1;}
 .fancybox-close-small:hover {color: #ffffff;}
-.fancybox-content.modal {max-width: 32rem;}
-.fancybox-content {max-width: 50rem;padding: 2.75rem 2rem 2rem 2rem;background-color: #efefef;}
+.fancybox-content {max-width: 50rem;padding: 2.75rem 2rem 2rem 2rem;background-color: #efefef;transition: all 0.3s ease;}
+.fancybox-content.modal {max-width: 32rem;transform: translateY(200%);}
+.fancybox-slide--complete .fancybox-content.modal {transform: translateY(0);}
 .fancybox-content .block__title {margin-bottom: 2rem;}
 .fancybox-content input, .fancybox-content textarea {background-color: transparent;}
 .fancybox-content .form__buttons {text-align: center;}
 #fancybox__notify {max-width: 26rem;}
 @media (max-width: 639.98px) {
 	.fancybox-content {padding: 2.75rem 1rem 1rem 1rem;}
+	.fancybox-content.modal {vertical-align: bottom;}
 }
 
 
@@ -588,7 +590,7 @@ h6 {font-size: 0.875rem;}
 .index #header {position: absolute;background-color: transparent;z-index: 12;width: 100%;}
 .header__top {padding: 2rem 0;}
 .index .header__middle {padding: 2rem 0;}
-.header__middle {padding: 1rem 0 1.75rem;}
+.header__middle {padding: 1rem 0;}
 @media (max-width: 991.98px) {
 	.index .header__middle {padding: 1rem 0 2rem 0;}
 }
@@ -1152,8 +1154,6 @@ header .overflowMenu.opened {display: flex;}
 	#pdt__sales .product__img {height: 13rem;}
 	#pdt__sales .product__shop {width: calc(100% - 13rem);padding: 1rem;}
 	#pdt__sales .product__discount {letter-spacing: 0;}
-	#pdt__sales .ratings:before {content: '\e91a\e91a\e91a\e91a\e91a';}
-	#pdt__sales .ratings .rating:before {content: '\e91a\e91a\e91a\e91a\e91a';}
 }
 @media (max-width: 1199.98px) {
 	#pdt__sales .product__margin {margin-bottom: 1rem;}
@@ -1265,8 +1265,8 @@ header .overflowMenu.opened {display: flex;}
 .viewed .product__price .price__old {display: block;margin-top: .25rem;}
 .viewed .product__addCart i {font-size: 1.5rem;}
 .viewed .product__addCart span {margin-left: 1rem;}
-.viewed .ratings:before {font-size: 1rem;content: '\e91a\e91a\e91a\e91a\e91a';}
-.viewed .ratings .rating:before {font-size: 1rem;content: '\e91a\e91a\e91a\e91a\e91a';}
+.viewed .ratings:before {font-size: 1rem;}
+.viewed .ratings .rating:before {font-size: 1rem;}
 .viewed .ratings__count {font-size: .75rem}
 @media (min-width: 992px) and (max-width: 1199.98px) {
 	#viewed-callback .viewed {width: calc(100% - 26rem);margin: 0 2rem 0 0;}
