@@ -53,6 +53,7 @@
   .noty__addto .noty__image {display: none;}
   .noty__content {width: 100%;padding: 0;}
   .noty__title {font-size: 1rem;}
+  #noty_layout__bottomRight {width: calc(100% - 40px);}
 }
 
 

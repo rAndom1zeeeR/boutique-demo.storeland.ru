@@ -118,8 +118,8 @@
 				<!-- Меню -->
 				<div class="addto__menu menu sidenav__content" data-content="menu">
 					<div class="addto__menu-nav flex">
-						<a href="javascript:;" class="button active" data-id="menu"><span>Меню</span></a>
-						<a href="javascript:;" class="button" data-id="catalog"><span>Каталог</span></a>
+						<a href="javascript:;" class="button-primary active" data-id="menu"><span>Меню</span></a>
+						<a href="javascript:;" class="button-primary" data-id="catalog"><span>Каталог</span></a>
 					</div>
 					<div class="addto__menu-content">
 						<div class="addto__menu-item active" data-id="menu">
@@ -324,19 +324,21 @@
 							</div>
 							<!-- Меню. Открытое -->
 							<div class="header__block-hidden">
-								<nav class="mainnav flex">
-									<div class="mainnav__list flex">
-										{% FOR menu %}
-											{% FOR header %}
-												{% FOR links %}
-													<a class="mainnav__list-link {% IF menu.header.links.SELECTED %}active{%ENDIF%} {% IF menu.header.links.NAME = Каталог %}mainnav__catalog{%ENDIF%}" href="{menu.header.links.URL}" title="{% IF menu.header.links.TITLE %}{menu.header.links.TITLE}{% ELSE%}{menu.header.links.NAME}{% ENDIF %}" itemprop="url">
-														<span itemprop="name">{menu.header.links.NAME}</span>
-													</a>
+								<div class="container">
+									<nav class="mainnav flex">
+										<div class="mainnav__list flex">
+											{% FOR menu %}
+												{% FOR header %}
+													{% FOR links %}
+														<a class="mainnav__list-link {% IF menu.header.links.SELECTED %}active{%ENDIF%} {% IF menu.header.links.NAME = Каталог %}mainnav__catalog{%ENDIF%}" href="{menu.header.links.URL}" title="{% IF menu.header.links.TITLE %}{menu.header.links.TITLE}{% ELSE%}{menu.header.links.NAME}{% ENDIF %}" itemprop="url">
+															<span itemprop="name">{menu.header.links.NAME}</span>
+														</a>
+													{% ENDFOR %}
 												{% ENDFOR %}
 											{% ENDFOR %}
-										{% ENDFOR %}
-									</div>
-								</nav>
+										</div>
+									</nav>
+								</div>
 							</div>
 						</div>
 

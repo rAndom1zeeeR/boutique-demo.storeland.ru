@@ -631,7 +631,8 @@ header .mainnav__more span {display: none;}
 header .overflowMenu {display: none;margin-top: 1.5rem;}
 header .overflowMenu.opened {display: flex;}
 /* Шапка. Меню. Адаптивность */
-.header__block-hidden {display: none;margin-top: 3.25rem;padding: 1rem 0;background-color: #EFEFEF;width: 100%;max-height: 48rem;left: 0;position: absolute;z-index: 11;}
+.header__block-hidden {display: none;margin-top: 2.25rem;padding: 1rem 0;background-color: #EFEFEF;width: 100%;max-height: 48rem;left: 0;position: absolute;z-index: 11;}
+.index .header__block-hidden {margin-top: 3.25rem}
 .opened .header__block-hidden {display: block;}
 .header__block-hidden .mainnav__list {width: 100%;margin: 0 1rem;overflow: hidden;}
 @media (max-width: 991.98px) {
@@ -664,6 +665,7 @@ header .overflowMenu.opened {display: flex;}
 /* Шапка. Поиск */
 .search .contacts__block-icon {font-size: 1.25rem;}
 .search .contacts__block-content {width: calc(100% - 1.25rem);}
+.search__icon {height: 35px;}
 .search__form {position: relative;}
 .search__input {background-color: transparent;border-color: #B69355;padding-right: 3.5rem;height: 2rem;}
 .search__submit {top: .375rem;right: 0;padding: 0;line-height: 1;background-color: transparent;position: absolute;}
@@ -723,6 +725,7 @@ header .overflowMenu.opened {display: flex;}
 @media (max-width: 479.98px) {
 	.result__category .result__item {height: 8rem;}
 }
+
 
 /**************************************/
 /*** Слайдшоу ***/
@@ -808,7 +811,8 @@ header .overflowMenu.opened {display: flex;}
 	.banners__item[data-item="4"] {border-radius: 0 0 10rem 0;}
 	.banners__left {width: 20rem;}
 	.banners__right {width: calc(100% - 20rem);}
-	#banners [class^="button-"] {padding: 1rem 3rem .5rem;opacity: 1;}
+	#banners [class^="button-"] {padding: 1rem 2rem .5rem;opacity: 1;}
+	#banners .banners__item[data-item="1"] [class^="button-"] {padding: 1rem 3rem .5rem;}
 }
 @media (min-width: 768px) {
 	#banners {margin: 6rem 0;}
@@ -923,7 +927,7 @@ header .overflowMenu.opened {display: flex;}
 #offer {margin: 6rem 0;overflow: hidden;}
 #offer .owl-carousel .owl-stage-outer {overflow: visible;}
 .offer__inner {overflow-x: auto;height: 100%;}
-.offer__inner::-webkit-scrollbar {width: 0;height: .5rem;}
+.offer__inner::-webkit-scrollbar {width: 0;height: .25rem;}
 .offer__items {flex-wrap: nowrap;}
 .offer__item {min-width: 13rem;width: calc(33.333333% - 2rem);margin: 0 1rem;overflow: hidden;position: relative;}
 .offer__image {width: 100%;height: 27rem;background-size: cover;background-position: center;transition: all 0.3s ease;}
@@ -1919,7 +1923,7 @@ header .overflowMenu.opened {display: flex;}
 /*** Боковая навигация ***/
 /**************************************/
 /* .wrapper {overflow: hidden;} */
-.sidenav {position: fixed;top: 30%;right: 0;z-index: 15;}
+.sidenav {position: fixed;top: 32%;right: 0;z-index: 15;}
 .sidenav__item {width: 3.75rem;height: 3.75rem;padding: .5rem;background-color: #A9BDCE;border: 1px solid #ffffff;transition: all 0.3s ease;}
 .sidenav__item:hover {background-color: #CFA191;cursor: pointer;}
 .sidenav__item:hover a {color: #212121;}
@@ -1933,10 +1937,12 @@ header .overflowMenu.opened {display: flex;}
 .sidenav__contents {position: absolute;top: 0;right: 0;width: 400px;background-color: #EFEFEF;transition: all 0.3s ease-in-out;transform: translateX(400px);}
 .sidenav__content {display: none;min-height: 18.75rem;padding: 1rem;}
 .sidenav__content.opened {display: block;}
+/* .sidenav__content {opacity: 0;transform: translateX(100%);height: 0;transition: all 0.3s ease-in-out;}
+.sidenav__content.opened {opacity: 1;transform: translateX(0);height: 100%;min-height: 18.75rem;padding: 1rem;transition: all 0.3s ease-in-out;} */
 .page-favorites .favorites {display: none;}
 /** **/
-.addto__menu-nav {padding: 0 1rem;justify-content: center;}
-.addto__menu-nav a {margin: 2rem 1rem 0 1rem;padding: 0 3rem;}
+.addto__menu-nav {justify-content: space-around;}
+.addto__menu-nav a {margin: 1rem 0 0 0;padding: 0 2.5rem;}
 .addto__menu-content {max-height: 11rem;overflow-y: auto;margin: 2rem 0;}
 .addto__menu-content::-webkit-scrollbar {width: .5rem;}
 .addto__menu-content [data-id] {display: none;}
