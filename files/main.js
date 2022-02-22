@@ -575,10 +575,11 @@ function openMenu() {
   });
 
   // Имитация клика по каталогу в меню
-  // $('.mainnav__catalog').on('click', function (event){
-  //   event.preventDefault();
-  //   $('.catalog__icon').click();
-  // });
+  $('.mainnav__catalog').on('click', function (event){
+    event.preventDefault();
+    $(this).toggleClass('opened');
+    $('#addtoCatalog').toggleClass('opened');
+  });
 }
 
 // Дополнительные пункты меню в шапке Перенос пунктов меню
