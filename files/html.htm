@@ -191,7 +191,7 @@
 						{% FOR cart_items %}
 						<div class="addto__item flex" data-id="{cart_items.GOODS_ID}">
 							<a class="addto__image flex-center" href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}">
-								<img class="goods-image-icon" src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}" />
+								<img class="goods-image-icon" src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}" />
 							</a>
 							<div class="addto__content flex-stretch">
 								<div class="addto__info">
@@ -238,7 +238,7 @@
 						{% FOR favorites_goods %}
 						<div class="addto__item flex" data-id="{favorites_goods.ID}">
 							<a class="addto__image flex-center" href="{favorites_goods.URL}"title="{favorites_goods.NAME}">
-								<img class="goods-image-icon" src="{% IF favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{favorites_goods.IMAGE_ICON}{% ENDIF %}" alt="{favorites_goods.NAME}" />
+								<img class="goods-image-icon" src="{% IF favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{favorites_goods.IMAGE_ICON}{% ENDIF %}" alt="{favorites_goods.NAME}" />
 							</a>
 							<div class="addto__content flex-stretch">
 								<div class="addto__info">
@@ -276,7 +276,7 @@
 						{% FOR compare_goods %}
 						<div class="addto__item flex" data-id="{compare_goods.ID}">
 							<a class="addto__image flex-center" href="{compare_goods.URL}"title="{compare_goods.NAME}">
-								<img class="goods-image-icon" src="{% IF compare_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{compare_goods.IMAGE_ICON}{% ENDIF %}" alt="{compare_goods.NAME}" />
+								<img class="goods-image-icon" src="{% IF compare_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{compare_goods.IMAGE_ICON}{% ENDIF %}" alt="{compare_goods.NAME}" />
 							</a>
 							<div class="addto__content flex-stretch">
 								<div class="addto__info">
