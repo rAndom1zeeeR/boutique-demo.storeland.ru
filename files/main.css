@@ -1963,8 +1963,9 @@ header .overflowMenu.opened {display: flex;}
 	.sidenav {top: auto;bottom: 0;left: 0;}
 	.sidenav__items {width: 100%;display: flex;align-items: center;flex-wrap: wrap;}
 	.sidenav__item {flex-grow: 1;height: 3rem;padding: 0;}
-	.sidenav__item:nth-child(n) {border-radius: 0;}	
-	.sidenav.opened .sidenav__contents {right: 0;transform: translateX(0);width: 100%;top: auto;bottom: 3rem;}
+	.sidenav__item:nth-child(n) {border-radius: 0;}
+	.sidenav .sidenav__contents {right: auto;transform: translateY(120%);}
+	.sidenav.opened .sidenav__contents {right: auto;transform: translateY(0);width: 100%;top: auto;bottom: 3rem;}
 	.sidenav__content {min-height: 100%;}
 	.addto__menu-nav a {margin-top: 1rem;}
 	.addto__menu-content {margin: 2rem 0;max-height: 10rem;}
