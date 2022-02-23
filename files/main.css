@@ -640,6 +640,7 @@ header .overflowMenu.opened {display: flex;}
 }
 @media (max-width: 767.98px) {
 	header .menu {display: none;}
+	.index .header__block-hidden {margin-top: 1rem;}
 }
 
 /* Шапка. Корзина */
@@ -668,7 +669,7 @@ header .overflowMenu.opened {display: flex;}
 .search__icon {height: 35px;}
 .search__form {position: relative;}
 .search__input {background-color: transparent;border-color: #B69355;padding-right: 3.5rem;height: 2rem;}
-.search__submit {top: .375rem;right: 0;padding: 0;line-height: 1;background-color: transparent;position: absolute;}
+.search__submit {top: 0rem;right: .5rem;line-height: 2rem;padding: 0;background-color: transparent;position: absolute;z-index: 2;}
 .search__submit:hover {color: #B69355;background-color: transparent;}
 .search__reset {top: .375rem;right: 2.25rem;opacity: 0;font-size: .75rem;position: absolute;}
 .search__filled .search__reset {opacity: 1;}
