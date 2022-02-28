@@ -95,13 +95,13 @@
               <div class="actions">
                 <!-- Добавление товара в корзину -->
                 {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods_mod_info.REST_VALUE=0 %}
-                  <a class="add-notify button button2" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{goods_mod_info.NAME}" data-art="{goods_mod_info.ART_NUMBER}"><i class="icon-notify"></i><span>Уведомить</span></a>
+                  <a class="button-secondary add-notify button button2" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{goods_mod_info.NAME}" data-art="{goods_mod_info.ART_NUMBER}"><i class="icon-notify"></i><span>Уведомить</span></a>
                 {% ELSE %}
                   {% IF goods_mod_info.COUNT_MODIFICATION > 1 %}
-                  <a class="add-mod button" title="Добавить в корзину &laquo;{goods_mod_info.GOODS_NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{goods_mod_info.URL_PRICE_NOW}" data-prodname="{goods_mod_info.GOODS_NAME}"><i class="icon-cart"></i><span>Купить</span></a>
+                  <a class="button-primary add-mod button" title="Добавить в корзину &laquo;{goods_mod_info.GOODS_NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{goods_mod_info.URL_PRICE_NOW}" data-prodname="{goods_mod_info.GOODS_NAME}"><i class="icon-cart"></i><span>Купить</span></a>
                   {% ELSE %}
                   <!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods_mod_info.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods_mod_info.PRICE_NOW_ID}"><i class="icon-cart"></i><span>Купить</span></a-->
-                  <a class="add-cart button" title="Добавить в корзину &laquo;{goods_mod_info.GOODS_NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods_mod_info.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods_mod_info.PRICE_NOW_ID}"><i class="icon-cart"></i><span>Купить</span></a>
+                  <a class="button-primary add-cart button" title="Добавить в корзину &laquo;{goods_mod_info.GOODS_NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods_mod_info.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods_mod_info.PRICE_NOW_ID}"><i class="icon-cart"></i><span>Купить</span></a>
                   {% ENDIF %}
                 {% ENDIF %}
                 <!-- /END Добавление товара в корзину -->
@@ -214,7 +214,7 @@
     <div class="buttons">
       <a href="#" class="CompareGoodsHideSelected button hide" title="Скрыть выбранные" style="display:none;"><i class="icon-visibility_off"></i><span>Скрыть</span><span class="hide"> выбранные</span></a>  
       <a href="#" class="CompareGoodsShowAll button" title="Отобразить скрытые" style="display:none;"><i class="icon-visibility"></i><span>Отобразить</span><span class="hide"> скрытые</span></a>
-      <a href="{COMPARE_RESET_URL}" class="button" title="Очистить список сравнения"><i class="icon-close"></i><span>Очистить</span><span class="hide"> список</span></a>
+      <a href="{COMPARE_RESET_URL}" class="button-primary button" title="Очистить список сравнения"><i class="icon-close"></i><span>Очистить</span><span class="hide"> список</span></a>
     </div>
     <!-- END Управление выбранными строками -->
   </div>
