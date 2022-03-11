@@ -629,15 +629,13 @@ header .mainnav__more span {display: none;}
 header .overflowMenu {display: none;margin-top: 1.5rem;}
 header .overflowMenu.opened {display: flex;}
 /* Шапка. Меню. Адаптивность */
-.header__block-hidden {display: none;margin-top: 2.25rem;padding: 1rem 0;background-color: #EFEFEF;width: 100%;max-height: 48rem;left: 0;position: absolute;z-index: 11;}
+.header__block-hidden {display: none;margin-top: 2.5rem;padding: 1rem 0;background-color: #EFEFEF;width: 100%;max-height: 48rem;left: 0;position: absolute;z-index: 11;}
 .index .header__block-hidden {margin-top: 3.25rem}
 .opened .header__block-hidden {display: block;}
 .header__block-hidden .mainnav__list {width: 100%;margin: 0 1rem;overflow: hidden;}
-@media (max-width: 991.98px) {
-	.header__block-hidden {margin-top: 2rem;}
-}
 @media (max-width: 767.98px) {
 	header .menu {display: none;}
+	.header__block-hidden {margin-top: 2rem;}
 	.index .header__block-hidden {margin-top: 1rem;}
 }
 
@@ -1927,7 +1925,7 @@ header .overflowMenu.opened {display: flex;}
 /*** Боковая навигация ***/
 /**************************************/
 /* .wrapper {overflow: hidden;} */
-.sidenav {top: 360px;right: 0;position: fixed;z-index: 15;}
+.sidenav {top: 380px;right: 0;position: fixed;z-index: 15;}
 .sidenav__item {width: 3.75rem;height: 3.75rem;padding: .5rem;background-color: #A9BDCE;border: 1px solid #ffffff;transition: all 0.3s ease;}
 .sidenav__item:hover {background-color: #CFA191;cursor: pointer;}
 .sidenav__item:hover a {color: #212121;}
