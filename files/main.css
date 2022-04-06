@@ -67,7 +67,7 @@ ol.unstyled, ul.unstyled {margin: 0;padding: 0;list-style: none;}
 /**************************************/
 input, select, textarea {width: 100%;height: 2.5rem;padding: 0 .5rem;color: #212121;background-color: #ffffff;border-color: #70787D;border: 0;border-bottom-width: 1px;border-style: solid;border-radius: 0;outline: 0;font-size: 1rem;font-weight: 400;font-family: 'Montserrat', sans-serif;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
 input:focus, select:focus, textarea:focus {border-color: #B69355;}
-textarea {height: auto;min-height: 2.5rem;padding-top: .5rem;}
+textarea {height: auto;min-height: 2.5rem;padding-top: .5rem;resize: vertical;}
 select {cursor: pointer;}
 input.error {border-color: red;}
 input[type="file"] {margin-top: 0.25rem;height: auto;line-height: 1;border: 0;padding: 0;border-radius: 0;background: transparent;}
@@ -472,7 +472,7 @@ h6 {font-size: 0.875rem;}
 	.CompareGoodsTableTbody .actions .price-box .price__old {display: block;margin-top: 5px;}
 	.CompareGoodsTableTbody .actions .add-notify:before {display: none;}
 	.CompareGoods .buttons .hide {display: none;}
-	.CompareGoodsTableTbody .actions [class^="add-"] {padding: 0 3rem;}
+	.CompareGoodsTableTbody .actions [class*="add-"] {padding: 0 3rem;}
 }
 
 

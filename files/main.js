@@ -1412,8 +1412,8 @@ function quickViewShowMod(href, atempt) {
 			$.fancybox.open(document.quickviewPreload[href]);
 			addCart();
 			addTo();
-			goodsModification();
-			newModification();
+			goodsModification($('.fancybox-content.productViewBlock'));
+			newModification($('.fancybox-content.productViewBlock'));
 			quantity();
 			prodQty();
 		}
@@ -1423,8 +1423,8 @@ function quickViewShowMod(href, atempt) {
 			$.fancybox.open($(content).getColumnContent());
 			addCart();
 			addTo();
-			goodsModification();
-			newModification();
+			goodsModification($('.fancybox-content.productViewBlock'));
+			newModification($('.fancybox-content.productViewBlock'));
 			quantity();
 			prodQty();
 		});
@@ -2955,26 +2955,27 @@ function monthNames() {
 
 
 // Радио кнопки для модификаций
-function newModification() {
-	$('.goodsModificationsProperty').each(function(){
+function newModification($container) {
+	var $parentBlock = $container || $('#main .productViewBlock')
+	$parentBlock.find('.goodsModificationsProperty').each(function(){
 		a = $(this).find('select option:selected').attr('value');
 		$(this).find('.goodsModificationsValue[data-value="'+ a +'"]').addClass('active');
 		dis = $(this).find('select option:disabled').attr('value');
 		$(this).find('.goodsModificationsValue[data-value="'+ dis +'"]').removeClass('active');
 		$(this).find('.goodsModificationsValue[data-value="'+ dis +'"]').addClass('disabled');
 	});
-	$('.goodsModificationsValue').click(function(){
+	$parentBlock.find('.goodsModificationsValue').click(function(){
 		$(this).parent().find('.goodsModificationsValue').removeClass('active');
 		$(this).addClass('active');
 		a = $(this).data('value');
 		$(this).parent().parent().find('select option[value="' + a + '"]').prop('selected',true);
 		$(this).parent().parent().find('select').trigger('change');
 	});
-	$('.goodsModificationsValue.disabled').off('click');
+	$parentBlock.find('.goodsModificationsValue.disabled').off('click');
 }
 
 // Модификации select
-function goodsModification() {
+function goodsModification($container) {
 	// Функция собирает свойства в строку, для определения модификации товара
 	function getSlugFromGoodsDataFormModificationsProperties(obj) {
 		var properties = new Array();
@@ -2984,9 +2985,11 @@ function goodsModification() {
 		return properties.sort(function(a,b){return a - b}).join('_');
 	}
 
+	var $parentBlock = $container || $('#main .productViewBlock')
+
 	var
-			goodsDataProperties = $('.goodsModificationsProperty select[name="form[properties][]"]'),  // Запоминаем поля выбора свойств, для ускорения работы со значениями свойств
-			goodsDataModifications = $('.goodsModificationsList'); // Запоминаем блоки с информацией по модификациям, для ускорения работы
+			goodsDataProperties = $parentBlock.find('.goodsModificationsProperty select[name="form[properties][]"]'),  // Запоминаем поля выбора свойств, для ускорения работы со значениями свойств
+			goodsDataModifications = $parentBlock.find('.goodsModificationsList'); // Запоминаем блоки с информацией по модификациям, для ускорения работы
 
 	// Обновляет возможность выбора свойств модификации, для отключения возможности выбора по характеристикам модификации которой не существует.
 	function updateVisibility (y) {
@@ -3026,7 +3029,7 @@ function goodsModification() {
 	goodsDataProperties.each(function(y){
 		$(this).change(function(){
 			var slug = getSlugFromGoodsDataFormModificationsProperties(goodsDataProperties),
-					modificationBlock             = $('.goodsModificationsList[rel="'+slug+'"]'),
+					modificationBlock             = $parentBlock.find('.goodsModificationsList[rel="'+slug+'"]'),
 					modificationId                = parseInt(modificationBlock.find('[name="id"]').val()),
 					modificationArtNumber         = modificationBlock.find('[name="art_number"]').val(),
 					modificationPriceNow          = parseInt(modificationBlock.find('[name="price_now"]').val()),
@@ -3037,17 +3040,17 @@ function goodsModification() {
 					modificationDescription       = modificationBlock.find('.description').html(),
 					modificationIsInCompareList   = modificationBlock.find('[name="is_has_in_compare_list"]').val(), // Отследить что делает
 					modificationGoodsModImageId   = modificationBlock.find('[name="goods_mod_image_id"]').val(),
-					goodsModView                  = $('.productView'),
-					goodsModificationId           = $('.goodsModificationId'),
-					goodsPriceNow                 = $('.productView .price__now'),
-					goodsPriceOld                 = $('.productView .price__old'),
-					goodsAvailableQty             = $('.productView__qty'),
+					goodsModView                  = $parentBlock.find('.productView'),
+					goodsModificationId           = goodsModView.find('.goodsModificationId'),
+					goodsPriceNow                 = goodsModView.find('.price__now'),
+					goodsPriceOld                 = goodsModView.find('.price__old'),
+					goodsAvailableQty             = goodsModView.find('.productView__qty'),
 					goodsAvailable                = goodsModView.find('.productView__available'),
 					goodsAvailableTrue            = goodsAvailable.find('.available__true'),
 					goodsAvailableFalse           = goodsAvailable.find('.available__false'),
-					goodsArtNumberBlock           = $('.productView__articles'),
+					goodsArtNumberBlock           = goodsModView.find('.productView__articles'),
 					goodsArtNumber                = goodsArtNumberBlock.find('.goodsModArtNumber'),
-					goodsModDescriptionBlock      = $('.goodsModDescription'),
+					goodsModDescriptionBlock      = goodsModView.find('.goodsModDescription'),
 					goodsModRestValue             = goodsModView.find('.goodsModRestValue');
 
 			// Изменяем данные товара для выбранных параметров. Если нашлась выбранная модификация
