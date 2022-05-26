@@ -71,7 +71,7 @@
 				   data-tooltipOFF="Добавить в сравнение"
 				   data-action-text-add="В Сравнение"
 				   data-action-text-del="В Сравнении"
-				   title="Убрать &laquo;{GOODS_NAME}&raquo; из списка сравнения с другими товарами"
+				   title="Добавить &laquo;{GOODS_NAME}&raquo; в список сравнения с другими товарами"
 				   href="{COMPARE_ADD_URL}?id={GOODS_MOD_ID}&amp;return_to={CURRENT_URL | urlencode}"
 				   rel="nofollow"
 				><span>В сравнение</span></a>
@@ -172,7 +172,7 @@
 						<div class="rating" style="width:0%" alt="Рейтинг не определён" title="Рейтинг не определён"></div>
 						{% ENDIF %}
 					</div>
-					<div class="ratings__label">{% IF GOODS_OPINION_RATING_VALUE_ROUND %}{GOODS_OPINION_RATING_CNT_ALL} отзыв{GOODS_OPINION_RATING_CNT_ALL | gen_word_end("","а","ов")}{% ELSE %}Нет отзывов{% ENDIF %}</div>
+					<div class="ratings__label">{% IF GOODS_OPINION_RATING_CNT_ALL > 0 %}{GOODS_OPINION_RATING_CNT_ALL} отзыв{GOODS_OPINION_RATING_CNT_ALL | gen_word_end("","а","ов")}{% ELSE %}Нет отзывов{% ENDIF %}</div>
 				</div>
 				{% ENDIF %}
 
@@ -317,7 +317,16 @@
 							<span>Быстрая покупка</span>
 						</button>
 						<!-- Уведомить -->
-						<a class="add-notify button button5" data-fancybox data-src="#fancybox__notify" href="javascript:;">
+						<a class="add-notify button button5"
+							title="Уведомить"
+							data-tooltip="Уведомить"
+							rel="nofollow"
+							data-fancybox
+							data-src="#fancybox__notify"
+							href="javascript:;"
+							data-name="{GOODS_NAME}"
+							data-art="{GOODS_MOD_ART_NUMBER}"
+						>
 							<i class="icon-notify"></i>
 							<span>Уведомить</span>
 						</a>
